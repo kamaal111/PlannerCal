@@ -1,0 +1,812 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2C7B6A922607DBE800F0217E /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B6A912607DBE800F0217E /* Tests_iOS.swift */; };
+		2C7B6A9D2607DBE800F0217E /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B6A9C2607DBE800F0217E /* Tests_macOS.swift */; };
+		2C7B6A9F2607DBE800F0217E /* PlannerCal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B6A732607DBE700F0217E /* PlannerCal.xcdatamodeld */; };
+		2C7B6AA02607DBE800F0217E /* PlannerCal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B6A732607DBE700F0217E /* PlannerCal.xcdatamodeld */; };
+		2C7B6AA12607DBE800F0217E /* PlannerCalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B6A752607DBE700F0217E /* PlannerCalApp.swift */; };
+		2C7B6AA22607DBE800F0217E /* PlannerCalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B6A752607DBE700F0217E /* PlannerCalApp.swift */; };
+		2C7B6AA32607DBE800F0217E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B6A762607DBE700F0217E /* ContentView.swift */; };
+		2C7B6AA42607DBE800F0217E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B6A762607DBE700F0217E /* ContentView.swift */; };
+		2C7B6AA52607DBE800F0217E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B6A772607DBE700F0217E /* Persistence.swift */; };
+		2C7B6AA62607DBE800F0217E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B6A772607DBE700F0217E /* Persistence.swift */; };
+		2C7B6AA72607DBE800F0217E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C7B6A782607DBE800F0217E /* Assets.xcassets */; };
+		2C7B6AA82607DBE800F0217E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C7B6A782607DBE800F0217E /* Assets.xcassets */; };
+		2C7B6ABD2607DC5800F0217E /* PersistanceManager in Frameworks */ = {isa = PBXBuildFile; productRef = 2C7B6ABC2607DC5800F0217E /* PersistanceManager */; };
+		2C7B6AC42607DCC200F0217E /* ConsoleSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C7B6AC32607DCC200F0217E /* ConsoleSwift */; };
+		2C7B6ACB2607DE2700F0217E /* PersistanceManager in Frameworks */ = {isa = PBXBuildFile; productRef = 2C7B6ACA2607DE2700F0217E /* PersistanceManager */; };
+		2C7B6ACD2607DE2C00F0217E /* ConsoleSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C7B6ACC2607DE2C00F0217E /* ConsoleSwift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2C7B6A8E2607DBE800F0217E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C7B6A6E2607DBE700F0217E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C7B6A7C2607DBE800F0217E;
+			remoteInfo = "PlannerCal (iOS)";
+		};
+		2C7B6A992607DBE800F0217E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C7B6A6E2607DBE700F0217E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C7B6A842607DBE800F0217E;
+			remoteInfo = "PlannerCal (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2C7B6A742607DBE700F0217E /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
+		2C7B6A752607DBE700F0217E /* PlannerCalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerCalApp.swift; sourceTree = "<group>"; };
+		2C7B6A762607DBE700F0217E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2C7B6A772607DBE700F0217E /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		2C7B6A782607DBE800F0217E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2C7B6A7D2607DBE800F0217E /* PlannerCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlannerCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C7B6A802607DBE800F0217E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C7B6A852607DBE800F0217E /* PlannerCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlannerCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C7B6A872607DBE800F0217E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C7B6A882607DBE800F0217E /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		2C7B6A8D2607DBE800F0217E /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C7B6A912607DBE800F0217E /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
+		2C7B6A932607DBE800F0217E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C7B6A982607DBE800F0217E /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C7B6A9C2607DBE800F0217E /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
+		2C7B6A9E2607DBE800F0217E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2C7B6A7A2607DBE800F0217E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C7B6AC42607DCC200F0217E /* ConsoleSwift in Frameworks */,
+				2C7B6ABD2607DC5800F0217E /* PersistanceManager in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C7B6A822607DBE800F0217E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C7B6ACD2607DE2C00F0217E /* ConsoleSwift in Frameworks */,
+				2C7B6ACB2607DE2700F0217E /* PersistanceManager in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C7B6A8A2607DBE800F0217E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C7B6A952607DBE800F0217E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2C7B6A6D2607DBE700F0217E = {
+			isa = PBXGroup;
+			children = (
+				2CE1AD952607E49300CAF769 /* Targets */,
+				2CE1AD8C2607E45700CAF769 /* Tests */,
+				2C7B6A722607DBE700F0217E /* Shared */,
+				2C7B6A7E2607DBE800F0217E /* Products */,
+				2C7B6AC92607DE2700F0217E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		2C7B6A722607DBE700F0217E /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				2C7B6A752607DBE700F0217E /* PlannerCalApp.swift */,
+				2C7B6A762607DBE700F0217E /* ContentView.swift */,
+				2C7B6A772607DBE700F0217E /* Persistence.swift */,
+				2C7B6A782607DBE800F0217E /* Assets.xcassets */,
+				2C7B6A732607DBE700F0217E /* PlannerCal.xcdatamodeld */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		2C7B6A7E2607DBE800F0217E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C7B6A7D2607DBE800F0217E /* PlannerCal.app */,
+				2C7B6A852607DBE800F0217E /* PlannerCal.app */,
+				2C7B6A8D2607DBE800F0217E /* Tests iOS.xctest */,
+				2C7B6A982607DBE800F0217E /* Tests macOS.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C7B6A7F2607DBE800F0217E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				2C7B6A802607DBE800F0217E /* Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		2C7B6A862607DBE800F0217E /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				2C7B6A872607DBE800F0217E /* Info.plist */,
+				2C7B6A882607DBE800F0217E /* macOS.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		2C7B6A902607DBE800F0217E /* Tests iOS */ = {
+			isa = PBXGroup;
+			children = (
+				2C7B6A912607DBE800F0217E /* Tests_iOS.swift */,
+				2C7B6A932607DBE800F0217E /* Info.plist */,
+			);
+			path = "Tests iOS";
+			sourceTree = "<group>";
+		};
+		2C7B6A9B2607DBE800F0217E /* Tests macOS */ = {
+			isa = PBXGroup;
+			children = (
+				2C7B6A9C2607DBE800F0217E /* Tests_macOS.swift */,
+				2C7B6A9E2607DBE800F0217E /* Info.plist */,
+			);
+			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		2C7B6AC92607DE2700F0217E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2CE1AD8C2607E45700CAF769 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2C7B6A9B2607DBE800F0217E /* Tests macOS */,
+				2C7B6A902607DBE800F0217E /* Tests iOS */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		2CE1AD952607E49300CAF769 /* Targets */ = {
+			isa = PBXGroup;
+			children = (
+				2C7B6A862607DBE800F0217E /* macOS */,
+				2C7B6A7F2607DBE800F0217E /* iOS */,
+			);
+			path = Targets;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2C7B6A7C2607DBE800F0217E /* PlannerCal (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C7B6AAB2607DBE800F0217E /* Build configuration list for PBXNativeTarget "PlannerCal (iOS)" */;
+			buildPhases = (
+				2C7B6A792607DBE800F0217E /* Sources */,
+				2C7B6A7A2607DBE800F0217E /* Frameworks */,
+				2C7B6A7B2607DBE800F0217E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PlannerCal (iOS)";
+			packageProductDependencies = (
+				2C7B6ABC2607DC5800F0217E /* PersistanceManager */,
+				2C7B6AC32607DCC200F0217E /* ConsoleSwift */,
+			);
+			productName = "PlannerCal (iOS)";
+			productReference = 2C7B6A7D2607DBE800F0217E /* PlannerCal.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2C7B6A842607DBE800F0217E /* PlannerCal (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C7B6AAE2607DBE800F0217E /* Build configuration list for PBXNativeTarget "PlannerCal (macOS)" */;
+			buildPhases = (
+				2C7B6A812607DBE800F0217E /* Sources */,
+				2C7B6A822607DBE800F0217E /* Frameworks */,
+				2C7B6A832607DBE800F0217E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PlannerCal (macOS)";
+			packageProductDependencies = (
+				2C7B6ACA2607DE2700F0217E /* PersistanceManager */,
+				2C7B6ACC2607DE2C00F0217E /* ConsoleSwift */,
+			);
+			productName = "PlannerCal (macOS)";
+			productReference = 2C7B6A852607DBE800F0217E /* PlannerCal.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2C7B6A8C2607DBE800F0217E /* Tests iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C7B6AB12607DBE800F0217E /* Build configuration list for PBXNativeTarget "Tests iOS" */;
+			buildPhases = (
+				2C7B6A892607DBE800F0217E /* Sources */,
+				2C7B6A8A2607DBE800F0217E /* Frameworks */,
+				2C7B6A8B2607DBE800F0217E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C7B6A8F2607DBE800F0217E /* PBXTargetDependency */,
+			);
+			name = "Tests iOS";
+			productName = "Tests iOS";
+			productReference = 2C7B6A8D2607DBE800F0217E /* Tests iOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		2C7B6A972607DBE800F0217E /* Tests macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C7B6AB42607DBE800F0217E /* Build configuration list for PBXNativeTarget "Tests macOS" */;
+			buildPhases = (
+				2C7B6A942607DBE800F0217E /* Sources */,
+				2C7B6A952607DBE800F0217E /* Frameworks */,
+				2C7B6A962607DBE800F0217E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C7B6A9A2607DBE800F0217E /* PBXTargetDependency */,
+			);
+			name = "Tests macOS";
+			productName = "Tests macOS";
+			productReference = 2C7B6A982607DBE800F0217E /* Tests macOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2C7B6A6E2607DBE700F0217E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					2C7B6A7C2607DBE800F0217E = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					2C7B6A842607DBE800F0217E = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					2C7B6A8C2607DBE800F0217E = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 2C7B6A7C2607DBE800F0217E;
+					};
+					2C7B6A972607DBE800F0217E = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 2C7B6A842607DBE800F0217E;
+					};
+				};
+			};
+			buildConfigurationList = 2C7B6A712607DBE700F0217E /* Build configuration list for PBXProject "PlannerCal" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2C7B6A6D2607DBE700F0217E;
+			packageReferences = (
+				2C7B6ABB2607DC5800F0217E /* XCRemoteSwiftPackageReference "PersistanceManager" */,
+				2C7B6AC22607DCC200F0217E /* XCRemoteSwiftPackageReference "ConsoleSwift" */,
+			);
+			productRefGroup = 2C7B6A7E2607DBE800F0217E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2C7B6A7C2607DBE800F0217E /* PlannerCal (iOS) */,
+				2C7B6A842607DBE800F0217E /* PlannerCal (macOS) */,
+				2C7B6A8C2607DBE800F0217E /* Tests iOS */,
+				2C7B6A972607DBE800F0217E /* Tests macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2C7B6A7B2607DBE800F0217E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C7B6AA72607DBE800F0217E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C7B6A832607DBE800F0217E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C7B6AA82607DBE800F0217E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C7B6A8B2607DBE800F0217E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C7B6A962607DBE800F0217E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2C7B6A792607DBE800F0217E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C7B6A9F2607DBE800F0217E /* PlannerCal.xcdatamodeld in Sources */,
+				2C7B6AA52607DBE800F0217E /* Persistence.swift in Sources */,
+				2C7B6AA12607DBE800F0217E /* PlannerCalApp.swift in Sources */,
+				2C7B6AA32607DBE800F0217E /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C7B6A812607DBE800F0217E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C7B6AA02607DBE800F0217E /* PlannerCal.xcdatamodeld in Sources */,
+				2C7B6AA62607DBE800F0217E /* Persistence.swift in Sources */,
+				2C7B6AA22607DBE800F0217E /* PlannerCalApp.swift in Sources */,
+				2C7B6AA42607DBE800F0217E /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C7B6A892607DBE800F0217E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C7B6A922607DBE800F0217E /* Tests_iOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C7B6A942607DBE800F0217E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C7B6A9D2607DBE800F0217E /* Tests_macOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2C7B6A8F2607DBE800F0217E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C7B6A7C2607DBE800F0217E /* PlannerCal (iOS) */;
+			targetProxy = 2C7B6A8E2607DBE800F0217E /* PBXContainerItemProxy */;
+		};
+		2C7B6A9A2607DBE800F0217E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C7B6A842607DBE800F0217E /* PlannerCal (macOS) */;
+			targetProxy = 2C7B6A992607DBE800F0217E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2C7B6AA92607DBE800F0217E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2C7B6AAA2607DBE800F0217E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		2C7B6AAC2607DBE800F0217E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DXUKH9VF73;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Targets/iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.kamaal.PlannerCal;
+				PRODUCT_NAME = PlannerCal;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2C7B6AAD2607DBE800F0217E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DXUKH9VF73;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Targets/iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.kamaal.PlannerCal;
+				PRODUCT_NAME = PlannerCal;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2C7B6AAF2607DBE800F0217E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Targets/macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DXUKH9VF73;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Targets/macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.kamaal.PlannerCal;
+				PRODUCT_NAME = PlannerCal;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		2C7B6AB02607DBE800F0217E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Targets/macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DXUKH9VF73;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Targets/macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.kamaal.PlannerCal;
+				PRODUCT_NAME = PlannerCal;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		2C7B6AB22607DBE800F0217E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DXUKH9VF73;
+				INFOPLIST_FILE = "Tests/Tests iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.kamaal.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "PlannerCal (iOS)";
+			};
+			name = Debug;
+		};
+		2C7B6AB32607DBE800F0217E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DXUKH9VF73;
+				INFOPLIST_FILE = "Tests/Tests iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.kamaal.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "PlannerCal (iOS)";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2C7B6AB52607DBE800F0217E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DXUKH9VF73;
+				INFOPLIST_FILE = "Tests/Tests macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.kamaal.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "PlannerCal (macOS)";
+			};
+			name = Debug;
+		};
+		2C7B6AB62607DBE800F0217E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DXUKH9VF73;
+				INFOPLIST_FILE = "Tests/Tests macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.kamaal.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "PlannerCal (macOS)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2C7B6A712607DBE700F0217E /* Build configuration list for PBXProject "PlannerCal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C7B6AA92607DBE800F0217E /* Debug */,
+				2C7B6AAA2607DBE800F0217E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C7B6AAB2607DBE800F0217E /* Build configuration list for PBXNativeTarget "PlannerCal (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C7B6AAC2607DBE800F0217E /* Debug */,
+				2C7B6AAD2607DBE800F0217E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C7B6AAE2607DBE800F0217E /* Build configuration list for PBXNativeTarget "PlannerCal (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C7B6AAF2607DBE800F0217E /* Debug */,
+				2C7B6AB02607DBE800F0217E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C7B6AB12607DBE800F0217E /* Build configuration list for PBXNativeTarget "Tests iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C7B6AB22607DBE800F0217E /* Debug */,
+				2C7B6AB32607DBE800F0217E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C7B6AB42607DBE800F0217E /* Build configuration list for PBXNativeTarget "Tests macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C7B6AB52607DBE800F0217E /* Debug */,
+				2C7B6AB62607DBE800F0217E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2C7B6ABB2607DC5800F0217E /* XCRemoteSwiftPackageReference "PersistanceManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kamaal111/PersistanceManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		2C7B6AC22607DCC200F0217E /* XCRemoteSwiftPackageReference "ConsoleSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kamaal111/ConsoleSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2C7B6ABC2607DC5800F0217E /* PersistanceManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C7B6ABB2607DC5800F0217E /* XCRemoteSwiftPackageReference "PersistanceManager" */;
+			productName = PersistanceManager;
+		};
+		2C7B6AC32607DCC200F0217E /* ConsoleSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C7B6AC22607DCC200F0217E /* XCRemoteSwiftPackageReference "ConsoleSwift" */;
+			productName = ConsoleSwift;
+		};
+		2C7B6ACA2607DE2700F0217E /* PersistanceManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C7B6ABB2607DC5800F0217E /* XCRemoteSwiftPackageReference "PersistanceManager" */;
+			productName = PersistanceManager;
+		};
+		2C7B6ACC2607DE2C00F0217E /* ConsoleSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C7B6AC22607DCC200F0217E /* XCRemoteSwiftPackageReference "ConsoleSwift" */;
+			productName = ConsoleSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		2C7B6A732607DBE700F0217E /* PlannerCal.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2C7B6A742607DBE700F0217E /* Shared.xcdatamodel */,
+			);
+			currentVersion = 2C7B6A742607DBE700F0217E /* Shared.xcdatamodel */;
+			path = PlannerCal.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 2C7B6A6E2607DBE700F0217E /* Project object */;
+}
