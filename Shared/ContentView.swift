@@ -22,33 +22,12 @@ struct ContentView: View {
 struct ContentViewMacOS: View {
     var body: some View {
         NavigationView {
-            List {
-                Text("Hi")
-            }
-            List {
-                Text("Hi")
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigation) {
-                Button(action: toggleSidebar) {
-                    Image(systemName: "sidebar.left")
-                }
-            }
-        }
-        .toolbar {
-
-            ToolbarItem(placement: ToolbarItemPlacement.primaryAction) {
-                Button(action: { }) {
-                    Label("Add Item", systemImage: "plus")
-                }
-            }
+            AppSidebar()
+            HomeScreen()
         }
     }
 
-    private func toggleSidebar() {
-        NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
-    }
+
 }
 #endif
 

@@ -9,12 +9,15 @@ import SwiftUI
 
 @main
 struct PlannerCalApp: App {
+    @StateObject private var navigator = Navigator()
+
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container!.viewContext)
+                .environmentObject(navigator)
         }
     }
 }
