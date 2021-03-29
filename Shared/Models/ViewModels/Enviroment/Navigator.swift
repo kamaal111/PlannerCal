@@ -9,15 +9,15 @@ import Combine
 import Dispatch
 
 final class Navigator: ObservableObject {
-    @Published var sidebarSelection: SidebarSelection.RawValue? = SidebarSelection.home.rawValue
+    @Published var screenSelection: ScreenSelection.RawValue? = ScreenSelection.home.rawValue
 
-    enum SidebarSelection: String {
+    enum ScreenSelection: String {
         case home
     }
 
-    func navigate(to screen: SidebarSelection) {
+    func navigate(to screen: ScreenSelection) {
         DispatchQueue.main.async { [weak self] in
-            self?.sidebarSelection = screen.rawValue
+            self?.screenSelection = screen.rawValue
         }
     }
 }

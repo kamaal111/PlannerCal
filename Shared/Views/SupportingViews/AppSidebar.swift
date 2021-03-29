@@ -12,26 +12,36 @@ struct AppSidebar: View {
     private var navigator: Navigator
 
     var body: some View {
+        #if os(macOS)
+        view()
+            .toolbar {
+                Button(action: toggleSidebar) {
+                    Label("Toggle Sidebar", systemImage: "sidebar.left")
+                }
+            }
+        #else
+        view()
+        #endif
+    }
+
+    private func view() -> some View {
         List {
             Section(header: Text("Screens")) {
                 NavigationLink(destination: HomeScreen(),
-                               tag: Navigator.SidebarSelection.home.rawValue,
-                               selection: $navigator.sidebarSelection) {
+                               tag: Navigator.ScreenSelection.home.rawValue,
+                               selection: $navigator.screenSelection) {
                     Label("Home", systemImage: "house.fill")
                 }
             }
         }
-        .toolbar {
-            Button(action: toggleSidebar) {
-                Label("Toggle Sidebar", systemImage: "sidebar.left")
-            }
-        }
     }
 
+    #if os(macOS)
     private func toggleSidebar() {
         guard let firstResponder = NSApp.keyWindow?.firstResponder else { return }
         firstResponder.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
     }
+    #endif
 }
 
 struct AppSidebar_Previews: PreviewProvider {

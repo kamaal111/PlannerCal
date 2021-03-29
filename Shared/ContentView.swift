@@ -26,23 +26,21 @@ struct ContentViewMacOS: View {
             HomeScreen()
         }
     }
-
-
 }
 #endif
 
 #if os(iOS)
 struct ContentViewiOS: View {
     var body: some View {
-        NavigationView {
-            List {
-                Text("Hi")
+        ZStack {
+            if UIDevice.current.isIpad {
+                NavigationView {
+                    AppSidebar()
+                    HomeScreen()
+                }
+            } else {
+                AppTabView()
             }
-            .navigationBarTitle(Text("PlannerCal"))
-            .navigationBarItems(leading: EditButton(),
-                                trailing: Button(action: { }) {
-                                    Image(systemName: "plus")
-                                })
         }
     }
 }
