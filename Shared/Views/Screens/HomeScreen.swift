@@ -49,7 +49,7 @@ struct PlanColumn: View {
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .padding(.trailing, 8)
-        .border(width: 1, edges: !isLast ? [.trailing] : [], color: Color(NSColor.separatorColor))
+        .border(width: 1, edges: !isLast ? [.trailing] : [], color: .appSecondary)
     }
 }
 
