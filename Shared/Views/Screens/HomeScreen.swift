@@ -11,11 +11,7 @@ struct HomeScreen: View {
     let days = [
         "Mon",
         "Tue",
-        "Wed",
-        "Thu",
-        "Fri",
-        "Sat",
-        "Sun"
+        "Wed"
     ]
 
     var body: some View {
@@ -29,27 +25,34 @@ struct HomeScreen: View {
     }
 
     private func view() -> some View {
-        HStack(spacing: 8) {
-            ForEach((0..<days.count), id: \.self) { dayIndex in
-                PlanColumn(title: days[dayIndex], isLast: dayIndex >= days.count - 1)
+        ScrollView(.horizontal, showsIndicators: true) {
+            HStack(spacing: 0) {
+                ForEach((0..<days.count), id: \.self) { dayIndex in
+                    PlanColumn(title: days[dayIndex])
+                        .border(width: 1, edges: planColumnBorder(index: dayIndex), color: .appSecondary)
+                }
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-        .padding(.all, 24)
+        .frame(minWidth: 240, maxWidth: 240)
+        .padding(.top, 24)
+    }
+
+    private func planColumnBorder(index: Int) -> [Edge] {
+        if index == 0 {
+            return [.leading, .trailing]
+        }
+        return [.trailing]
     }
 }
 
 struct PlanColumn: View {
     let title: String
-    let isLast: Bool
 
     var body: some View {
         VStack {
             Text(title)
         }
-        .frame(maxHeight: .infinity, alignment: .top)
-        .padding(.trailing, 8)
-        .border(width: 1, edges: !isLast ? [.trailing] : [], color: .appSecondary)
+        .frame(minWidth: 80, maxWidth: 80, maxHeight: .infinity, alignment: .top)
     }
 }
 

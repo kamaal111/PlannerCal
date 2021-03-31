@@ -16,15 +16,10 @@ struct PlannerCalApp: App {
 
     var body: some Scene {
         WindowGroup {
-            GeometryReader { geometry -> ContentView in
-                if deviceModel.screenSize != geometry.size {
-                    deviceModel.screenSize = geometry.size
-                }
-                return ContentView()
-            }
-            .environment(\.managedObjectContext, persistenceController.container!.viewContext)
-            .environmentObject(navigator)
-            .environmentObject(deviceModel)
+            ContentView()
+                .environment(\.managedObjectContext, persistenceController.container!.viewContext)
+                .environmentObject(navigator)
+                .environmentObject(deviceModel)
         }
     }
 }
