@@ -39,6 +39,10 @@
 		2CD9059C261268B70032BC4B /* AppSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD9059A261268B70032BC4B /* AppSidebar.swift */; };
 		2CD905A62612699B0032BC4B /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD905A52612699B0032BC4B /* HomeScreen.swift */; };
 		2CD905A72612699B0032BC4B /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD905A52612699B0032BC4B /* HomeScreen.swift */; };
+		60357B3E2616F0DC00D091AE /* PlanColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60357B3D2616F0DC00D091AE /* PlanColumn.swift */; };
+		60357B3F2616F0DC00D091AE /* PlanColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60357B3D2616F0DC00D091AE /* PlanColumn.swift */; };
+		60357B462616F49600D091AE /* HomeScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60357B452616F49600D091AE /* HomeScreen+ViewModel.swift */; };
+		60357B472616F49600D091AE /* HomeScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60357B452616F49600D091AE /* HomeScreen+ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +87,8 @@
 		2C99A3BD2612788900A2D029 /* EdgeBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeBorder.swift; sourceTree = "<group>"; };
 		2CD9059A261268B70032BC4B /* AppSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSidebar.swift; sourceTree = "<group>"; };
 		2CD905A52612699B0032BC4B /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		60357B3D2616F0DC00D091AE /* PlanColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanColumn.swift; sourceTree = "<group>"; };
+		60357B452616F49600D091AE /* HomeScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeScreen+ViewModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +219,7 @@
 		2C99A39526126B3F00A2D029 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				60357B442616F48200D091AE /* Screen */,
 				2C99A39626126B4A00A2D029 /* Enviroment */,
 			);
 			path = ViewModels;
@@ -251,6 +258,7 @@
 				2CD9059A261268B70032BC4B /* AppSidebar.swift */,
 				2C99A3AA2612734900A2D029 /* AppTabView.swift */,
 				2C99A3BD2612788900A2D029 /* EdgeBorder.swift */,
+				60357B3D2616F0DC00D091AE /* PlanColumn.swift */,
 			);
 			path = SupportingViews;
 			sourceTree = "<group>";
@@ -287,6 +295,14 @@
 				2C7B6A7F2607DBE800F0217E /* iOS */,
 			);
 			path = Targets;
+			sourceTree = "<group>";
+		};
+		60357B442616F48200D091AE /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				60357B452616F49600D091AE /* HomeScreen+ViewModel.swift */,
+			);
+			path = Screen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -463,6 +479,7 @@
 			files = (
 				2C99A39826126B6C00A2D029 /* Navigator.swift in Sources */,
 				2C7B6A9F2607DBE800F0217E /* PlannerCal.xcdatamodeld in Sources */,
+				60357B3E2616F0DC00D091AE /* PlanColumn.swift in Sources */,
 				2C7B6AA52607DBE800F0217E /* Persistence.swift in Sources */,
 				2C8C4F182613C2D100AFA2A3 /* Color+extensions.swift in Sources */,
 				2C99A3AB2612734900A2D029 /* AppTabView.swift in Sources */,
@@ -473,6 +490,7 @@
 				2C8C4F112613BE3000AFA2A3 /* DeviceModel.swift in Sources */,
 				2C7B6AA32607DBE800F0217E /* ContentView.swift in Sources */,
 				2CD9059B261268B70032BC4B /* AppSidebar.swift in Sources */,
+				60357B462616F49600D091AE /* HomeScreen+ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,9 +499,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C99A39926126B6C00A2D029 /* Navigator.swift in Sources */,
+				60357B472616F49600D091AE /* HomeScreen+ViewModel.swift in Sources */,
 				2C7B6AA02607DBE800F0217E /* PlannerCal.xcdatamodeld in Sources */,
 				2C7B6AA62607DBE800F0217E /* Persistence.swift in Sources */,
 				2C8C4F192613C2D100AFA2A3 /* Color+extensions.swift in Sources */,
+				60357B3F2616F0DC00D091AE /* PlanColumn.swift in Sources */,
 				2CD905A72612699B0032BC4B /* HomeScreen.swift in Sources */,
 				2C7B6AA22607DBE800F0217E /* PlannerCalApp.swift in Sources */,
 				2C8C4F122613BE3000AFA2A3 /* DeviceModel.swift in Sources */,

@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct HomeScreen: View {
-    let days = [
-        "Mon",
-        "Tue",
-        "Wed"
-    ]
+    @ObservedObject
+    private var viewModel = HomeScreen.ViewModel()
 
     var body: some View {
         #if os(macOS)
@@ -25,34 +22,33 @@ struct HomeScreen: View {
     }
 
     private func view() -> some View {
-        ScrollView(.horizontal, showsIndicators: true) {
-            HStack(spacing: 0) {
-                ForEach((0..<days.count), id: \.self) { dayIndex in
-                    PlanColumn(title: days[dayIndex])
-                        .border(width: 1, edges: planColumnBorder(index: dayIndex), color: .appSecondary)
-                }
-            }
+        GeometryReader { (geometry: GeometryProxy) -> HomeScreenView in
+            viewModel.setViewWidth(with: geometry.size.width)
+            return HomeScreenView(days: viewModel.days, width: viewModel.viewWidth / 4)
         }
-        .frame(minWidth: 240, maxWidth: 240)
         .padding(.top, 24)
-    }
-
-    private func planColumnBorder(index: Int) -> [Edge] {
-        if index == 0 {
-            return [.leading, .trailing]
-        }
-        return [.trailing]
     }
 }
 
-struct PlanColumn: View {
-    let title: String
+private struct HomeScreenView: View {
+    let days: [String]
+    let width: CGFloat
 
     var body: some View {
-        VStack {
-            Text(title)
+        HStack(spacing: 0) {
+            ForEach((0..<days.count), id: \.self) { dayIndex in
+                PlanColumn(title: days[dayIndex], width: width)
+                    .border(width: 1, edges: planColumnBorder(index: dayIndex), color: .appSecondary)
+            }
         }
-        .frame(minWidth: 80, maxWidth: 80, maxHeight: .infinity, alignment: .top)
+        .frame(maxWidth: .infinity, alignment: .center)
+    }
+
+    private func planColumnBorder(index: Int) -> [Edge] {
+        if index != 0 {
+            return [.trailing]
+        }
+        return [.leading, .trailing]
     }
 }
 
