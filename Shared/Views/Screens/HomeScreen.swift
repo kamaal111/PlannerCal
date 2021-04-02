@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import ShrimpExtensions
 
 struct HomeScreen: View {
+    @EnvironmentObject
+    private var planModel: PlanModel
+
     @ObservedObject
     private var viewModel = HomeScreen.ViewModel()
 
@@ -24,28 +28,29 @@ struct HomeScreen: View {
     private func view() -> some View {
         GeometryReader { (geometry: GeometryProxy) -> HomeScreenView in
             viewModel.setViewWidth(with: geometry.size.width)
-            return HomeScreenView(days: viewModel.days, width: viewModel.viewWidth / 4)
+            return HomeScreenView(dates: planModel.currentDays,
+                                  width: viewModel.viewWidth / (CGFloat(planModel.currentDays.count) - 0.7))
         }
         .padding(.top, 24)
     }
 }
 
 private struct HomeScreenView: View {
-    let days: [String]
+    let dates: [Date]
     let width: CGFloat
 
     var body: some View {
         HStack(spacing: 0) {
-            ForEach((0..<days.count), id: \.self) { dayIndex in
-                PlanColumn(title: days[dayIndex], width: width)
-                    .border(width: 1, edges: planColumnBorder(index: dayIndex), color: .appSecondary)
+            ForEach(1..<dates.count - 1, id: \.self) { dateIndex in
+                PlanColumn(date: dates[dateIndex], width: width)
+                    .border(width: 1, edges: planColumnBorder(index: dateIndex), color: .appSecondary)
             }
         }
         .frame(maxWidth: .infinity, alignment: .center)
     }
 
     private func planColumnBorder(index: Int) -> [Edge] {
-        if index != 0 {
+        if index != 1 {
             return [.trailing]
         }
         return [.leading, .trailing]
@@ -66,5 +71,6 @@ struct HomeScreen_Previews: PreviewProvider {
             #endif
         }
         .environmentObject(Navigator())
+        .environmentObject(PlanModel())
     }
 }

@@ -8,19 +8,32 @@
 import SwiftUI
 
 struct PlanColumn: View {
-    let title: String
+    let date: Date
     let width: CGFloat
 
     var body: some View {
         VStack {
-            Text(title)
+            Text(date, formatter: Self.dayDateFormatter)
+            Text(date, formatter: Self.dayNumberDateFormatter)
         }
-        .frame(minWidth: width, maxWidth: width, maxHeight: .infinity, alignment: .top)
+        .frame(maxWidth: width, maxHeight: .infinity, alignment: .top)
     }
+
+    static let dayDateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter
+    }()
+
+    static let dayNumberDateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd"
+        return dateFormatter
+    }()
 }
 
 struct PlanColumn_Previews: PreviewProvider {
     static var previews: some View {
-        PlanColumn(title: "Mon", width: 100)
+        PlanColumn(date: Date(), width: 100)
     }
 }

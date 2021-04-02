@@ -24,8 +24,6 @@ struct ContentViewMacOS: View {
         NavigationView {
             AppSidebar()
             HomeScreen()
-            Text("No selection")
-                .frame(minWidth: 300)
         }
     }
 }
@@ -54,5 +52,6 @@ struct ContentView_Previews: PreviewProvider {
             .environment(\.managedObjectContext, PersistenceController.shared.context!)
             .environmentObject(DeviceModel())
             .environmentObject(Navigator())
+            .environmentObject(PlanModel())
     }
 }

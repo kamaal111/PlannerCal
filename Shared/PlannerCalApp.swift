@@ -11,6 +11,7 @@ import SwiftUI
 struct PlannerCalApp: App {
     @StateObject private var navigator = Navigator()
     @StateObject private var deviceModel = DeviceModel()
+    @StateObject private var planModel = PlanModel()
 
     let persistenceController = PersistenceController.shared
 
@@ -20,6 +21,7 @@ struct PlannerCalApp: App {
                 .environment(\.managedObjectContext, persistenceController.container!.viewContext)
                 .environmentObject(navigator)
                 .environmentObject(deviceModel)
+                .environmentObject(planModel)
         }
     }
 }

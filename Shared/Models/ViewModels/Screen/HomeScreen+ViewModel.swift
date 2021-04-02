@@ -6,32 +6,15 @@
 //
 
 import Foundation
-import ShrimpExtensions
+import Combine
 
 extension HomeScreen {
 
     final class ViewModel: ObservableObject {
 
         @Published private(set) var viewWidth: CGFloat = 100
-        /// - TODO: Should be in a seperate enviroment view model
-        @Published private(set) var currentDays: [Date] = [] {
-            didSet {
-                print(currentDays)
-            }
-        }
 
-        let days = [
-            "Mon",
-            "Tue",
-            "Wed"
-        ]
-
-        init() {
-            let today = Date()
-            self.currentDays = (0..<5).compactMap {
-                Calendar.current.date(byAdding: .day, value: $0 - 1, to: today)
-            }
-        }
+        init() { }
 
         func setViewWidth(with width: CGFloat) {
             guard width != viewWidth else { return }
