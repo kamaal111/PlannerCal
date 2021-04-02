@@ -52,6 +52,6 @@ struct ContentView_Previews: PreviewProvider {
             .environment(\.managedObjectContext, PersistenceController.shared.context!)
             .environmentObject(DeviceModel())
             .environmentObject(Navigator())
-            .environmentObject(PlanModel())
+            .environmentObject(PlanModel(amountOfDaysToDisplay: 5))
     }
 }

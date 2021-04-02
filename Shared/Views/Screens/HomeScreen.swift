@@ -29,21 +29,34 @@ struct HomeScreen: View {
         GeometryReader { (geometry: GeometryProxy) -> HomeScreenView in
             viewModel.setViewWidth(with: geometry.size.width)
             return HomeScreenView(dates: planModel.currentDays,
-                                  width: viewModel.viewWidth / (CGFloat(planModel.currentDays.count) - 0.7))
+                                  width: viewModel.viewWidth / (CGFloat(planModel.currentDays.count) - 1),
+                                  previousDate: { planModel.incrementCurrentDays(by: -1) },
+                                  goToTodayDate: planModel.setCurrentDaysToFromNow,
+                                  nextDate: { planModel.incrementCurrentDays(by: 1) })
         }
-        .padding(.top, 24)
     }
 }
 
 private struct HomeScreenView: View {
     let dates: [Date]
     let width: CGFloat
+    let previousDate: () -> Void
+    let goToTodayDate: () -> Void
+    let nextDate: () -> Void
 
     var body: some View {
-        HStack(spacing: 0) {
-            ForEach(1..<dates.count - 1, id: \.self) { dateIndex in
-                PlanColumn(date: dates[dateIndex], width: width)
-                    .border(width: 1, edges: planColumnBorder(index: dateIndex), color: .appSecondary)
+        VStack {
+            ControlCenter(previousDate: previousDate, goToTodayDate: goToTodayDate, nextDate: nextDate)
+                .padding(.vertical, 8)
+            HStack(spacing: 0) {
+                PlanColumn(date: dates.first ?? Date(), width: width, isShowing: false)
+                    .padding(.leading, -width)
+                ForEach(1..<dates.count - 1, id: \.self) { dateIndex in
+                    PlanColumn(date: dates[dateIndex], width: width, isShowing: true)
+                        .border(width: 1, edges: planColumnBorder(index: dateIndex), color: .appSecondary)
+                }
+                PlanColumn(date: dates.last ?? Date(), width: width, isShowing: false)
+                    .padding(.trailing, -width)
             }
         }
         .frame(maxWidth: .infinity, alignment: .center)
@@ -71,6 +84,6 @@ struct HomeScreen_Previews: PreviewProvider {
             #endif
         }
         .environmentObject(Navigator())
-        .environmentObject(PlanModel())
+        .environmentObject(PlanModel(amountOfDaysToDisplay: 5))
     }
 }

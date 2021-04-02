@@ -11,7 +11,7 @@ import SwiftUI
 struct PlannerCalApp: App {
     @StateObject private var navigator = Navigator()
     @StateObject private var deviceModel = DeviceModel()
-    @StateObject private var planModel = PlanModel()
+    @StateObject private var planModel = PlanModel(amountOfDaysToDisplay: 5)
 
     let persistenceController = PersistenceController.shared
 
