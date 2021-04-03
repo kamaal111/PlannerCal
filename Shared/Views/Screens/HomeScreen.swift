@@ -29,35 +29,59 @@ struct HomeScreen: View {
         GeometryReader { (geometry: GeometryProxy) -> HomeScreenView in
             viewModel.setViewWidth(with: geometry.size.width)
             return HomeScreenView(dates: planModel.currentDays,
-                                  width: viewModel.viewWidth / (CGFloat(planModel.currentDays.count) - 1),
+                                  width: columnViewWidth,
+                                  showSecondaryColumns: showSecondaryColumns,
                                   previousDate: { planModel.incrementCurrentDays(by: -1) },
                                   goToTodayDate: planModel.setCurrentDaysToFromNow,
-                                  nextDate: { planModel.incrementCurrentDays(by: 1) })
+                                  nextDate: { planModel.incrementCurrentDays(by: 1) },
+                                  addPlanItem: planModel.addPlanItem(_:))
         }
-        .frame(minWidth: Constants.planColumnMinimumWidth * (CGFloat(planModel.currentDays.count) - 1))
+        .frame(minWidth: Constants.planColumnMinimumWidth * (currentDaysCount - (columnViewWidth > Constants.planColumnMinimumWidth ? 1 : 2)))
+    }
+
+    private var currentDaysCount: CGFloat {
+        CGFloat(planModel.currentDays.count)
+    }
+
+    private var showSecondaryColumns: Bool {
+        viewModel.viewWidth / (currentDaysCount - 1) > (Constants.planColumnMinimumWidth / currentDaysCount) * (currentDaysCount - 1)
+    }
+
+    private var columnViewWidth: CGFloat {
+        viewModel.viewWidth / (currentDaysCount - 1)
     }
 }
 
 private struct HomeScreenView: View {
     let dates: [Date]
     let width: CGFloat
+    let showSecondaryColumns: Bool
     let previousDate: () -> Void
     let goToTodayDate: () -> Void
     let nextDate: () -> Void
+    let addPlanItem: (_ date: Date) -> Void
 
     var body: some View {
         VStack {
             ControlCenter(previousDate: previousDate, goToTodayDate: goToTodayDate, nextDate: nextDate)
                 .padding(.vertical, 8)
             HStack(spacing: 0) {
-                PlanColumn(date: dates.first ?? Date(), width: width, isShowing: false)
-                    .padding(.leading, -width)
+                ZStack {
+                    if showSecondaryColumns {
+                        PlanColumn(date: dates.first ?? Date(), width: width, isShowing: false, addItem: addPlanItem)
+                    }
+                }
+                .padding(.leading, showSecondaryColumns ? -width : 0)
                 ForEach(1..<dates.count - 1, id: \.self) { dateIndex in
-                    PlanColumn(date: dates[dateIndex], width: width, isShowing: true)
+                    PlanColumn(date: dates[dateIndex], width: width, isShowing: true, addItem: addPlanItem)
                         .border(width: 1, edges: planColumnBorder(index: dateIndex), color: .appSecondary)
                 }
-                PlanColumn(date: dates.last ?? Date(), width: width, isShowing: false)
-                    .padding(.trailing, -width)
+                ZStack {
+                    if showSecondaryColumns {
+                        PlanColumn(date: dates.last ?? Date(), width: width, isShowing: false, addItem: addPlanItem)
+                    }
+                }
+                .padding(.trailing, showSecondaryColumns ? -width : 0)
             }
         }
         .frame(maxWidth: .infinity, alignment: .center)

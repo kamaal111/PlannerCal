@@ -138,6 +138,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C3A16BD2618EC81008FE8BA /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				2C7B6A732607DBE700F0217E /* PlannerCal.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		2C7B6A6D2607DBE700F0217E = {
 			isa = PBXGroup;
 			children = (
@@ -158,7 +166,6 @@
 				2C7B6A782607DBE800F0217E /* Assets.xcassets */,
 				2C99A39E26126E5700A2D029 /* Extensions */,
 				2C99A39426126B3900A2D029 /* Models */,
-				2C7B6A732607DBE700F0217E /* PlannerCal.xcdatamodeld */,
 				2CD905AF261269E90032BC4B /* Utilities */,
 				2CD905AC261269B10032BC4B /* Views */,
 			);
@@ -221,6 +228,7 @@
 		2C99A39426126B3900A2D029 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2C3A16BD2618EC81008FE8BA /* CoreData */,
 				2C99A39526126B3F00A2D029 /* ViewModels */,
 			);
 			path = Models;

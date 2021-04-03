@@ -43,4 +43,8 @@ final class PlanModel: ObservableObject {
         }
     }
 
+    func addPlanItem(_ date: Date) {
+        print(date)
+    }
+
 }

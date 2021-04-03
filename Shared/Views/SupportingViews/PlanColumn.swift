@@ -11,11 +11,13 @@ struct PlanColumn: View {
     let date: Date
     let width: CGFloat
     let isShowing: Bool
+    let addItem: (_ date: Date) -> Void
 
-    init(date: Date, width: CGFloat, isShowing: Bool) {
+    init(date: Date, width: CGFloat, isShowing: Bool, addItem: @escaping (_ date: Date) -> Void) {
         self.date = date
         self.width = width
         self.isShowing = isShowing
+        self.addItem = addItem
     }
 
     var body: some View {
@@ -26,7 +28,7 @@ struct PlanColumn: View {
             Text(date, formatter: Self.dayNumberDateFormatter)
                 .foregroundColor(isShowing ? .primary : .secondary)
             if isShowing {
-                Button(action: { }) {
+                Button(action: { addItem(date) }) {
                     HStack {
                         Text("Add item")
                         Image(systemName: "plus")
@@ -57,9 +59,9 @@ struct PlanColumn: View {
 struct PlanColumn_Previews: PreviewProvider {
     static var previews: some View {
         HStack {
-            PlanColumn(date: Date(), width: Constants.planColumnMinimumWidth, isShowing: true)
+            PlanColumn(date: Date(), width: Constants.planColumnMinimumWidth, isShowing: true, addItem: { _ in })
             Color.primary.frame(maxWidth: 10)
-            PlanColumn(date: Date(), width: Constants.planColumnMinimumWidth, isShowing: false)
+            PlanColumn(date: Date(), width: Constants.planColumnMinimumWidth, isShowing: false, addItem: { _ in })
         }
     }
 }
