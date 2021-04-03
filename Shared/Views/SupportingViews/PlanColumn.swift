@@ -12,6 +12,12 @@ struct PlanColumn: View {
     let width: CGFloat
     let isShowing: Bool
 
+    init(date: Date, width: CGFloat, isShowing: Bool) {
+        self.date = date
+        self.width = width
+        self.isShowing = isShowing
+    }
+
     var body: some View {
         VStack {
             Text(date, formatter: Self.dayDateFormatter)
@@ -19,8 +25,20 @@ struct PlanColumn: View {
                 .foregroundColor(isShowing ? .primary : .secondary)
             Text(date, formatter: Self.dayNumberDateFormatter)
                 .foregroundColor(isShowing ? .primary : .secondary)
+            if isShowing {
+                Button(action: { }) {
+                    HStack {
+                        Text("Add item")
+                        Image(systemName: "plus")
+                    }
+                }
+                .padding(.horizontal, 8)
+            }
         }
-        .frame(maxWidth: width, maxHeight: .infinity, alignment: .top)
+        .frame(minWidth: Constants.planColumnMinimumWidth,
+               maxWidth: width > Constants.planColumnMinimumWidth ? width : Constants.planColumnMinimumWidth,
+               maxHeight: .infinity,
+               alignment: .top)
     }
 
     static let dayDateFormatter: DateFormatter = {
@@ -39,9 +57,9 @@ struct PlanColumn: View {
 struct PlanColumn_Previews: PreviewProvider {
     static var previews: some View {
         HStack {
-            PlanColumn(date: Date(), width: 100, isShowing: true)
+            PlanColumn(date: Date(), width: Constants.planColumnMinimumWidth, isShowing: true)
             Color.primary.frame(maxWidth: 10)
-            PlanColumn(date: Date(), width: 100, isShowing: false)
+            PlanColumn(date: Date(), width: Constants.planColumnMinimumWidth, isShowing: false)
         }
     }
 }

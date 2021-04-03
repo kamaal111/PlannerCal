@@ -34,6 +34,7 @@ struct HomeScreen: View {
                                   goToTodayDate: planModel.setCurrentDaysToFromNow,
                                   nextDate: { planModel.incrementCurrentDays(by: 1) })
         }
+        .frame(minWidth: Constants.planColumnMinimumWidth * (CGFloat(planModel.currentDays.count) - 1))
     }
 }
 
