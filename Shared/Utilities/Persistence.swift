@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import CloudKit
 import PersistanceManager
 import ConsoleSwift
 
@@ -14,7 +15,7 @@ struct PersistenceController {
 
     private init(inMemory: Bool = false) {
         let persistanceContainer: NSPersistentCloudKitContainer = {
-            let container = NSPersistentCloudKitContainer(name: "PlannerCal")
+            let container = NSPersistentCloudKitContainer(name: Constants.persistentContainerName)
             if inMemory {
                 container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
             } else {

@@ -5,10 +5,11 @@
 //  Created by Kamaal M Farah on 03/04/2021.
 //
 
-import Foundation
+import CoreGraphics
 
 struct Constants {
     private init() { }
 
     static let planColumnMinimumWidth: CGFloat = 100
+    static let persistentContainerName = "PlannerCal"
 }

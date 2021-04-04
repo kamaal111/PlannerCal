@@ -43,12 +43,12 @@ struct HomeScreen: View {
         CGFloat(planModel.currentDays.count)
     }
 
-    private var showSecondaryColumns: Bool {
-        viewModel.viewWidth / (currentDaysCount - 1) > (Constants.planColumnMinimumWidth / currentDaysCount) * (currentDaysCount - 1)
-    }
-
     private var columnViewWidth: CGFloat {
         viewModel.viewWidth / (currentDaysCount - 1)
+    }
+
+    private var showSecondaryColumns: Bool {
+        columnViewWidth > (Constants.planColumnMinimumWidth / currentDaysCount) * (currentDaysCount - 1)
     }
 }
 
