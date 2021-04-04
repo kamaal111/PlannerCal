@@ -11,6 +11,8 @@ import ShrimpExtensions
 struct HomeScreen: View {
     @EnvironmentObject
     private var planModel: PlanModel
+    @EnvironmentObject
+    private var navigator: Navigator
 
     @ObservedObject
     private var viewModel = HomeScreen.ViewModel()
@@ -34,7 +36,10 @@ struct HomeScreen: View {
                                   previousDate: { planModel.incrementCurrentDays(by: -1) },
                                   goToTodayDate: planModel.setCurrentDaysToFromNow,
                                   nextDate: { planModel.incrementCurrentDays(by: 1) },
-                                  addPlanItem: planModel.addPlanItem(_:))
+                                  addPlanItem: { date in
+                                    planModel.addPlanItem(date)
+                                    navigator.navigate(to: .addNewPlan)
+                                  })
         }
         .frame(minWidth: Constants.planColumnMinimumWidth * (currentDaysCount - (columnViewWidth > Constants.planColumnMinimumWidth ? 1 : 2)))
     }

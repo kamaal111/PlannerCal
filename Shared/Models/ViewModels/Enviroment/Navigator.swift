@@ -5,14 +5,14 @@
 //  Created by Kamaal M Farah on 29/03/2021.
 //
 
-import Combine
-import Dispatch
+import SwiftUI
 
 final class Navigator: ObservableObject {
-    @Published var screenSelection: ScreenSelection.RawValue? = ScreenSelection.home.rawValue
+    @Published var screenSelection: ScreenSelection.RawValue? = nil
 
     enum ScreenSelection: String {
         case home
+        case addNewPlan
     }
 
     func navigate(to screen: ScreenSelection) {

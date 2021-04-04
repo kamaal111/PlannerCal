@@ -6,11 +6,18 @@
 //
 
 import SwiftUI
+import CoreData
 
 final class PlanModel: ObservableObject {
 
     @Published private(set) var currentDays: [Date]
-    @Published private(set) var amountOfDaysToDisplay: Int
+    @Published private var amountOfDaysToDisplay: Int
+    @Published private(set) var plans: [CorePlan] = [] {
+        didSet {
+            print(plans)
+        }
+    }
+    @Published private(set) var planToAdd: Date?
 
     init(amountOfDaysToDisplay: Int) {
         guard amountOfDaysToDisplay > 2 else { fatalError("The amount is too low") }
@@ -19,6 +26,7 @@ final class PlanModel: ObservableObject {
             Calendar.current.date(byAdding: .day, value: $0 - 1, to: now)
         }
         self.amountOfDaysToDisplay = amountOfDaysToDisplay
+        self.fetchPlans()
     }
 
     func setCurrentDaysToFromNow() {
@@ -43,8 +51,38 @@ final class PlanModel: ObservableObject {
         }
     }
 
-    func addPlanItem(_ date: Date) {
-        print(date)
+    func fetchPlans() {
+        guard let firstCurrentDate = currentDays.first, let lastCurrentDate = currentDays.last else { return }
+        let fetchPlanRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CorePlan.description())
+        fetchPlanRequest.predicate = NSPredicate(value: true)
+        let fetchedPlan: [CorePlan]
+        do {
+            fetchedPlan = try PersistenceController.shared.context?.fetch(fetchPlanRequest) as? [CorePlan] ?? []
+        } catch {
+            print(error)
+            return
+        }
+        plans = fetchedPlan
     }
 
+    func addPlanItem(_ date: Date) {
+        planToAdd = date
+    }
+
+}
+
+extension Date {
+    var startOfDay : Date {
+        let calendar = Calendar.current
+        let unitFlags = Set<Calendar.Component>([.year, .month, .day])
+        let components = calendar.dateComponents(unitFlags, from: self)
+        return calendar.date(from: components)!
+   }
+
+    var endOfDay : Date {
+        var components = DateComponents()
+        components.day = 1
+        let date = Calendar.current.date(byAdding: components, to: self.startOfDay)
+        return (date?.addingTimeInterval(-1))!
+    }
 }

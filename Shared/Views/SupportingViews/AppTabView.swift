@@ -11,16 +11,30 @@ struct AppTabView: View {
     @EnvironmentObject
     private var navigator: Navigator
 
+    @State private var tabSelection = 0
+
     var body: some View {
-        TabView(selection: $navigator.screenSelection) {
+        TabView(selection: $tabSelection) {
             NavigationView {
-                HomeScreen()
+                ZStack {
+                    NavigationLink(destination: HomeScreen(),
+                                   tag: Navigator.ScreenSelection.home.rawValue,
+                                   selection: $navigator.screenSelection) {
+                        EmptyView()
+                    }
+                    NavigationLink(destination: AddPlanScreen(),
+                                   tag: Navigator.ScreenSelection.addNewPlan.rawValue,
+                                   selection: $navigator.screenSelection) {
+                        EmptyView()
+                    }
+                    HomeScreen()
+                }
             }
             .tabItem({
                 Image(systemName: "house.fill")
                 Text("Home")
             })
-            .tag(Navigator.ScreenSelection.home.rawValue)
+            .tag(0)
             .navigationViewStyle(StackNavigationViewStyle())
         }
     }

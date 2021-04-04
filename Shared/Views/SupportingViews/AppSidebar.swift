@@ -32,6 +32,11 @@ struct AppSidebar: View {
                                selection: $navigator.screenSelection) {
                     Label("Home", systemImage: "house.fill")
                 }
+                NavigationLink(destination: AddPlanScreen(),
+                               tag: Navigator.ScreenSelection.addNewPlan.rawValue,
+                               selection: $navigator.screenSelection) {
+                    Label("Add a plan", systemImage: "calendar.badge.plus")
+                }
             }
         }
     }

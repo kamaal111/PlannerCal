@@ -45,6 +45,10 @@
 		2C99A3B82612766800A2D029 /* ShrimpExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 2C99A3B72612766800A2D029 /* ShrimpExtensions */; };
 		2C99A3BE2612788900A2D029 /* EdgeBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C99A3BD2612788900A2D029 /* EdgeBorder.swift */; };
 		2C99A3BF2612788900A2D029 /* EdgeBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C99A3BD2612788900A2D029 /* EdgeBorder.swift */; };
+		2CA200D8261A236100DC218C /* SheetStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA200D7261A236100DC218C /* SheetStack.swift */; };
+		2CA200D9261A236100DC218C /* SheetStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA200D7261A236100DC218C /* SheetStack.swift */; };
+		2CA200EA261A31A300DC218C /* AddPlanScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA200E9261A31A300DC218C /* AddPlanScreen.swift */; };
+		2CA200EB261A31A300DC218C /* AddPlanScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA200E9261A31A300DC218C /* AddPlanScreen.swift */; };
 		2CD9059B261268B70032BC4B /* AppSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD9059A261268B70032BC4B /* AppSidebar.swift */; };
 		2CD9059C261268B70032BC4B /* AppSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD9059A261268B70032BC4B /* AppSidebar.swift */; };
 		2CD905A62612699B0032BC4B /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD905A52612699B0032BC4B /* HomeScreen.swift */; };
@@ -102,6 +106,8 @@
 		2C99A39F26126EA900A2D029 /* UIDevice+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+extensions.swift"; sourceTree = "<group>"; };
 		2C99A3AA2612734900A2D029 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 		2C99A3BD2612788900A2D029 /* EdgeBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeBorder.swift; sourceTree = "<group>"; };
+		2CA200D7261A236100DC218C /* SheetStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetStack.swift; sourceTree = "<group>"; };
+		2CA200E9261A31A300DC218C /* AddPlanScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlanScreen.swift; sourceTree = "<group>"; };
 		2CD9059A261268B70032BC4B /* AppSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSidebar.swift; sourceTree = "<group>"; };
 		2CD905A52612699B0032BC4B /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		2CEA2CC0261782EC009D5AB3 /* PlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
@@ -299,6 +305,7 @@
 				2C99A3BD2612788900A2D029 /* EdgeBorder.swift */,
 				60357B3D2616F0DC00D091AE /* PlanColumn.swift */,
 				2C42AAC72617A99A00748787 /* ControlCenter.swift */,
+				2CA200D7261A236100DC218C /* SheetStack.swift */,
 			);
 			path = SupportingViews;
 			sourceTree = "<group>";
@@ -307,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				2CD905A52612699B0032BC4B /* HomeScreen.swift */,
+				2CA200E9261A31A300DC218C /* AddPlanScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -527,11 +535,13 @@
 				2C8C4F182613C2D100AFA2A3 /* Color+extensions.swift in Sources */,
 				2CEA2CC1261782EC009D5AB3 /* PlanModel.swift in Sources */,
 				2C347AC22619FC9C001F307D /* CorePlan+CoreDataProperties.swift in Sources */,
+				2CA200D8261A236100DC218C /* SheetStack.swift in Sources */,
 				2C99A3AB2612734900A2D029 /* AppTabView.swift in Sources */,
 				2C99A3BE2612788900A2D029 /* EdgeBorder.swift in Sources */,
 				2C347AB42619FAAC001F307D /* CorePlan+extension.swift in Sources */,
 				2CD905A62612699B0032BC4B /* HomeScreen.swift in Sources */,
 				2C7B6AA12607DBE800F0217E /* PlannerCalApp.swift in Sources */,
+				2CA200EA261A31A300DC218C /* AddPlanScreen.swift in Sources */,
 				2C99A3A026126EA900A2D029 /* UIDevice+extensions.swift in Sources */,
 				2C8C4F112613BE3000AFA2A3 /* DeviceModel.swift in Sources */,
 				2C7B6AA32607DBE800F0217E /* ContentView.swift in Sources */,
@@ -558,7 +568,9 @@
 				2C347AB52619FAAC001F307D /* CorePlan+extension.swift in Sources */,
 				2C8C4F122613BE3000AFA2A3 /* DeviceModel.swift in Sources */,
 				2C347AC32619FC9C001F307D /* CorePlan+CoreDataProperties.swift in Sources */,
+				2CA200EB261A31A300DC218C /* AddPlanScreen.swift in Sources */,
 				2C7B6AA42607DBE800F0217E /* ContentView.swift in Sources */,
+				2CA200D9261A236100DC218C /* SheetStack.swift in Sources */,
 				2C347AC12619FC9C001F307D /* CorePlan+CoreDataClass.swift in Sources */,
 				2C99A3BF2612788900A2D029 /* EdgeBorder.swift in Sources */,
 				2CD9059C261268B70032BC4B /* AppSidebar.swift in Sources */,
