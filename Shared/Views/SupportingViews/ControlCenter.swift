@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PCLocale
 
 struct ControlCenter: View {
     public let previousDate: () -> Void
@@ -26,7 +27,7 @@ struct ControlCenter: View {
                 Image(systemName: "arrow.left")
             }
             Button(action: goToTodayDate) {
-                Text("Now")
+                Text(localized: .NOW)
                     .font(.body)
                     .fontWeight(.semibold)
             }

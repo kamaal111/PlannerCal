@@ -45,6 +45,8 @@
 		2C99A3B82612766800A2D029 /* ShrimpExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 2C99A3B72612766800A2D029 /* ShrimpExtensions */; };
 		2C99A3BE2612788900A2D029 /* EdgeBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C99A3BD2612788900A2D029 /* EdgeBorder.swift */; };
 		2C99A3BF2612788900A2D029 /* EdgeBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C99A3BD2612788900A2D029 /* EdgeBorder.swift */; };
+		2C9AC1C9261A5B570088C4DC /* PCLocale in Frameworks */ = {isa = PBXBuildFile; productRef = 2C9AC1C8261A5B570088C4DC /* PCLocale */; };
+		2C9AC1CB261A5B5F0088C4DC /* PCLocale in Frameworks */ = {isa = PBXBuildFile; productRef = 2C9AC1CA261A5B5F0088C4DC /* PCLocale */; };
 		2CA200D8261A236100DC218C /* SheetStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA200D7261A236100DC218C /* SheetStack.swift */; };
 		2CA200D9261A236100DC218C /* SheetStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA200D7261A236100DC218C /* SheetStack.swift */; };
 		2CA200EA261A31A300DC218C /* AddPlanScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA200E9261A31A300DC218C /* AddPlanScreen.swift */; };
@@ -116,6 +118,7 @@
 		2CA200E9261A31A300DC218C /* AddPlanScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlanScreen.swift; sourceTree = "<group>"; };
 		2CC13FE7261A47D0003E3EDF /* InputLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputLabel.swift; sourceTree = "<group>"; };
 		2CC13FEE261A50C8003E3EDF /* ScrollableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTextView.swift; sourceTree = "<group>"; };
+		2CC13FF6261A5918003E3EDF /* PCLocale */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PCLocale; sourceTree = "<group>"; };
 		2CD9059A261268B70032BC4B /* AppSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSidebar.swift; sourceTree = "<group>"; };
 		2CD905A52612699B0032BC4B /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		2CEA2CC0261782EC009D5AB3 /* PlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
@@ -131,6 +134,7 @@
 				2CC13FDC261A44ED003E3EDF /* SalmonUI in Frameworks */,
 				2C7B6AC42607DCC200F0217E /* ConsoleSwift in Frameworks */,
 				2C99A3B22612764D00A2D029 /* ShrimpExtensions in Frameworks */,
+				2C9AC1CB261A5B5F0088C4DC /* PCLocale in Frameworks */,
 				2C7B6ABD2607DC5800F0217E /* PersistanceManager in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,6 +146,7 @@
 				2CC13FE2261A44F6003E3EDF /* SalmonUI in Frameworks */,
 				2C7B6ACD2607DE2C00F0217E /* ConsoleSwift in Frameworks */,
 				2C99A3B82612766800A2D029 /* ShrimpExtensions in Frameworks */,
+				2C9AC1C9261A5B570088C4DC /* PCLocale in Frameworks */,
 				2C7B6ACB2607DE2700F0217E /* PersistanceManager in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,11 +189,12 @@
 		2C7B6A6D2607DBE700F0217E = {
 			isa = PBXGroup;
 			children = (
+				2C7B6AC92607DE2700F0217E /* Frameworks */,
+				2CC13FF5261A58CA003E3EDF /* Packages */,
+				2C7B6A7E2607DBE800F0217E /* Products */,
+				2C7B6A722607DBE700F0217E /* Shared */,
 				2CE1AD952607E49300CAF769 /* Targets */,
 				2CE1AD8C2607E45700CAF769 /* Tests */,
-				2C7B6A722607DBE700F0217E /* Shared */,
-				2C7B6A7E2607DBE800F0217E /* Products */,
-				2C7B6AC92607DE2700F0217E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -298,6 +304,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		2CC13FF5261A58CA003E3EDF /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				2CC13FF6261A5918003E3EDF /* PCLocale */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
 		2CD905AC261269B10032BC4B /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +400,7 @@
 				2C7B6AC32607DCC200F0217E /* ConsoleSwift */,
 				2C99A3B12612764D00A2D029 /* ShrimpExtensions */,
 				2CC13FDB261A44ED003E3EDF /* SalmonUI */,
+				2C9AC1CA261A5B5F0088C4DC /* PCLocale */,
 			);
 			productName = "PlannerCal (iOS)";
 			productReference = 2C7B6A7D2607DBE800F0217E /* PlannerCal.app */;
@@ -409,6 +424,7 @@
 				2C7B6ACC2607DE2C00F0217E /* ConsoleSwift */,
 				2C99A3B72612766800A2D029 /* ShrimpExtensions */,
 				2CC13FE1261A44F6003E3EDF /* SalmonUI */,
+				2C9AC1C8261A5B570088C4DC /* PCLocale */,
 			);
 			productName = "PlannerCal (macOS)";
 			productReference = 2C7B6A852607DBE800F0217E /* PlannerCal.app */;
@@ -1036,6 +1052,14 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2C99A3B02612764D00A2D029 /* XCRemoteSwiftPackageReference "ShrimpExtensions" */;
 			productName = ShrimpExtensions;
+		};
+		2C9AC1C8261A5B570088C4DC /* PCLocale */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PCLocale;
+		};
+		2C9AC1CA261A5B5F0088C4DC /* PCLocale */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PCLocale;
 		};
 		2CC13FDB261A44ED003E3EDF /* SalmonUI */ = {
 			isa = XCSwiftPackageProductDependency;

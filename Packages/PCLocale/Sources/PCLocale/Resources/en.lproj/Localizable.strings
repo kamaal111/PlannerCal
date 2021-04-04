@@ -1,0 +1,15 @@
+/*
+  Localizable.strings
+  PCLocale
+
+  Created by Kamaal M Farah on 04/04/2021.
+  
+*/
+
+"APP_TITLE" = "PlannerCal";
+"NOW" = "Now";
+"ADD_ITEM" = "Add item";
+"TITLE_INPUT_FIELD_LABEL" = "Title";
+"DATE_LABEL" = "Date";
+"NOTES" = "Notes";
+"TITLE_INPUT_FIELD_PLACEHOLDER" = "Title of plan";

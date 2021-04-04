@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SalmonUI
+import PCLocale
 
 struct AddPlanScreen: View {
     @EnvironmentObject
@@ -18,16 +18,16 @@ struct AddPlanScreen: View {
     var body: some View {
         VStack {
             HStack {
-                InputLabel(text: "Title")
-                TextField("Title of plan", text: $planTitle)
+                InputLabel(localizedKey: .TITLE_INPUT_FIELD_LABEL)
+                TextField(PCLocale.getLocalizableString(of: .TITLE_INPUT_FIELD_PLACEHOLDER), text: $planTitle)
             }
             HStack {
-                InputLabel(text: "Date")
-                DatePicker("Date", selection: $planModel.planToAddDate, displayedComponents: .date)
+                InputLabel(localizedKey: .DATE_LABEL)
+                DatePicker("", selection: $planModel.planToAddDate, displayedComponents: .date)
                     .labelsHidden()
                 Spacer()
             }
-            Text("Notes")
+            Text(localized: .NOTES)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 8)
             ScrollableTextView(text: $planNotes)

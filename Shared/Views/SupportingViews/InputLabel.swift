@@ -6,9 +6,18 @@
 //
 
 import SwiftUI
+import PCLocale
 
 struct InputLabel: View {
     let text: String
+
+    init(text: String) {
+        self.text = text
+    }
+
+    init(localizedKey: PCLocale.Keys) {
+        self.text = PCLocale.getLocalizableString(of: localizedKey)
+    }
 
     var body: some View {
         Text(text)

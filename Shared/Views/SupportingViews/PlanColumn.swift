@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PCLocale
 
 struct PlanColumn: View {
     let date: Date
@@ -30,7 +31,7 @@ struct PlanColumn: View {
             if isShowing {
                 Button(action: { addItem(date) }) {
                     HStack {
-                        Text("Add item")
+                        Text(localized: .ADD_ITEM)
                         Image(systemName: "plus")
                     }
                 }

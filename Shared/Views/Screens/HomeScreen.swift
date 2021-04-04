@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ShrimpExtensions
+import PCLocale
 
 struct HomeScreen: View {
     @EnvironmentObject
@@ -20,10 +21,10 @@ struct HomeScreen: View {
     var body: some View {
         #if os(macOS)
         view()
-            .navigationTitle("PlannerCal")
+            .navigationTitle(PCLocale.getLocalizableString(of: .APP_TITLE))
         #else
         view()
-            .navigationBarTitle(Text("PlannerCal"), displayMode: .large)
+            .navigationBarTitle(Text(localized: .APP_TITLE), displayMode: .large)
         #endif
     }
 
