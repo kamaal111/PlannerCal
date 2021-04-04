@@ -10,22 +10,24 @@ import CoreData
 
 final class PlanModel: ObservableObject {
 
-    @Published private(set) var currentDays: [Date]
-    @Published private var amountOfDaysToDisplay: Int
-    @Published private(set) var plans: [CorePlan] = [] {
+    @Published private(set) var currentDays: [Date] {
         didSet {
-            print(plans)
+            self.planToAddDate = self.currentDays[1]
         }
     }
-    @Published private(set) var planToAdd: Date?
+    @Published private var amountOfDaysToDisplay: Int
+    @Published private(set) var plans: [CorePlan] = []
+    @Published var planToAddDate: Date
 
     init(amountOfDaysToDisplay: Int) {
         guard amountOfDaysToDisplay > 2 else { fatalError("The amount is too low") }
         let now = Date()
-        self.currentDays = (0..<amountOfDaysToDisplay).compactMap {
+        let currentDays = (0..<amountOfDaysToDisplay).compactMap {
             Calendar.current.date(byAdding: .day, value: $0 - 1, to: now)
         }
+        self.currentDays = currentDays
         self.amountOfDaysToDisplay = amountOfDaysToDisplay
+        self.planToAddDate = currentDays[1]
         self.fetchPlans()
     }
 
@@ -66,7 +68,7 @@ final class PlanModel: ObservableObject {
     }
 
     func addPlanItem(_ date: Date) {
-        planToAdd = date
+        planToAddDate = date
     }
 
 }
