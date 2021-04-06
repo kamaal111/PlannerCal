@@ -73,17 +73,17 @@ private struct HomeScreenView: View {
             HStack(spacing: 0) {
                 ZStack {
                     if showSecondaryColumns {
-                        PlanColumn(date: dates.first ?? Date(), width: width, isShowing: false, addItem: addPlanItem)
+                        PlanColumn(date: dates.first ?? Date(), width: width, isPrimary: false, addItem: addPlanItem)
                     }
                 }
                 .padding(.leading, showSecondaryColumns ? -width : 0)
                 ForEach(1..<dates.count - 1, id: \.self) { dateIndex in
-                    PlanColumn(date: dates[dateIndex], width: width, isShowing: true, addItem: addPlanItem)
+                    PlanColumn(date: dates[dateIndex], width: width, isPrimary: true, addItem: addPlanItem)
                         .border(width: 1, edges: planColumnBorder(index: dateIndex), color: .appSecondary)
                 }
                 ZStack {
                     if showSecondaryColumns {
-                        PlanColumn(date: dates.last ?? Date(), width: width, isShowing: false, addItem: addPlanItem)
+                        PlanColumn(date: dates.last ?? Date(), width: width, isPrimary: false, addItem: addPlanItem)
                     }
                 }
                 .padding(.trailing, showSecondaryColumns ? -width : 0)

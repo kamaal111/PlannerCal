@@ -11,9 +11,19 @@ import ShrimpExtensions
 
 final class PlanModel: ObservableObject {
 
-    @Published private(set) var currentDays: [Date]
+    @Published private(set) var currentDays: [Date] {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                self?.fetchPlans()
+            }
+        }
+    }
     @Published private var amountOfDaysToDisplay: Int
-    @Published private(set) var plans: [CorePlan] = []
+    @Published private(set) var plans: [CorePlan] = [] {
+        didSet {
+            print(plans)
+        }
+    }
 
     private let persistenceController = PersistenceController.shared
 
@@ -66,12 +76,14 @@ final class PlanModel: ObservableObject {
     }
 
     func fetchPlans() {
-        guard let firstCurrentDate = currentDays.first, let lastCurrentDate = currentDays.last else { return }
+        guard let firstCurrentDate = currentDays.first?.asNSDate,
+              let lastCurrentDate = currentDays.last?.asNSDate else { return }
         let fetchPlanRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CorePlan.description())
-        fetchPlanRequest.predicate = NSPredicate(value: true)
+        let query = NSPredicate(format: "date >= %@ AND date <= %@", firstCurrentDate, lastCurrentDate)
+        fetchPlanRequest.predicate = query
         let fetchedPlan: [CorePlan]
         do {
-            fetchedPlan = try PersistenceController.shared.context?.fetch(fetchPlanRequest) as? [CorePlan] ?? []
+            fetchedPlan = try persistenceController.context?.fetch(fetchPlanRequest) as? [CorePlan] ?? []
         } catch {
             print(error)
             return
@@ -79,4 +91,8 @@ final class PlanModel: ObservableObject {
         plans = fetchedPlan
     }
 
+}
+
+extension Date {
+    var asNSDate: NSDate { self as NSDate }
 }
