@@ -8,6 +8,7 @@
 import Combine
 import Dispatch
 import Foundation
+import PCLocale
 
 extension AddPlanScreen {
     final class ViewModel: ObservableObject {
@@ -33,7 +34,8 @@ extension AddPlanScreen {
 
         func planValidation() -> Bool {
             if planTitle.trimmingByWhitespacesAndNewLines.isEmpty {
-                errorAlertMessage = ("Title is empty", "Well maybe you just forgot to fill in the title 🤷‍♂️")
+                errorAlertMessage = (PCLocale.getLocalizableString(of: .TITLE_IS_EMPTY_ALERT_TITLE),
+                                     PCLocale.getLocalizableString(of: .TITLE_IS_EMPTY_ALERT_MESSAGE))
                 return false
             }
             return true

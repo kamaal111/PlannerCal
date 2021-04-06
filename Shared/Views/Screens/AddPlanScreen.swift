@@ -38,8 +38,7 @@ struct AddPlanScreen: View {
         .padding(.all, 24)
         .toolbar(content: {
             Button(action: onSave) {
-                /// - TODO: Localize this
-                Text("Save")
+                Text(localized: .SAVE)
             }
         })
         .alert(isPresented: $viewModel.showErrorAlert, content: {

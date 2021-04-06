@@ -16,6 +16,9 @@ public struct PCLocale {
         case DATE_LABEL
         case NOTES
         case TITLE_INPUT_FIELD_PLACEHOLDER
+        case SAVE
+        case TITLE_IS_EMPTY_ALERT_TITLE
+        case TITLE_IS_EMPTY_ALERT_MESSAGE
     }
 
     static public func getLocalizableString(of key: Keys, with variables: CVarArg...) -> String {

@@ -13,3 +13,6 @@
 "DATE_LABEL" = "Date";
 "NOTES" = "Notes";
 "TITLE_INPUT_FIELD_PLACEHOLDER" = "Title of plan";
+"SAVE" = "Save";
+"TITLE_IS_EMPTY_ALERT_TITLE" = "Title is empty";
+"TITLE_IS_EMPTY_ALERT_MESSAGE" = "Well maybe you just forgot to fill in the title 🤷‍♂️";
