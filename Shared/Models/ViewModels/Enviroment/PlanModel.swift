@@ -15,6 +15,8 @@ final class PlanModel: ObservableObject {
     @Published private var amountOfDaysToDisplay: Int
     @Published private(set) var plans: [CorePlan] = []
 
+    private let persistenceController = PersistenceController.shared
+
     init(amountOfDaysToDisplay: Int) {
         guard amountOfDaysToDisplay > 2 else { fatalError("The amount is too low") }
         let now = Date()
@@ -24,6 +26,10 @@ final class PlanModel: ObservableObject {
         self.currentDays = currentDays
         self.amountOfDaysToDisplay = amountOfDaysToDisplay
         self.fetchPlans()
+    }
+
+    enum Errors: Error {
+        case contextMissing
     }
 
     func setCurrentDaysToFromNow() {
@@ -41,6 +47,21 @@ final class PlanModel: ObservableObject {
         let newCurrentDays = currentDays[0].nextDays(till: amountOfDaysToDisplay, offset: increment)
         DispatchQueue.main.async { [weak self] in
             self?.currentDays = newCurrentDays
+        }
+    }
+
+    func setPlan(date: Date, title: String, notes: String) throws {
+        guard let context = persistenceController.context else { throw Errors.contextMissing }
+        let checkedNotes: String?
+        if notes.trimmingByWhitespacesAndNewLines.isEmpty {
+            checkedNotes = nil
+        } else {
+            checkedNotes = notes
+        }
+        let args = CorePlan.Args(date: date, title: title, notes: checkedNotes)
+        let plan = try CorePlan.setPlan(args: args, managedObjectContext: context).get()
+        DispatchQueue.main.async { [weak self] in
+            self?.plans.append(plan)
         }
     }
 

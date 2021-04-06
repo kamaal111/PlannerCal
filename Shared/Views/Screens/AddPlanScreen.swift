@@ -14,50 +14,63 @@ struct AddPlanScreen: View {
     @EnvironmentObject
     private var planModel: PlanModel
 
-    @State private var planTitle = ""
-    @State private var planNotes = ""
-    @State private var planDate = Date()
+    @ObservedObject
+    private var viewModel = ViewModel()
 
     var body: some View {
         VStack {
             HStack {
                 InputLabel(localizedKey: .TITLE_INPUT_FIELD_LABEL)
-                TextField(PCLocale.getLocalizableString(of: .TITLE_INPUT_FIELD_PLACEHOLDER), text: $planTitle)
+                TextField(PCLocale.getLocalizableString(of: .TITLE_INPUT_FIELD_PLACEHOLDER), text: $viewModel.planTitle)
             }
             HStack {
                 InputLabel(localizedKey: .DATE_LABEL)
-                DatePicker("", selection: $planDate, displayedComponents: .date)
+                DatePicker("", selection: $viewModel.planDate, displayedComponents: .date)
                     .labelsHidden()
                 Spacer()
             }
             Text(localized: .NOTES)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 8)
-            ScrollableTextView(text: $planNotes)
+            ScrollableTextView(text: $viewModel.planNotes)
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .padding(.all, 24)
         .toolbar(content: {
-            Button(action: {
-                navigator.navigate(to: .home)
-            }) {
+            Button(action: onSave) {
                 /// - TODO: Localize this
                 Text("Save")
             }
         })
-        .onAppear(perform: onNavigatorAppear)
+        .alert(isPresented: $viewModel.showErrorAlert, content: {
+            Alert(title: Text(viewModel.errorAlertMessage.title), message: Text(viewModel.errorAlertMessage.message))
+        })
+        .onAppear(perform: onScreenAppear)
     }
 
-    private func onNavigatorAppear() {
+    private func onScreenAppear() {
         DispatchQueue.main.async {
             if let date =  navigator.screenOptions["date"] as? Date {
-                planDate = date
+                viewModel.planDate = date
             } else {
                 if planModel.currentDays.count > 1 {
-                    planDate = planModel.currentDays[1]
+                    viewModel.planDate = planModel.currentDays[1]
                 }
             }
         }
+    }
+
+    private func onSave() {
+        guard viewModel.planValidation() else { return }
+        do {
+            try planModel.setPlan(date: viewModel.planDate,
+                                  title: viewModel.planTitle,
+                                  notes: viewModel.planNotes)
+        } catch {
+            print(error)
+            return
+        }
+        navigator.navigate(to: .home)
     }
 }
 

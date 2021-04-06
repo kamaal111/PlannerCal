@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C08AA59261CFEF700BE71BA /* AddPlanScreen+ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C08AA58261CFEF700BE71BA /* AddPlanScreen+ViewModels.swift */; };
+		2C08AA5A261CFEF700BE71BA /* AddPlanScreen+ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C08AA58261CFEF700BE71BA /* AddPlanScreen+ViewModels.swift */; };
 		2C347AB42619FAAC001F307D /* CorePlan+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C347AB32619FAAC001F307D /* CorePlan+extension.swift */; };
 		2C347AB52619FAAC001F307D /* CorePlan+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C347AB32619FAAC001F307D /* CorePlan+extension.swift */; };
 		2C347AC02619FC9C001F307D /* CorePlan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C347ABE2619FC9C001F307D /* CorePlan+CoreDataClass.swift */; };
@@ -87,6 +89,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C08AA58261CFEF700BE71BA /* AddPlanScreen+ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddPlanScreen+ViewModels.swift"; sourceTree = "<group>"; };
 		2C347AB32619FAAC001F307D /* CorePlan+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CorePlan+extension.swift"; sourceTree = "<group>"; };
 		2C347ABE2619FC9C001F307D /* CorePlan+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CorePlan+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2C347ABF2619FC9C001F307D /* CorePlan+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CorePlan+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -375,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				60357B452616F49600D091AE /* HomeScreen+ViewModel.swift */,
+				2C08AA58261CFEF700BE71BA /* AddPlanScreen+ViewModels.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -567,6 +571,7 @@
 				2C7B6AA52607DBE800F0217E /* Persistence.swift in Sources */,
 				2C8C4F182613C2D100AFA2A3 /* Color+extensions.swift in Sources */,
 				2CEA2CC1261782EC009D5AB3 /* PlanModel.swift in Sources */,
+				2C08AA59261CFEF700BE71BA /* AddPlanScreen+ViewModels.swift in Sources */,
 				2C347AC22619FC9C001F307D /* CorePlan+CoreDataProperties.swift in Sources */,
 				2CA200D8261A236100DC218C /* SheetStack.swift in Sources */,
 				2C99A3AB2612734900A2D029 /* AppTabView.swift in Sources */,
@@ -598,6 +603,7 @@
 				2C8C4F192613C2D100AFA2A3 /* Color+extensions.swift in Sources */,
 				60357B3F2616F0DC00D091AE /* PlanColumn.swift in Sources */,
 				2CD905A72612699B0032BC4B /* HomeScreen.swift in Sources */,
+				2C08AA5A261CFEF700BE71BA /* AddPlanScreen+ViewModels.swift in Sources */,
 				2CC13FE9261A47D0003E3EDF /* InputLabel.swift in Sources */,
 				2C7B6AA22607DBE800F0217E /* PlannerCalApp.swift in Sources */,
 				2C347AB52619FAAC001F307D /* CorePlan+extension.swift in Sources */,

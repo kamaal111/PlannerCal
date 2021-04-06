@@ -11,7 +11,7 @@ final class Navigator: ObservableObject {
     @Published var screenSelection: ScreenSelection.RawValue? = nil {
         didSet { self.screenOptions = [:] }
     }
-    @Published var screenOptions: [String: Any] = [:]
+    @Published private(set) var screenOptions: [String: Any] = [:]
 
     enum ScreenSelection: String {
         case home
