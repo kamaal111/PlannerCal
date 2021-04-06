@@ -1009,7 +1009,7 @@
 			repositoryURL = "https://github.com/kamaal111/ShrimpExtensions.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.10.0;
+				minimumVersion = 1.11.0;
 			};
 		};
 		2CC13FDA261A44ED003E3EDF /* XCRemoteSwiftPackageReference "SalmonUI" */ = {

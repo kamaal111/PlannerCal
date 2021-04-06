@@ -38,8 +38,7 @@ struct HomeScreen: View {
                                   goToTodayDate: planModel.setCurrentDaysToFromNow,
                                   nextDate: { planModel.incrementCurrentDays(by: 1) },
                                   addPlanItem: { date in
-                                    planModel.addPlanItem(date)
-                                    navigator.navigate(to: .addNewPlan)
+                                    navigator.navigate(to: .addNewPlan, options: ["date": date])
                                   })
         }
         .frame(minWidth: Constants.planColumnMinimumWidth * (currentDaysCount - (columnViewWidth > Constants.planColumnMinimumWidth ? 1 : 2)))

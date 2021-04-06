@@ -8,16 +8,21 @@
 import SwiftUI
 
 final class Navigator: ObservableObject {
-    @Published var screenSelection: ScreenSelection.RawValue? = nil
+    @Published var screenSelection: ScreenSelection.RawValue? = nil {
+        didSet { self.screenOptions = [:] }
+    }
+    @Published var screenOptions: [String: Any] = [:]
 
     enum ScreenSelection: String {
         case home
         case addNewPlan
     }
 
-    func navigate(to screen: ScreenSelection) {
+    func navigate(to screen: ScreenSelection, options: [String: Any] = [:]) {
         DispatchQueue.main.async { [weak self] in
-            self?.screenSelection = screen.rawValue
+            guard let self = self else { return }
+            self.screenSelection = screen.rawValue
+            self.screenOptions = options
         }
     }
 }

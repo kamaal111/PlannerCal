@@ -10,10 +10,13 @@ import PCLocale
 
 struct AddPlanScreen: View {
     @EnvironmentObject
+    private var navigator: Navigator
+    @EnvironmentObject
     private var planModel: PlanModel
 
     @State private var planTitle = ""
     @State private var planNotes = ""
+    @State private var planDate = Date()
 
     var body: some View {
         VStack {
@@ -23,7 +26,7 @@ struct AddPlanScreen: View {
             }
             HStack {
                 InputLabel(localizedKey: .DATE_LABEL)
-                DatePicker("", selection: $planModel.planToAddDate, displayedComponents: .date)
+                DatePicker("", selection: $planDate, displayedComponents: .date)
                     .labelsHidden()
                 Spacer()
             }
@@ -34,6 +37,27 @@ struct AddPlanScreen: View {
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .padding(.all, 24)
+        .toolbar(content: {
+            Button(action: {
+                navigator.navigate(to: .home)
+            }) {
+                /// - TODO: Localize this
+                Text("Save")
+            }
+        })
+        .onAppear(perform: onNavigatorAppear)
+    }
+
+    private func onNavigatorAppear() {
+        DispatchQueue.main.async {
+            if let date =  navigator.screenOptions["date"] as? Date {
+                planDate = date
+            } else {
+                if planModel.currentDays.count > 1 {
+                    planDate = planModel.currentDays[1]
+                }
+            }
+        }
     }
 }
 
