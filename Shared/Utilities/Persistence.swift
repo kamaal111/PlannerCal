@@ -14,8 +14,8 @@ struct PersistenceController {
     private let sharedInststance: PersistanceManager
 
     private init(inMemory: Bool = false) {
-        let persistanceContainer: NSPersistentCloudKitContainer = {
-            let container = NSPersistentCloudKitContainer(name: Constants.persistentContainerName)
+        let persistanceContainer: NSPersistentContainer = {
+            let container = NSPersistentContainer(name: Constants.persistentContainerName)
             if inMemory {
                 container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
             } else {

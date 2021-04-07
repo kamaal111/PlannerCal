@@ -14,7 +14,8 @@ extension AddPlanScreen {
     final class ViewModel: ObservableObject {
         @Published var planTitle = ""
         @Published var planNotes = ""
-        @Published var planDate = Date()
+        @Published var planStartDate = Date()
+        @Published var planEndDate = Date()
         @Published private(set) var errorAlertMessage: (title: String, message: String) = ("", "") {
             didSet {
                 DispatchQueue.main.async { [weak self] in
@@ -36,6 +37,11 @@ extension AddPlanScreen {
             if planTitle.trimmingByWhitespacesAndNewLines.isEmpty {
                 errorAlertMessage = (PCLocale.getLocalizableString(of: .TITLE_IS_EMPTY_ALERT_TITLE),
                                      PCLocale.getLocalizableString(of: .TITLE_IS_EMPTY_ALERT_MESSAGE))
+                return false
+            }
+            if planStartDate.compare(planEndDate) == .orderedDescending {
+                #warning("Localize this")
+                errorAlertMessage = ("End date is before start", "Time traveling ha 😏")
                 return false
             }
             return true

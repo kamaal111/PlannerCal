@@ -13,7 +13,8 @@ public struct PCLocale {
         case NOW
         case ADD_ITEM
         case TITLE_INPUT_FIELD_LABEL
-        case DATE_LABEL
+        case START_DATE_LABEL
+        case END_DATE_LABEL
         case NOTES
         case TITLE_INPUT_FIELD_PLACEHOLDER
         case SAVE

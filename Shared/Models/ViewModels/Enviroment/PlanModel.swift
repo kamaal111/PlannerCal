@@ -55,7 +55,7 @@ final class PlanModel: ObservableObject {
         }
     }
 
-    func setPlan(date: Date, title: String, notes: String) throws {
+    func setPlan(startDate: Date, endDate: Date, title: String, notes: String) throws {
         guard let context = persistenceController.context else { throw Errors.contextMissing }
         let checkedNotes: String?
         if notes.trimmingByWhitespacesAndNewLines.isEmpty {
@@ -63,12 +63,19 @@ final class PlanModel: ObservableObject {
         } else {
             checkedNotes = notes
         }
-        let args = CorePlan.Args(date: date, title: title, notes: checkedNotes)
+        let args = CorePlan.Args(startDate: startDate, endDate: endDate, title: title, notes: checkedNotes)
         let plan = try CorePlan.setPlan(args: args, managedObjectContext: context).get()
-        guard let currentDaySameAsPlanDate = currentDays.first(where: { $0.isSameDay(as: plan.date) })
-        else { return }
+        var newCurrentPlans: [Date: [CorePlan]] = [:]
+        currentDays.forEach { currentDay in
+            var filteredCurrentPlans = currentPlans.first(where: { $0.key.isSameDay(as: currentDay) })?.value ?? []
+            #warning("Also add to dates in between")
+            if plan.startDate.isSameDay(as: currentDay) || plan.endDate.isSameDay(as: currentDay) {
+                filteredCurrentPlans.append(plan)
+            }
+            newCurrentPlans[currentDay] = filteredCurrentPlans
+        }
         DispatchQueue.main.async { [weak self] in
-            self?.currentPlans[currentDaySameAsPlanDate]?.append(plan)
+            self?.currentPlans = newCurrentPlans
         }
     }
 
@@ -76,8 +83,9 @@ final class PlanModel: ObservableObject {
         guard let firstCurrentDate = currentDays.first?.asNSDate,
               let lastCurrentDate = currentDays.last?.asNSDate else { return }
         let fetchPlansRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CorePlan.description())
-        let query = NSPredicate(format: "date >= %@ AND date <= %@", firstCurrentDate, lastCurrentDate)
-        fetchPlansRequest.predicate = query
+        let query = "(startDate >= %@ AND startDate <= %@) OR (endDate >= %@ AND endDate <= %@)"
+        let predicate = NSPredicate(format: query, firstCurrentDate, lastCurrentDate, firstCurrentDate, lastCurrentDate)
+        fetchPlansRequest.predicate = predicate
         let fetchedPlans: [CorePlan]
         do {
             fetchedPlans = try persistenceController.context?.fetch(fetchPlansRequest) as? [CorePlan] ?? []
@@ -86,8 +94,11 @@ final class PlanModel: ObservableObject {
             return
         }
         var groupedFetchedPlans: [Date: [CorePlan]] = [:]
-        for currentDay in currentDays {
-            groupedFetchedPlans[currentDay] = fetchedPlans.filter { $0.date.isSameDay(as: currentDay) }
+        currentDays.forEach { (currentDay: Date) in
+            groupedFetchedPlans[currentDay] = fetchedPlans.filter {
+                #warning("Also add to dates in between")
+                return $0.startDate.isSameDay(as: currentDay) || $0.endDate.isSameDay(as: currentDay)
+            }
         }
         DispatchQueue.main.async { [weak self] in
             self?.currentPlans = groupedFetchedPlans

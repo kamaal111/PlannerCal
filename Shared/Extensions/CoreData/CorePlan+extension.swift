@@ -15,7 +15,8 @@ extension CorePlan {
         let now = Date()
         plan.createdTime = now
         plan.updatedTime = now
-        plan.date = args.date
+        plan.startDate = args.startDate
+        plan.endDate = args.endDate
         plan.id = UUID()
         plan.notes = args.notes
         plan.title = args.title
@@ -32,12 +33,14 @@ extension CorePlan {
     }
 
     struct Args {
-        let date: Date
+        let startDate: Date
+        let endDate: Date
         let title: String
         let notes: String?
 
-        init(date: Date, title: String, notes: String? = nil) {
-            self.date = date
+        init(startDate: Date, endDate: Date, title: String, notes: String? = nil) {
+            self.startDate = startDate
+            self.endDate = endDate
             self.title = title
             self.notes = notes
         }

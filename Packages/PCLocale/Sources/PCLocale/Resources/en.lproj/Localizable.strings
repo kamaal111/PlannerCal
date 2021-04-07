@@ -10,7 +10,8 @@
 "NOW" = "Now";
 "ADD_ITEM" = "Add item";
 "TITLE_INPUT_FIELD_LABEL" = "Title";
-"DATE_LABEL" = "Date";
+"START_DATE_LABEL" = "Starting";
+"END_DATE_LABEL" = "Ending";
 "NOTES" = "Notes";
 "TITLE_INPUT_FIELD_PLACEHOLDER" = "Title of plan";
 "SAVE" = "Save";

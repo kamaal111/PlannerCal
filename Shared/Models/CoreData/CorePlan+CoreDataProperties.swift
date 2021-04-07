@@ -17,11 +17,12 @@ extension CorePlan {
     }
 
     @NSManaged public var createdTime: Date
-    @NSManaged public var updatedTime: Date
-    @NSManaged public var date: Date
-    @NSManaged public var title: String
-    @NSManaged public var notes: String?
+    @NSManaged public var startDate: Date
     @NSManaged public var id: UUID
+    @NSManaged public var notes: String?
+    @NSManaged public var title: String
+    @NSManaged public var updatedTime: Date
+    @NSManaged public var endDate: Date
 
 }
 

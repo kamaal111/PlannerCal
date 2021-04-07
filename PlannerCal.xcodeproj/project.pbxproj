@@ -125,6 +125,7 @@
 		2CD9059A261268B70032BC4B /* AppSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSidebar.swift; sourceTree = "<group>"; };
 		2CD905A52612699B0032BC4B /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		2CEA2CC0261782EC009D5AB3 /* PlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
+		2CF484AA261E3F9D003FDFFB /* clear-mac-data.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "clear-mac-data.sh"; sourceTree = "<group>"; };
 		60357B3D2616F0DC00D091AE /* PlanColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanColumn.swift; sourceTree = "<group>"; };
 		60357B452616F49600D091AE /* HomeScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeScreen+ViewModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -195,6 +196,7 @@
 				2C7B6AC92607DE2700F0217E /* Frameworks */,
 				2CC13FF5261A58CA003E3EDF /* Packages */,
 				2C7B6A7E2607DBE800F0217E /* Products */,
+				2CF484A9261E3F78003FDFFB /* Scripts */,
 				2C7B6A722607DBE700F0217E /* Shared */,
 				2CE1AD952607E49300CAF769 /* Targets */,
 				2CE1AD8C2607E45700CAF769 /* Tests */,
@@ -372,6 +374,14 @@
 				2C7B6A7F2607DBE800F0217E /* iOS */,
 			);
 			path = Targets;
+			sourceTree = "<group>";
+		};
+		2CF484A9261E3F78003FDFFB /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				2CF484AA261E3F9D003FDFFB /* clear-mac-data.sh */,
+			);
+			path = Scripts;
 			sourceTree = "<group>";
 		};
 		60357B442616F48200D091AE /* Screen */ = {

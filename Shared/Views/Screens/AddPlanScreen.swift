@@ -24,8 +24,14 @@ struct AddPlanScreen: View {
                 TextField(PCLocale.getLocalizableString(of: .TITLE_INPUT_FIELD_PLACEHOLDER), text: $viewModel.planTitle)
             }
             HStack {
-                InputLabel(localizedKey: .DATE_LABEL)
-                DatePicker("", selection: $viewModel.planDate, displayedComponents: .date)
+                InputLabel(localizedKey: .START_DATE_LABEL)
+                DatePicker("", selection: $viewModel.planStartDate, displayedComponents: .date)
+                    .labelsHidden()
+                Spacer()
+            }
+            HStack {
+                InputLabel(localizedKey: .END_DATE_LABEL)
+                DatePicker("", selection: $viewModel.planEndDate, displayedComponents: .date)
                     .labelsHidden()
                 Spacer()
             }
@@ -50,10 +56,13 @@ struct AddPlanScreen: View {
     private func onScreenAppear() {
         DispatchQueue.main.async {
             if let date =  navigator.screenOptions["date"] as? Date {
-                viewModel.planDate = date
+                viewModel.planStartDate = date
+                viewModel.planEndDate = date
             } else {
                 if planModel.currentDays.count > 1 {
-                    viewModel.planDate = planModel.currentDays[1]
+                    let date = planModel.currentDays[1]
+                    viewModel.planStartDate = date
+                    viewModel.planEndDate = date
                 }
             }
         }
@@ -62,7 +71,8 @@ struct AddPlanScreen: View {
     private func onSave() {
         guard viewModel.planValidation() else { return }
         do {
-            try planModel.setPlan(date: viewModel.planDate,
+            try planModel.setPlan(startDate: viewModel.planStartDate,
+                                  endDate: viewModel.planEndDate,
                                   title: viewModel.planTitle,
                                   notes: viewModel.planNotes)
         } catch {
