@@ -8,21 +8,16 @@
 import SwiftUI
 import CoreData
 import ShrimpExtensions
+import ConsoleSwift
 
 final class PlanModel: ObservableObject {
 
     @Published private(set) var currentDays: [Date] {
-        didSet {
-            DispatchQueue.main.async { [weak self] in
-                self?.fetchPlans()
-            }
-        }
+        didSet { fetchPlans() }
     }
     @Published private var amountOfDaysToDisplay: Int
-    @Published private(set) var plans: [CorePlan] = [] {
-        didSet {
-            print(plans)
-        }
+    @Published private(set) var currentPlans: [Date: [CorePlan]] = [:] {
+        didSet { print(currentPlans) }
     }
 
     private let persistenceController = PersistenceController.shared
@@ -70,25 +65,33 @@ final class PlanModel: ObservableObject {
         }
         let args = CorePlan.Args(date: date, title: title, notes: checkedNotes)
         let plan = try CorePlan.setPlan(args: args, managedObjectContext: context).get()
+        guard let currentDaySameAsPlanDate = currentDays.first(where: { $0.isSameDay(as: plan.date) })
+        else { return }
         DispatchQueue.main.async { [weak self] in
-            self?.plans.append(plan)
+            self?.currentPlans[currentDaySameAsPlanDate]?.append(plan)
         }
     }
 
     func fetchPlans() {
         guard let firstCurrentDate = currentDays.first?.asNSDate,
               let lastCurrentDate = currentDays.last?.asNSDate else { return }
-        let fetchPlanRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CorePlan.description())
+        let fetchPlansRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CorePlan.description())
         let query = NSPredicate(format: "date >= %@ AND date <= %@", firstCurrentDate, lastCurrentDate)
-        fetchPlanRequest.predicate = query
-        let fetchedPlan: [CorePlan]
+        fetchPlansRequest.predicate = query
+        let fetchedPlans: [CorePlan]
         do {
-            fetchedPlan = try persistenceController.context?.fetch(fetchPlanRequest) as? [CorePlan] ?? []
+            fetchedPlans = try persistenceController.context?.fetch(fetchPlansRequest) as? [CorePlan] ?? []
         } catch {
-            print(error)
+            console.error(Date(), error.localizedDescription, error)
             return
         }
-        plans = fetchedPlan
+        var groupedFetchedPlans: [Date: [CorePlan]] = [:]
+        for currentDay in currentDays {
+            groupedFetchedPlans[currentDay] = fetchedPlans.filter { $0.date.isSameDay(as: currentDay) }
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.currentPlans = groupedFetchedPlans
+        }
     }
 
 }
