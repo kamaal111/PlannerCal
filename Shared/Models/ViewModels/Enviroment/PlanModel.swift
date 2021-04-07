@@ -16,9 +16,7 @@ final class PlanModel: ObservableObject {
         didSet { fetchPlans() }
     }
     @Published private var amountOfDaysToDisplay: Int
-    @Published private(set) var currentPlans: [Date: [CorePlan]] = [:] {
-        didSet { print(currentPlans) }
-    }
+    @Published private(set) var currentPlans: [Date: [CorePlan]] = [:]
 
     private let persistenceController = PersistenceController.shared
 
@@ -68,8 +66,9 @@ final class PlanModel: ObservableObject {
         var newCurrentPlans: [Date: [CorePlan]] = [:]
         currentDays.forEach { currentDay in
             var filteredCurrentPlans = currentPlans.first(where: { $0.key.isSameDay(as: currentDay) })?.value ?? []
-            #warning("Also add to dates in between")
-            if plan.startDate.isSameDay(as: currentDay) || plan.endDate.isSameDay(as: currentDay) {
+            if plan.startDate.isSameDay(as: currentDay)
+                || plan.endDate.isSameDay(as: currentDay)
+                || currentDay.isBetween(date: plan.startDate.startOfDay, andDate: plan.endDate.endOfDay) {
                 filteredCurrentPlans.append(plan)
             }
             newCurrentPlans[currentDay] = filteredCurrentPlans
@@ -96,8 +95,9 @@ final class PlanModel: ObservableObject {
         var groupedFetchedPlans: [Date: [CorePlan]] = [:]
         currentDays.forEach { (currentDay: Date) in
             groupedFetchedPlans[currentDay] = fetchedPlans.filter {
-                #warning("Also add to dates in between")
-                return $0.startDate.isSameDay(as: currentDay) || $0.endDate.isSameDay(as: currentDay)
+                $0.startDate.isSameDay(as: currentDay)
+                    || $0.endDate.isSameDay(as: currentDay)
+                    || currentDay.isBetween(date: $0.startDate.startOfDay, andDate: $0.endDate.endOfDay)
             }
         }
         DispatchQueue.main.async { [weak self] in
@@ -109,4 +109,8 @@ final class PlanModel: ObservableObject {
 
 extension Date {
     var asNSDate: NSDate { self as NSDate }
+
+    func isBetween(date date1: Date, andDate date2: Date) -> Bool {
+        date1.compare(self) == self.compare(date2)
+    }
 }

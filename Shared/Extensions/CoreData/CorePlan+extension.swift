@@ -8,6 +8,10 @@
 import CoreData
 
 extension CorePlan {
+    var renderPlan: RenderPlan {
+        .init(id: self.id, startDate: self.startDate, endDate: self.endDate, title: self.title, notes: self.notes)
+    }
+
     @discardableResult
     static func setPlan(args: CorePlan.Args, managedObjectContext: NSManagedObjectContext, save: Bool = true) -> Result<CorePlan, Error> {
         let plan = CorePlan(context: managedObjectContext)
@@ -30,6 +34,14 @@ extension CorePlan {
         }
 
         return .success(plan)
+    }
+
+    struct RenderPlan: Identifiable, Hashable {
+        let id: UUID
+        let startDate: Date
+        let endDate: Date
+        let title: String
+        let notes: String?
     }
 
     struct Args {

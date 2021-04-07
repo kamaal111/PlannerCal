@@ -32,6 +32,7 @@ struct HomeScreen: View {
         GeometryReader { (geometry: GeometryProxy) -> HomeScreenView in
             viewModel.setViewWidth(with: geometry.size.width)
             return HomeScreenView(dates: planModel.currentDays,
+                                  plans: planModel.currentPlans,
                                   width: columnViewWidth,
                                   showSecondaryColumns: showSecondaryColumns,
                                   previousDate: { planModel.incrementCurrentDays(by: -1) },
@@ -59,6 +60,7 @@ struct HomeScreen: View {
 
 private struct HomeScreenView: View {
     let dates: [Date]
+    let plans: [Date: [CorePlan]]
     let width: CGFloat
     let showSecondaryColumns: Bool
     let previousDate: () -> Void
@@ -72,24 +74,41 @@ private struct HomeScreenView: View {
                 .padding(.vertical, 8)
             HStack(spacing: 0) {
                 ZStack {
-                    if showSecondaryColumns {
-                        PlanColumn(date: dates.first ?? Date(), width: width, isPrimary: false, addItem: addPlanItem)
+                    if showSecondaryColumns, let firstDate = dates.first {
+                        PlanColumn(date: firstDate,
+                                   plans: renderPlans(forDate: firstDate),
+                                   width: width,
+                                   isPrimary: false,
+                                   addItem: addPlanItem)
                     }
                 }
                 .padding(.leading, showSecondaryColumns ? -width : 0)
                 ForEach(1..<dates.count - 1, id: \.self) { dateIndex in
-                    PlanColumn(date: dates[dateIndex], width: width, isPrimary: true, addItem: addPlanItem)
+                    PlanColumn(date: dates[dateIndex],
+                               plans: renderPlans(forDate: dates[dateIndex]),
+                               width: width,
+                               isPrimary: true,
+                               addItem: addPlanItem)
                         .border(width: 1, edges: planColumnBorder(index: dateIndex), color: .appSecondary)
                 }
                 ZStack {
-                    if showSecondaryColumns {
-                        PlanColumn(date: dates.last ?? Date(), width: width, isPrimary: false, addItem: addPlanItem)
+                    if showSecondaryColumns, let lastDate = dates.last {
+                        PlanColumn(date: lastDate,
+                                   plans: renderPlans(forDate: lastDate),
+                                   width: width,
+                                   isPrimary: false,
+                                   addItem: addPlanItem)
                     }
                 }
                 .padding(.trailing, showSecondaryColumns ? -width : 0)
             }
         }
         .frame(maxWidth: .infinity, alignment: .center)
+    }
+
+    private func renderPlans(forDate date: Date?) -> [CorePlan.RenderPlan] {
+        guard let date = date, let datePlans = plans[date] else { return [] }
+        return datePlans.map(\.renderPlan)
     }
 
     private func planColumnBorder(index: Int) -> [Edge] {
