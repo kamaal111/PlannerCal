@@ -11,7 +11,9 @@ import Foundation
 import PCLocale
 
 extension AddPlanScreen {
+
     final class ViewModel: ObservableObject {
+
         @Published var planTitle = ""
         @Published var planNotes = ""
         @Published var planStartDate = Date()
@@ -40,11 +42,13 @@ extension AddPlanScreen {
                 return false
             }
             if planStartDate.compare(planEndDate) == .orderedDescending {
-                #warning("Localize this")
-                errorAlertMessage = ("End date is before start", "Time traveling ha 😏")
+                errorAlertMessage = (PCLocale.getLocalizableString(of: .END_DATE_BEFORE_START_ALERT_TITLE),
+                                     PCLocale.getLocalizableString(of: .END_DATE_BEFORE_START_ALERT_MESSAGE))
                 return false
             }
             return true
         }
+
     }
+
 }

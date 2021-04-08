@@ -20,21 +20,11 @@ struct AddPlanScreen: View {
     var body: some View {
         VStack {
             HStack {
-                InputLabel(localizedKey: .TITLE_INPUT_FIELD_LABEL)
+                InputLabel(text: .TITLE_INPUT_FIELD_LABEL)
                 TextField(PCLocale.getLocalizableString(of: .TITLE_INPUT_FIELD_PLACEHOLDER), text: $viewModel.planTitle)
             }
-            HStack {
-                InputLabel(localizedKey: .START_DATE_LABEL)
-                DatePicker("", selection: $viewModel.planStartDate, displayedComponents: .date)
-                    .labelsHidden()
-                Spacer()
-            }
-            HStack {
-                InputLabel(localizedKey: .END_DATE_LABEL)
-                DatePicker("", selection: $viewModel.planEndDate, displayedComponents: .date)
-                    .labelsHidden()
-                Spacer()
-            }
+            DateInputRow(date: $viewModel.planStartDate, label: .START_DATE_LABEL)
+            DateInputRow(date: $viewModel.planEndDate, label: .END_DATE_LABEL)
             Text(localized: .NOTES)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 8)

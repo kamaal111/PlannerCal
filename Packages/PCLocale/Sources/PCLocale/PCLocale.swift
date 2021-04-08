@@ -20,6 +20,8 @@ public struct PCLocale {
         case SAVE
         case TITLE_IS_EMPTY_ALERT_TITLE
         case TITLE_IS_EMPTY_ALERT_MESSAGE
+        case END_DATE_BEFORE_START_ALERT_TITLE
+        case END_DATE_BEFORE_START_ALERT_MESSAGE
     }
 
     static public func getLocalizableString(of key: Keys, with variables: CVarArg...) -> String {

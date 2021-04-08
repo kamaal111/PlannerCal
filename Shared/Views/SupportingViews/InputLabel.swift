@@ -15,8 +15,8 @@ struct InputLabel: View {
         self.text = text
     }
 
-    init(localizedKey: PCLocale.Keys) {
-        self.text = PCLocale.getLocalizableString(of: localizedKey)
+    init(text: PCLocale.Keys) {
+        self.text = PCLocale.getLocalizableString(of: text)
     }
 
     var body: some View {

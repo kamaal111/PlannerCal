@@ -17,3 +17,5 @@
 "SAVE" = "Save";
 "TITLE_IS_EMPTY_ALERT_TITLE" = "Title is empty";
 "TITLE_IS_EMPTY_ALERT_MESSAGE" = "Well maybe you just forgot to fill in the title 🤷‍♂️";
+"END_DATE_BEFORE_START_ALERT_TITLE" = "End date is before start";
+"END_DATE_BEFORE_START_ALERT_MESSAGE" = "Time traveling ha 😏";
