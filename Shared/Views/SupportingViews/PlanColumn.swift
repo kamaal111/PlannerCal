@@ -42,10 +42,16 @@ struct PlanColumn: View {
             }
             .disabled(!isPrimary)
             .padding(.horizontal, 8)
-            ForEach(plans) { plan in
-                Text(plan.title)
-                    .foregroundColor(isPrimary ? .primary : .secondary)
+            VStack {
+                ForEach(plans) { plan in
+                    Button(action: { print(plan.id) }) {
+                        Text(plan.title)
+                            .foregroundColor(isPrimary ? .primary : .secondary)
+                            .frame(maxWidth: .infinity)
+                    }
+                }
             }
+            .padding(.vertical, 8)
         }
         .frame(minWidth: Constants.planColumnMinimumWidth,
                maxWidth: width > Constants.planColumnMinimumWidth ? width : Constants.planColumnMinimumWidth,
