@@ -69,6 +69,13 @@ final class PlanModel: ObservableObject {
         }
     }
 
+    func showPlan(_ plan: CorePlan.RenderPlan?) {
+        guard let originalPlan = plan?.original  else { return }
+        DispatchQueue.main.async { [weak self] in
+            self?.planToShow = originalPlan
+        }
+    }
+
     func setPlan(startDate: Date, endDate: Date, title: String, notes: String) throws {
         guard let context = persistenceController.context else { throw Errors.contextMissing }
         let checkedNotes: String?
