@@ -35,6 +35,8 @@
 		2C7B6AC42607DCC200F0217E /* ConsoleSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C7B6AC32607DCC200F0217E /* ConsoleSwift */; };
 		2C7B6ACB2607DE2700F0217E /* PersistanceManager in Frameworks */ = {isa = PBXBuildFile; productRef = 2C7B6ACA2607DE2700F0217E /* PersistanceManager */; };
 		2C7B6ACD2607DE2C00F0217E /* ConsoleSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C7B6ACC2607DE2C00F0217E /* ConsoleSwift */; };
+		2C87106D262315220063B4A4 /* PlanColumnItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87106C262315220063B4A4 /* PlanColumnItem.swift */; };
+		2C87106E262315220063B4A4 /* PlanColumnItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87106C262315220063B4A4 /* PlanColumnItem.swift */; };
 		2C8C4F112613BE3000AFA2A3 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C4F102613BE3000AFA2A3 /* DeviceModel.swift */; };
 		2C8C4F122613BE3000AFA2A3 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C4F102613BE3000AFA2A3 /* DeviceModel.swift */; };
 		2C8C4F182613C2D100AFA2A3 /* Color+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C4F172613C2D100AFA2A3 /* Color+extensions.swift */; };
@@ -113,6 +115,7 @@
 		2C7B6A982607DBE800F0217E /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C7B6A9C2607DBE800F0217E /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		2C7B6A9E2607DBE800F0217E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C87106C262315220063B4A4 /* PlanColumnItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanColumnItem.swift; sourceTree = "<group>"; };
 		2C8C4F102613BE3000AFA2A3 /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		2C8C4F172613C2D100AFA2A3 /* Color+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extensions.swift"; sourceTree = "<group>"; };
 		2C99A39726126B6C00A2D029 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
@@ -334,13 +337,14 @@
 			children = (
 				2CD9059A261268B70032BC4B /* AppSidebar.swift */,
 				2C99A3AA2612734900A2D029 /* AppTabView.swift */,
-				2C99A3BD2612788900A2D029 /* EdgeBorder.swift */,
-				60357B3D2616F0DC00D091AE /* PlanColumn.swift */,
 				2C42AAC72617A99A00748787 /* ControlCenter.swift */,
-				2CA200D7261A236100DC218C /* SheetStack.swift */,
-				2CC13FE7261A47D0003E3EDF /* InputLabel.swift */,
-				2CC13FEE261A50C8003E3EDF /* ScrollableTextView.swift */,
 				60E870D5261F70CF00D3B1A4 /* DateInputRow.swift */,
+				2C99A3BD2612788900A2D029 /* EdgeBorder.swift */,
+				2CC13FE7261A47D0003E3EDF /* InputLabel.swift */,
+				60357B3D2616F0DC00D091AE /* PlanColumn.swift */,
+				2C87106C262315220063B4A4 /* PlanColumnItem.swift */,
+				2CC13FEE261A50C8003E3EDF /* ScrollableTextView.swift */,
+				2CA200D7261A236100DC218C /* SheetStack.swift */,
 			);
 			path = SupportingViews;
 			sourceTree = "<group>";
@@ -578,6 +582,7 @@
 				2C3A16B32618EA62008FE8BA /* Constants.swift in Sources */,
 				2C99A39826126B6C00A2D029 /* Navigator.swift in Sources */,
 				2CC13FE8261A47D0003E3EDF /* InputLabel.swift in Sources */,
+				2C87106D262315220063B4A4 /* PlanColumnItem.swift in Sources */,
 				2C347AC02619FC9C001F307D /* CorePlan+CoreDataClass.swift in Sources */,
 				60E870D6261F70CF00D3B1A4 /* DateInputRow.swift in Sources */,
 				2C7B6A9F2607DBE800F0217E /* PlannerCal.xcdatamodeld in Sources */,
@@ -607,6 +612,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C87106E262315220063B4A4 /* PlanColumnItem.swift in Sources */,
 				2C99A39926126B6C00A2D029 /* Navigator.swift in Sources */,
 				2CEA2CC2261782EC009D5AB3 /* PlanModel.swift in Sources */,
 				2C42AAC92617A99A00748787 /* ControlCenter.swift in Sources */,
@@ -717,6 +723,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -770,6 +778,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -828,7 +838,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Targets/macOS/macOS.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = DXUKH9VF73;
@@ -853,7 +863,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Targets/macOS/macOS.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = DXUKH9VF73;

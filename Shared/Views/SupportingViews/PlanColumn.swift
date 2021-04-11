@@ -9,6 +9,9 @@ import SwiftUI
 import PCLocale
 
 struct PlanColumn: View {
+    @Environment(\.colorScheme)
+    private var colorScheme: ColorScheme
+
     let date: Date
     let plans: [CorePlan.RenderPlan]
     let width: CGFloat
@@ -44,11 +47,9 @@ struct PlanColumn: View {
             .padding(.horizontal, 8)
             VStack {
                 ForEach(plans) { plan in
-                    Button(action: { print(plan.id) }) {
-                        Text(plan.title)
-                            .foregroundColor(isPrimary ? .primary : .secondary)
-                            .frame(maxWidth: .infinity)
-                    }
+                    PlanColumnItem(plan: plan, isPrimary: isPrimary, onPress: { plan in print(plan.id ) })
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 2)
                 }
             }
             .padding(.vertical, 8)
@@ -86,18 +87,19 @@ struct PlanColumn_Previews: PreviewProvider {
     static var previews: some View {
         let plans: [CorePlan.RenderPlan] = []
         let date = Date()
-        return HStack {
+        return Group {
             PlanColumn(date: date,
                        plans: plans,
                        width: Constants.planColumnMinimumWidth,
                        isPrimary: true,
                        addItem: { _ in })
-            Color.primary.frame(maxWidth: 10)
+                .previewLayout(.sizeThatFits)
             PlanColumn(date: date,
                        plans: plans,
                        width: Constants.planColumnMinimumWidth,
                        isPrimary: false,
                        addItem: { _ in })
+                .previewLayout(.sizeThatFits)
         }
     }
 }
