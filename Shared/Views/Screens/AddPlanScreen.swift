@@ -81,6 +81,6 @@ struct AddPlanScreen_Previews: PreviewProvider {
         }
         .environmentObject(Navigator())
         .environmentObject(DeviceModel())
-        .environmentObject(PlanModel(amountOfDaysToDisplay: 5))
+        .environmentObject(PlanModel(amountOfDaysToDisplay: 5, preview: true))
     }
 }

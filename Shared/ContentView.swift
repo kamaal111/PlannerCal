@@ -50,9 +50,9 @@ struct ContentViewiOS: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environment(\.managedObjectContext, PersistenceController.shared.context!)
+            .environment(\.managedObjectContext, PersistenceController.preview.context!)
             .environmentObject(DeviceModel())
             .environmentObject(Navigator())
-            .environmentObject(PlanModel(amountOfDaysToDisplay: 5))
+            .environmentObject(PlanModel(amountOfDaysToDisplay: 5, preview: true))
     }
 }

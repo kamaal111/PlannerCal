@@ -39,6 +39,8 @@
 		2C87106E262315220063B4A4 /* PlanColumnItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87106C262315220063B4A4 /* PlanColumnItem.swift */; };
 		2C87107826231D2D0063B4A4 /* SelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87107726231D2D0063B4A4 /* SelectionScreen.swift */; };
 		2C87107926231D2D0063B4A4 /* SelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87107726231D2D0063B4A4 /* SelectionScreen.swift */; };
+		2C87107F26231F230063B4A4 /* PlanSelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87107E26231F230063B4A4 /* PlanSelectionScreen.swift */; };
+		2C87108026231F230063B4A4 /* PlanSelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87107E26231F230063B4A4 /* PlanSelectionScreen.swift */; };
 		2C8C4F112613BE3000AFA2A3 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C4F102613BE3000AFA2A3 /* DeviceModel.swift */; };
 		2C8C4F122613BE3000AFA2A3 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C4F102613BE3000AFA2A3 /* DeviceModel.swift */; };
 		2C8C4F182613C2D100AFA2A3 /* Color+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C4F172613C2D100AFA2A3 /* Color+extensions.swift */; };
@@ -119,6 +121,7 @@
 		2C7B6A9E2607DBE800F0217E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C87106C262315220063B4A4 /* PlanColumnItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanColumnItem.swift; sourceTree = "<group>"; };
 		2C87107726231D2D0063B4A4 /* SelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionScreen.swift; sourceTree = "<group>"; };
+		2C87107E26231F230063B4A4 /* PlanSelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanSelectionScreen.swift; sourceTree = "<group>"; };
 		2C8C4F102613BE3000AFA2A3 /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		2C8C4F172613C2D100AFA2A3 /* Color+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extensions.swift"; sourceTree = "<group>"; };
 		2C99A39726126B6C00A2D029 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
@@ -355,6 +358,8 @@
 		2CD905AE261269CC0032BC4B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2C87107E26231F230063B4A4 /* PlanSelectionScreen.swift */,
+				2C87107726231D2D0063B4A4 /* SelectionScreen.swift */,
 				2CA200E9261A31A300DC218C /* AddPlanScreen.swift */,
 				2CD905A52612699B0032BC4B /* HomeScreen.swift */,
 			);
@@ -400,7 +405,6 @@
 			children = (
 				60357B452616F49600D091AE /* HomeScreen+ViewModel.swift */,
 				2C08AA58261CFEF700BE71BA /* AddPlanScreen+ViewModels.swift */,
-				2C87107726231D2D0063B4A4 /* SelectionScreen.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -583,6 +587,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C42AAC82617A99A00748787 /* ControlCenter.swift in Sources */,
+				2C87107F26231F230063B4A4 /* PlanSelectionScreen.swift in Sources */,
 				2C3A16B32618EA62008FE8BA /* Constants.swift in Sources */,
 				2C87107826231D2D0063B4A4 /* SelectionScreen.swift in Sources */,
 				2C99A39826126B6C00A2D029 /* Navigator.swift in Sources */,
@@ -639,6 +644,7 @@
 				2C347AC32619FC9C001F307D /* CorePlan+CoreDataProperties.swift in Sources */,
 				2CA200EB261A31A300DC218C /* AddPlanScreen.swift in Sources */,
 				2C7B6AA42607DBE800F0217E /* ContentView.swift in Sources */,
+				2C87108026231F230063B4A4 /* PlanSelectionScreen.swift in Sources */,
 				2CA200D9261A236100DC218C /* SheetStack.swift in Sources */,
 				2C347AC12619FC9C001F307D /* CorePlan+CoreDataClass.swift in Sources */,
 				2C99A3BF2612788900A2D029 /* EdgeBorder.swift in Sources */,

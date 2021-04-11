@@ -9,6 +9,7 @@ import SwiftUI
 import CoreData
 import ShrimpExtensions
 import ConsoleSwift
+import PersistanceManager
 
 final class PlanModel: ObservableObject {
 
@@ -19,9 +20,10 @@ final class PlanModel: ObservableObject {
     @Published private(set) var currentPlans: [Date: [CorePlan]] = [:]
     @Published private(set) var planToShow: CorePlan?
 
-    private let persistenceController = PersistenceController.shared
+    private let persistenceController: PersistanceManager
+    private let preview: Bool
 
-    init(amountOfDaysToDisplay: Int) {
+    init(amountOfDaysToDisplay: Int, preview: Bool = false) {
         guard amountOfDaysToDisplay > 2 else { fatalError("The amount is too low") }
         let now = Date()
         let currentDays = (0..<amountOfDaysToDisplay).compactMap {
@@ -29,6 +31,12 @@ final class PlanModel: ObservableObject {
         }
         self.currentDays = currentDays
         self.amountOfDaysToDisplay = amountOfDaysToDisplay
+        self.preview = preview
+        if preview {
+            self.persistenceController = PersistenceController.preview
+        } else {
+            self.persistenceController = PersistenceController.shared
+        }
         self.fetchPlans()
     }
 

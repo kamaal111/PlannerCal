@@ -141,6 +141,6 @@ struct HomeScreen_Previews: PreviewProvider {
             #endif
         }
         .environmentObject(Navigator())
-        .environmentObject(PlanModel(amountOfDaysToDisplay: 5))
+        .environmentObject(PlanModel(amountOfDaysToDisplay: 5, preview: true))
     }
 }

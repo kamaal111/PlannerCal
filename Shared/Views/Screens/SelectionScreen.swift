@@ -10,26 +10,26 @@ import SwiftUI
 struct SelectionScreen: View {
     @EnvironmentObject
     private var navigator: Navigator
-    @EnvironmentObject
-    private var planModel: PlanModel
 
     var body: some View {
         ZStack {
             if navigator.selectionView == .some(.plan) {
-                Text(planModel.planToShow?.title ?? "")
+                PlanSelectionScreen()
             } else {
                 #warning("Localize this")
                 Text("No selection")
                     .font(.headline)
             }
         }
+        .frame(minWidth: 200)
     }
 }
 
 struct SelectionScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SelectionScreen()
-            .environmentObject(Navigator())
-            .environmentObject(PlanModel(amountOfDaysToDisplay: 5))
+        let navigator = Navigator()
+        return SelectionScreen()
+            .environmentObject(navigator)
+            .environmentObject(PlanModel(amountOfDaysToDisplay: 5, preview: true))
     }
 }
