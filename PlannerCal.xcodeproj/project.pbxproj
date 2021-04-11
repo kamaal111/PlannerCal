@@ -37,6 +37,8 @@
 		2C7B6ACD2607DE2C00F0217E /* ConsoleSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C7B6ACC2607DE2C00F0217E /* ConsoleSwift */; };
 		2C87106D262315220063B4A4 /* PlanColumnItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87106C262315220063B4A4 /* PlanColumnItem.swift */; };
 		2C87106E262315220063B4A4 /* PlanColumnItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87106C262315220063B4A4 /* PlanColumnItem.swift */; };
+		2C87107826231D2D0063B4A4 /* SelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87107726231D2D0063B4A4 /* SelectionScreen.swift */; };
+		2C87107926231D2D0063B4A4 /* SelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87107726231D2D0063B4A4 /* SelectionScreen.swift */; };
 		2C8C4F112613BE3000AFA2A3 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C4F102613BE3000AFA2A3 /* DeviceModel.swift */; };
 		2C8C4F122613BE3000AFA2A3 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C4F102613BE3000AFA2A3 /* DeviceModel.swift */; };
 		2C8C4F182613C2D100AFA2A3 /* Color+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C4F172613C2D100AFA2A3 /* Color+extensions.swift */; };
@@ -116,6 +118,7 @@
 		2C7B6A9C2607DBE800F0217E /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		2C7B6A9E2607DBE800F0217E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C87106C262315220063B4A4 /* PlanColumnItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanColumnItem.swift; sourceTree = "<group>"; };
+		2C87107726231D2D0063B4A4 /* SelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionScreen.swift; sourceTree = "<group>"; };
 		2C8C4F102613BE3000AFA2A3 /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		2C8C4F172613C2D100AFA2A3 /* Color+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extensions.swift"; sourceTree = "<group>"; };
 		2C99A39726126B6C00A2D029 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
@@ -352,8 +355,8 @@
 		2CD905AE261269CC0032BC4B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				2CD905A52612699B0032BC4B /* HomeScreen.swift */,
 				2CA200E9261A31A300DC218C /* AddPlanScreen.swift */,
+				2CD905A52612699B0032BC4B /* HomeScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 			children = (
 				60357B452616F49600D091AE /* HomeScreen+ViewModel.swift */,
 				2C08AA58261CFEF700BE71BA /* AddPlanScreen+ViewModels.swift */,
+				2C87107726231D2D0063B4A4 /* SelectionScreen.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -580,6 +584,7 @@
 			files = (
 				2C42AAC82617A99A00748787 /* ControlCenter.swift in Sources */,
 				2C3A16B32618EA62008FE8BA /* Constants.swift in Sources */,
+				2C87107826231D2D0063B4A4 /* SelectionScreen.swift in Sources */,
 				2C99A39826126B6C00A2D029 /* Navigator.swift in Sources */,
 				2CC13FE8261A47D0003E3EDF /* InputLabel.swift in Sources */,
 				2C87106D262315220063B4A4 /* PlanColumnItem.swift in Sources */,
@@ -618,6 +623,7 @@
 				2C42AAC92617A99A00748787 /* ControlCenter.swift in Sources */,
 				60357B472616F49600D091AE /* HomeScreen+ViewModel.swift in Sources */,
 				2CC13FF0261A50C8003E3EDF /* ScrollableTextView.swift in Sources */,
+				2C87107926231D2D0063B4A4 /* SelectionScreen.swift in Sources */,
 				2C7B6AA02607DBE800F0217E /* PlannerCal.xcdatamodeld in Sources */,
 				2C3A16B42618EA62008FE8BA /* Constants.swift in Sources */,
 				2C7B6AA62607DBE800F0217E /* Persistence.swift in Sources */,

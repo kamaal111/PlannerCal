@@ -17,17 +17,20 @@ struct PlanColumn: View {
     let width: CGFloat
     let isPrimary: Bool
     let addItem: (_ date: Date) -> Void
+    let onPlanPress: (_ plan: CorePlan.RenderPlan) -> Void
 
     init(date: Date,
          plans: [CorePlan.RenderPlan],
          width: CGFloat,
          isPrimary: Bool,
-         addItem: @escaping (_ date: Date) -> Void) {
+         addItem: @escaping (_ date: Date) -> Void,
+         onPlanPress: @escaping (_ plan: CorePlan.RenderPlan) -> Void) {
         self.date = date
         self.plans = plans
         self.width = width
         self.isPrimary = isPrimary
         self.addItem = addItem
+        self.onPlanPress = onPlanPress
     }
 
     var body: some View {
@@ -47,7 +50,7 @@ struct PlanColumn: View {
             .padding(.horizontal, 8)
             VStack {
                 ForEach(plans) { plan in
-                    PlanColumnItem(plan: plan, isPrimary: isPrimary, onPress: { plan in print(plan.id ) })
+                    PlanColumnItem(plan: plan, isPrimary: isPrimary, onPress: onPlanPress)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 2)
                 }
@@ -92,13 +95,15 @@ struct PlanColumn_Previews: PreviewProvider {
                        plans: plans,
                        width: Constants.planColumnMinimumWidth,
                        isPrimary: true,
-                       addItem: { _ in })
+                       addItem: { _ in },
+                       onPlanPress: { _ in })
                 .previewLayout(.sizeThatFits)
             PlanColumn(date: date,
                        plans: plans,
                        width: Constants.planColumnMinimumWidth,
                        isPrimary: false,
-                       addItem: { _ in })
+                       addItem: { _ in },
+                       onPlanPress: { _ in })
                 .previewLayout(.sizeThatFits)
         }
     }

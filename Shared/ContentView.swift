@@ -24,6 +24,7 @@ struct ContentViewMacOS: View {
         NavigationView {
             AppSidebar()
             HomeScreen()
+            SelectionScreen()
         }
     }
 }

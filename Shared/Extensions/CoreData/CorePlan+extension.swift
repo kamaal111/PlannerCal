@@ -9,7 +9,7 @@ import CoreData
 
 extension CorePlan {
     var renderPlan: RenderPlan {
-        .init(id: self.id, startDate: self.startDate, endDate: self.endDate, title: self.title, notes: self.notes)
+        .init(original: self)
     }
 
     @discardableResult
@@ -42,6 +42,25 @@ extension CorePlan {
         let endDate: Date
         let title: String
         let notes: String?
+        let original: CorePlan?
+
+        init(id: UUID, startDate: Date, endDate: Date, title: String, notes: String?, original: CorePlan? = nil) {
+            self.id = id
+            self.startDate = startDate
+            self.endDate = endDate
+            self.title = title
+            self.notes = notes
+            self.original = original
+        }
+
+        init(original: CorePlan) {
+            self.id = original.id
+            self.startDate = original.startDate
+            self.endDate = original.endDate
+            self.title = original.title
+            self.notes = original.notes
+            self.original = original
+        }
     }
 
     struct Args {

@@ -40,6 +40,10 @@ struct HomeScreen: View {
                                   nextDate: { planModel.incrementCurrentDays(by: 1) },
                                   addPlanItem: { date in
                                     navigator.navigate(to: .addNewPlan, options: ["date": date])
+                                  },
+                                  onPlanPress: { plan in
+                                    planModel.showPlan(plan)
+                                    navigator.setSelection(to: .plan)
                                   })
         }
         .frame(minWidth: Constants.planColumnMinimumWidth * (currentDaysCount - (columnViewWidth > Constants.planColumnMinimumWidth ? 1 : 2)))
@@ -67,6 +71,7 @@ private struct HomeScreenView: View {
     let goToTodayDate: () -> Void
     let nextDate: () -> Void
     let addPlanItem: (_ date: Date) -> Void
+    let onPlanPress: (_ plan: CorePlan.RenderPlan) -> Void
 
     var body: some View {
         VStack {
@@ -79,7 +84,8 @@ private struct HomeScreenView: View {
                                    plans: renderPlans(forDate: firstDate),
                                    width: width,
                                    isPrimary: false,
-                                   addItem: addPlanItem)
+                                   addItem: addPlanItem,
+                                   onPlanPress: { _ in })
                     }
                 }
                 .padding(.leading, showSecondaryColumns ? -width : 0)
@@ -88,7 +94,8 @@ private struct HomeScreenView: View {
                                plans: renderPlans(forDate: dates[dateIndex]),
                                width: width,
                                isPrimary: true,
-                               addItem: addPlanItem)
+                               addItem: addPlanItem,
+                               onPlanPress: onPlanPress)
                         .border(width: 1, edges: planColumnBorder(index: dateIndex), color: .appSecondary)
                 }
                 ZStack {
@@ -97,7 +104,8 @@ private struct HomeScreenView: View {
                                    plans: renderPlans(forDate: lastDate),
                                    width: width,
                                    isPrimary: false,
-                                   addItem: addPlanItem)
+                                   addItem: addPlanItem,
+                                   onPlanPress: { _ in })
                     }
                 }
                 .padding(.trailing, showSecondaryColumns ? -width : 0)

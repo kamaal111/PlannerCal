@@ -17,6 +17,7 @@ final class PlanModel: ObservableObject {
     }
     @Published private var amountOfDaysToDisplay: Int
     @Published private(set) var currentPlans: [Date: [CorePlan]] = [:]
+    @Published private(set) var planToShow: CorePlan?
 
     private let persistenceController = PersistenceController.shared
 
@@ -50,6 +51,13 @@ final class PlanModel: ObservableObject {
         let newCurrentDays = currentDays[0].nextDays(till: amountOfDaysToDisplay, offset: increment)
         DispatchQueue.main.async { [weak self] in
             self?.currentDays = newCurrentDays
+        }
+    }
+
+    func showPlan(_ plan: CorePlan.RenderPlan) {
+        guard let originalPlan = plan.original  else { return }
+        DispatchQueue.main.async { [weak self] in
+            self?.planToShow = originalPlan
         }
     }
 
