@@ -12,23 +12,72 @@ struct PlanSelectionScreen: View {
     @EnvironmentObject
     private var planModel: PlanModel
 
+    @State private var editMode = false
+    @State private var editedTitle = ""
+    @State private var editedStartDate = Date()
+    @State private var editedEndDate = Date()
+    @State private var editedNotes = ""
+
     var body: some View {
-        VStack {
-            PlanSelectionInfoRow(label: .TITLE_INPUT_FIELD_LABEL, value: planModel.planToShow?.title ?? "")
-                .padding(.bottom, 8)
-            PlanSelectionInfoRow(label: .START_DATE_LABEL,
-                                 value: Self.dateFormatter.string(from: planModel.planToShow?.startDate ?? Date()))
-                .padding(.bottom, 8)
-            PlanSelectionInfoRow(label: .END_DATE_LABEL,
-                                 value: Self.dateFormatter.string(from: planModel.planToShow?.endDate ?? Date()))
-                .padding(.bottom, 8)
-            if let notes = planModel.planToShow?.notes {
-                PlanSelectionInfoRow(label: .NOTES, value: notes)
-                    .padding(.bottom, 8)
+        ZStack {
+            if editMode {
+                ModifyPlan(title: $editedTitle, startDate: $editedStartDate, endDate: $editedEndDate, notes: $editedNotes)
+            } else {
+                VStack {
+                    PlanSelectionInfoRow(label: .TITLE_INPUT_FIELD_LABEL, value: planTitle)
+                        .padding(.bottom, 8)
+                    PlanSelectionInfoRow(label: .START_DATE_LABEL,
+                                         value: Self.dateFormatter.string(from: planStartDate))
+                        .padding(.bottom, 8)
+                    PlanSelectionInfoRow(label: .END_DATE_LABEL,
+                                         value: Self.dateFormatter.string(from: planEndDate))
+                        .padding(.bottom, 8)
+                    if let notes = planModel.planToShow?.notes {
+                        PlanSelectionInfoRow(label: .NOTES, value: notes)
+                            .padding(.bottom, 8)
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .padding(.all, 16)
+        .padding(.all, 24)
+        .toolbar(content: {
+            if editMode {
+                Button(action: {
+                    withAnimation { editMode = false }
+                }) {
+                    #warning("Localize this")
+                    Text("Cancel")
+                }
+            }
+            Button(action: {
+                if editMode {
+                    // Edit plan
+                    withAnimation { editMode = false }
+                } else {
+                    editedTitle = planTitle
+                    editedStartDate = planStartDate
+                    editedEndDate = planEndDate
+                    editedNotes = planModel.planToShow?.notes ?? ""
+                    withAnimation { editMode = true }
+                }
+            }) {
+                #warning("Localize this")
+                Text(editMode ? "Save" : "Edit")
+            }
+        })
+    }
+
+    private var planTitle: String {
+        planModel.planToShow?.title ?? ""
+    }
+
+    private var planStartDate: Date {
+        planModel.planToShow?.startDate ?? Date()
+    }
+
+    private var planEndDate: Date {
+        planModel.planToShow?.endDate ?? Date()
     }
 
     static let dateFormatter: DateFormatter = {

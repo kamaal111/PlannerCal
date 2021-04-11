@@ -18,29 +18,20 @@ struct AddPlanScreen: View {
     private var viewModel = ViewModel()
 
     var body: some View {
-        VStack {
-            HStack {
-                InputLabel(text: .TITLE_INPUT_FIELD_LABEL)
-                TextField(PCLocale.getLocalizableString(of: .TITLE_INPUT_FIELD_PLACEHOLDER), text: $viewModel.planTitle)
-            }
-            DateInputRow(date: $viewModel.planStartDate, label: .START_DATE_LABEL)
-            DateInputRow(date: $viewModel.planEndDate, label: .END_DATE_LABEL)
-            Text(localized: .NOTES)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.top, 8)
-            ScrollableTextView(text: $viewModel.planNotes)
-        }
-        .frame(maxHeight: .infinity, alignment: .top)
-        .padding(.all, 24)
-        .toolbar(content: {
-            Button(action: onSave) {
-                Text(localized: .SAVE)
-            }
-        })
-        .alert(isPresented: $viewModel.showErrorAlert, content: {
-            Alert(title: Text(viewModel.errorAlertMessage.title), message: Text(viewModel.errorAlertMessage.message))
-        })
-        .onAppear(perform: onScreenAppear)
+        ModifyPlan(title: $viewModel.planTitle,
+                   startDate: $viewModel.planStartDate,
+                   endDate: $viewModel.planEndDate,
+                   notes: $viewModel.planNotes)
+            .padding(.all, 24)
+            .toolbar(content: {
+                Button(action: onSave) {
+                    Text(localized: .SAVE)
+                }
+            })
+            .alert(isPresented: $viewModel.showErrorAlert, content: {
+                Alert(title: Text(viewModel.errorAlertMessage.title), message: Text(viewModel.errorAlertMessage.message))
+            })
+            .onAppear(perform: onScreenAppear)
     }
 
     private func onScreenAppear() {
