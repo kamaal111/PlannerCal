@@ -38,7 +38,15 @@ struct PlanSelectionScreen: View {
                             .padding(.bottom, 8)
                     }
                     Spacer()
-                    Button(action: { }) {
+                    Button(action: {
+                        guard let plan = planModel.planToShow else { return }
+                        do {
+                            try planModel.setPlanToDone(plan)
+                        } catch {
+                            console.error(Date(), error.localizedDescription, error)
+                            return
+                        }
+                    }) {
                         #warning("Localize this")
                         Text("Done")
                     }

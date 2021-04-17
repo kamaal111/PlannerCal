@@ -13,16 +13,17 @@ import CoreData
 extension CorePlan {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<CorePlan> {
-        return NSFetchRequest<CorePlan>(entityName: CorePlan.description())
+        return NSFetchRequest<CorePlan>(entityName: "CorePlan")
     }
 
     @NSManaged public var createdTime: Date
-    @NSManaged public var startDate: Date
+    @NSManaged public var endDate: Date
     @NSManaged public var id: UUID
     @NSManaged public var notes: String?
+    @NSManaged public var startDate: Date
     @NSManaged public var title: String
     @NSManaged public var updatedTime: Date
-    @NSManaged public var endDate: Date
+    @NSManaged public var doneTime: Date?
 
 }
 

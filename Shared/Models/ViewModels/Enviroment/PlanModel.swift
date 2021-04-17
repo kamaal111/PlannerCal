@@ -76,26 +76,18 @@ final class PlanModel: ObservableObject {
         }
     }
 
+    func setPlanToDone(_ plan: CorePlan) throws {
+        guard plan.doneTime == nil else {
+            print("already done")
+            return
+        }
+        let editedPlan = try plan.setPlanToDone().get()
+        addEditedPlanToCurrentPlans(plan: editedPlan)
+    }
+
     func editPlan(_ plan: CorePlan, with args: CorePlan.Args) throws {
         let editedPlan = try plan.editPlan(with: args).get()
-        var newCurrentPlans: [Date: [CorePlan]]?
-        for (currentDate, currentDatePlans) in currentPlans {
-            if (editedPlan.startDate.isSameDay(as: currentDate)
-                || editedPlan.endDate.isSameDay(as: currentDate)
-                || currentDate.isBetween(date: editedPlan.startDate.startOfDay, andDate: editedPlan.endDate.endOfDay)),
-               let planIndex = currentDatePlans.firstIndex(where: { $0.id == editedPlan.id }) {
-                newCurrentPlans = currentPlans
-                newCurrentPlans?[currentDate]?[planIndex] = editedPlan
-                break
-            }
-        }
-        guard let unwrappedNewCurrentPlans = newCurrentPlans else { return }
-        let currentDaysCopy = self.currentDays
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.currentPlans = unwrappedNewCurrentPlans
-            self.currentDays = currentDaysCopy
-        }
+        addEditedPlanToCurrentPlans(plan: editedPlan)
     }
 
     func setPlan(with args: CorePlan.Args) throws {
@@ -133,6 +125,27 @@ final class PlanModel: ObservableObject {
         let groupedFetchedPlans: [Date: [CorePlan]] = groupPlansInDates(plans: fetchedPlans, dates: currentDays)
         DispatchQueue.main.async { [weak self] in
             self?.currentPlans = groupedFetchedPlans
+        }
+    }
+
+    private func addEditedPlanToCurrentPlans(plan editedPlan: CorePlan) {
+        var newCurrentPlans: [Date: [CorePlan]]?
+        for (currentDate, currentDatePlans) in currentPlans {
+            if (editedPlan.startDate.isSameDay(as: currentDate)
+                || editedPlan.endDate.isSameDay(as: currentDate)
+                || currentDate.isBetween(date: editedPlan.startDate.startOfDay, andDate: editedPlan.endDate.endOfDay)),
+               let planIndex = currentDatePlans.firstIndex(where: { $0.id == editedPlan.id }) {
+                newCurrentPlans = currentPlans
+                newCurrentPlans?[currentDate]?[planIndex] = editedPlan
+                break
+            }
+        }
+        guard let unwrappedNewCurrentPlans = newCurrentPlans else { return }
+        let currentDaysCopy = self.currentDays
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.currentPlans = unwrappedNewCurrentPlans
+            self.currentDays = currentDaysCopy
         }
     }
 

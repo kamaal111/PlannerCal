@@ -12,6 +12,20 @@ extension CorePlan {
         RenderPlan(original: self)
     }
 
+    func setPlanToDone(save: Bool = true) -> Result<CorePlan, Error> {
+        self.doneTime = Date()
+
+        if save {
+            do {
+                try self.managedObjectContext?.save()
+            } catch {
+                return .failure(error)
+            }
+        }
+
+        return .success(self)
+    }
+
     @discardableResult
     func editPlan(with args: CorePlan.Args, save: Bool = true) -> Result<CorePlan, Error> {
         self.updatedTime = Date()
