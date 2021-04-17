@@ -21,6 +21,7 @@ struct ScrollableTextView: NSViewRepresentable {
             textView.isSelectable = true
             textView.font = NSFont.preferredFont(forTextStyle: .body, options: [:])
             textView.delegate = context.coordinator
+            textView.string = text
         }
         return scrollableTextView
     }

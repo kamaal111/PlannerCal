@@ -25,10 +25,10 @@ struct PlanSelectionScreen: View {
                            notes: $viewModel.editedNotes)
             } else {
                 VStack {
-                    PlanSelectionInfoRow(label: .TITLE_INPUT_FIELD_LABEL, value: planTitle)
+                    PlanSelectionInfoRow(label: .TITLE_INPUT_FIELD_LABEL, value: unwrappedPlanTitle)
                         .padding(.bottom, 8)
                     PlanSelectionInfoRow(label: .START_DATE_LABEL,
-                                         value: Self.dateFormatter.string(from: planStartDate))
+                                         value: Self.dateFormatter.string(from: unwrappedPlanStartDate))
                         .padding(.bottom, 8)
                     PlanSelectionInfoRow(label: .END_DATE_LABEL,
                                          value: Self.dateFormatter.string(from: planEndDate))
@@ -95,8 +95,8 @@ struct PlanSelectionScreen: View {
                     }
                     withAnimation { viewModel.editMode = false }
                 } else {
-                    viewModel.editedTitle = planTitle
-                    viewModel.editedStartDate = planStartDate
+                    viewModel.editedTitle = unwrappedPlanTitle
+                    viewModel.editedStartDate = unwrappedPlanStartDate
                     viewModel.editedEndDate = planEndDate
                     viewModel.editedNotes = planModel.planToShow?.notes ?? ""
                     withAnimation { viewModel.editMode = true }
@@ -108,11 +108,11 @@ struct PlanSelectionScreen: View {
         })
     }
 
-    private var planTitle: String {
+    private var unwrappedPlanTitle: String {
         planModel.planToShow?.title ?? ""
     }
 
-    private var planStartDate: Date {
+    private var unwrappedPlanStartDate: Date {
         planModel.planToShow?.startDate ?? Date()
     }
 
@@ -125,42 +125,6 @@ struct PlanSelectionScreen: View {
         dateFormatter.dateStyle = .medium
         return dateFormatter
     }()
-}
-
-extension PlanSelectionScreen {
-    final class ViewModel: ObservableObject {
-        @Published var editMode = false
-        @Published var editedTitle = ""
-        @Published var editedStartDate = Date()
-        @Published var editedEndDate = Date()
-        @Published var editedNotes = ""
-        @Published private(set) var errorAlertMessage: (title: String, message: String) = ("", "") {
-            didSet {
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self, !self.errorAlertMessage.title.isEmpty else { return }
-                    self.showErrorAlert = true
-                }
-            }
-        }
-        @Published var showErrorAlert = false {
-            didSet {
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self, !self.showErrorAlert, !self.errorAlertMessage.title.isEmpty else { return }
-                    self.errorAlertMessage = ("", "")
-                }
-            }
-        }
-
-        func planValidation() -> Bool {
-            let args = CorePlan.Args(startDate: editedStartDate,
-                                     endDate: editedEndDate,
-                                     title: editedTitle,
-                                     notes: editedNotes)
-            guard let errorMessage = Validator.planValidation(args) else { return true }
-            errorAlertMessage = (errorMessage.title, errorMessage.message)
-            return false
-        }
-    }
 }
 
 struct PlanSelectionScreen_Previews: PreviewProvider {
