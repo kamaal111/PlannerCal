@@ -93,9 +93,7 @@ final class PlanModel: ObservableObject {
         var newCurrentPlans: [Date: [CorePlan]] = [:]
         currentDays.forEach { currentDay in
             var filteredCurrentPlans = currentPlans.first(where: { $0.key.isSameDay(as: currentDay) })?.value ?? []
-            if plan.startDate.isSameDay(as: currentDay)
-                || plan.endDate.isSameDay(as: currentDay)
-                || currentDay.isBetween(date: plan.startDate.startOfDay, andDate: plan.endDate.endOfDay) {
+            if plan.showInDate(currentDay) {
                 filteredCurrentPlans.append(plan)
             }
             newCurrentPlans[currentDay] = filteredCurrentPlans
@@ -128,9 +126,7 @@ final class PlanModel: ObservableObject {
     private func addEditedPlanToCurrentPlans(plan editedPlan: CorePlan) {
         var newCurrentPlans: [Date: [CorePlan]]?
         for (currentDate, currentDatePlans) in currentPlans {
-            if (editedPlan.startDate.isSameDay(as: currentDate)
-                || editedPlan.endDate.isSameDay(as: currentDate)
-                || currentDate.isBetween(date: editedPlan.startDate.startOfDay, andDate: editedPlan.endDate.endOfDay)),
+            if editedPlan.showInDate(currentDate),
                let planIndex = currentDatePlans.firstIndex(where: { $0.id == editedPlan.id }) {
                 newCurrentPlans = currentPlans
                 newCurrentPlans?[currentDate]?[planIndex] = editedPlan
@@ -149,11 +145,7 @@ final class PlanModel: ObservableObject {
     private func groupPlansInDates(plans: [CorePlan], dates: [Date]) -> [Date: [CorePlan]] {
         var groupedFetchedPlans: [Date: [CorePlan]] = [:]
         dates.forEach { (currentDay: Date) in
-            groupedFetchedPlans[currentDay] = plans.filter {
-                $0.startDate.isSameDay(as: currentDay)
-                    || $0.endDate.isSameDay(as: currentDay)
-                    || currentDay.isBetween(date: $0.startDate.startOfDay, andDate: $0.endDate.endOfDay)
-            }
+            groupedFetchedPlans[currentDay] = plans.filter { $0.showInDate(currentDay) }
         }
         return groupedFetchedPlans
     }

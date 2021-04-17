@@ -12,6 +12,19 @@ extension CorePlan {
         RenderPlan(original: self)
     }
 
+    func showInDate(_ date: Date) -> Bool {
+        let startDateIsSameDayAsDate = self.startDate.isSameDay(as: date)
+        if let doneTime = self.doneTime {
+            return startDateIsSameDayAsDate
+                || doneTime.isSameDay(as: date)
+                || date.isBetween(date: self.startDate, andDate: doneTime)
+        }
+        return startDateIsSameDayAsDate
+            || self.endDate.isSameDay(as: date)
+            || date.isBetween(date: self.startDate, andDate: self.endDate)
+    }
+
+    @discardableResult
     func setPlanToDone(save: Bool = true) -> Result<CorePlan, Error> {
         self.doneTime = Date()
 

@@ -243,10 +243,10 @@
 				2C7B6A752607DBE700F0217E /* PlannerCalApp.swift */,
 				2C7B6A782607DBE800F0217E /* Assets.xcassets */,
 				2C99A39E26126E5700A2D029 /* Extensions */,
+				2C9BCD0D262B7DF0001DCF49 /* Localizable.strings */,
 				2C99A39426126B3900A2D029 /* Models */,
 				2CD905AF261269E90032BC4B /* Utilities */,
 				2CD905AC261269B10032BC4B /* Views */,
-				2C9BCD0D262B7DF0001DCF49 /* Localizable.strings */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
