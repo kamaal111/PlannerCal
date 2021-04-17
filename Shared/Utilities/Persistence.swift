@@ -39,7 +39,12 @@ struct PersistenceController {
 
     static var preview: PersistanceManager = {
         let persistanceController = PersistenceController(inMemory: true).sharedInststance
-        let args = CorePlan.Args(startDate: Date(), endDate: Date(), title: "Title", notes: nil)
+        let notes =
+            """
+            Nice story bro!\n
+            Yes it is.
+            """
+        let args = CorePlan.Args(startDate: Date(), endDate: Date(), title: "Title", notes: notes)
         CorePlan.setPlan(args: args, managedObjectContext: persistanceController.context!, save: false)
         return persistanceController
     }()

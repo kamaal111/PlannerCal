@@ -9,7 +9,26 @@ import CoreData
 
 extension CorePlan {
     var renderPlan: RenderPlan {
-        .init(original: self)
+        RenderPlan(original: self)
+    }
+
+    @discardableResult
+    func editPlan(with args: CorePlan.Args, save: Bool = true) -> Result<CorePlan, Error> {
+        self.updatedTime = Date()
+        self.startDate = args.startDate
+        self.endDate = args.endDate
+        self.notes = args.notes
+        self.title = args.title
+
+        if save {
+            do {
+                try self.managedObjectContext?.save()
+            } catch {
+                return .failure(error)
+            }
+        }
+
+        return .success(self)
     }
 
     @discardableResult

@@ -7,21 +7,22 @@
 
 import SwiftUI
 import PCLocale
+import ConsoleSwift
 
 struct PlanSelectionScreen: View {
     @EnvironmentObject
     private var planModel: PlanModel
 
-    @State private var editMode = false
-    @State private var editedTitle = ""
-    @State private var editedStartDate = Date()
-    @State private var editedEndDate = Date()
-    @State private var editedNotes = ""
+    @ObservedObject
+    private var viewModel = ViewModel()
 
     var body: some View {
         ZStack {
-            if editMode {
-                ModifyPlan(title: $editedTitle, startDate: $editedStartDate, endDate: $editedEndDate, notes: $editedNotes)
+            if viewModel.editMode {
+                ModifyPlan(title: $viewModel.editedTitle,
+                           startDate: $viewModel.editedStartDate,
+                           endDate: $viewModel.editedEndDate,
+                           notes: $viewModel.editedNotes)
             } else {
                 VStack {
                     PlanSelectionInfoRow(label: .TITLE_INPUT_FIELD_LABEL, value: planTitle)
@@ -36,34 +37,57 @@ struct PlanSelectionScreen: View {
                         PlanSelectionInfoRow(label: .NOTES, value: notes)
                             .padding(.bottom, 8)
                     }
+                    Spacer()
+                    Button(action: { }) {
+                        Text("Done")
+                    }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             }
         }
         .padding(.all, 24)
+        .alert(isPresented: $viewModel.showErrorAlert, content: {
+            Alert(title: Text(viewModel.errorAlertMessage.title), message: Text(viewModel.errorAlertMessage.message))
+        })
         .toolbar(content: {
-            if editMode {
+            if viewModel.editMode {
                 Button(action: {
-                    withAnimation { editMode = false }
+                    withAnimation { viewModel.editMode = false }
                 }) {
                     #warning("Localize this")
                     Text("Cancel")
                 }
             }
             Button(action: {
-                if editMode {
-                    // Edit plan
-                    withAnimation { editMode = false }
+                if viewModel.editMode {
+                    guard viewModel.planValidation() else { return }
+                    if let planToEdit = planModel.planToShow {
+                        var notes: String?
+                        if !viewModel.editedNotes.trimmingByWhitespacesAndNewLines.isEmpty {
+                            notes = viewModel.editedNotes
+                        }
+                        #warning("Put this in view model")
+                        let args = CorePlan.Args(startDate: viewModel.editedStartDate,
+                                                 endDate: viewModel.editedEndDate,
+                                                 title: viewModel.editedTitle,
+                                                 notes: notes)
+                        do {
+                            try planModel.editPlan(planToEdit, with: args)
+                        } catch {
+                            console.error(Date(), error.localizedDescription, error)
+                        }
+                    }
+                    withAnimation { viewModel.editMode = false }
                 } else {
-                    editedTitle = planTitle
-                    editedStartDate = planStartDate
-                    editedEndDate = planEndDate
-                    editedNotes = planModel.planToShow?.notes ?? ""
-                    withAnimation { editMode = true }
+                    viewModel.editedTitle = planTitle
+                    viewModel.editedStartDate = planStartDate
+                    viewModel.editedEndDate = planEndDate
+                    viewModel.editedNotes = planModel.planToShow?.notes ?? ""
+                    withAnimation { viewModel.editMode = true }
                 }
             }) {
                 #warning("Localize this")
-                Text(editMode ? "Save" : "Edit")
+                Text(viewModel.editMode ? "Save" : "Edit")
             }
         })
     }
@@ -85,6 +109,42 @@ struct PlanSelectionScreen: View {
         dateFormatter.dateStyle = .medium
         return dateFormatter
     }()
+}
+
+extension PlanSelectionScreen {
+    final class ViewModel: ObservableObject {
+        @Published var editMode = false
+        @Published var editedTitle = ""
+        @Published var editedStartDate = Date()
+        @Published var editedEndDate = Date()
+        @Published var editedNotes = ""
+        @Published private(set) var errorAlertMessage: (title: String, message: String) = ("", "") {
+            didSet {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self, !self.errorAlertMessage.title.isEmpty else { return }
+                    self.showErrorAlert = true
+                }
+            }
+        }
+        @Published var showErrorAlert = false {
+            didSet {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self, !self.showErrorAlert, !self.errorAlertMessage.title.isEmpty else { return }
+                    self.errorAlertMessage = ("", "")
+                }
+            }
+        }
+
+        func planValidation() -> Bool {
+            let args = CorePlan.Args(startDate: editedStartDate,
+                                     endDate: editedEndDate,
+                                     title: editedTitle,
+                                     notes: editedNotes)
+            guard let errorMessage = Validator.planValidation(args) else { return true }
+            errorAlertMessage = (errorMessage.title, errorMessage.message)
+            return false
+        }
+    }
 }
 
 struct PlanSelectionScreen_Previews: PreviewProvider {

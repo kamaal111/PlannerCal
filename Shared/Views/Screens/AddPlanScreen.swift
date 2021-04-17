@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PCLocale
+import ConsoleSwift
 
 struct AddPlanScreen: View {
     @EnvironmentObject
@@ -51,13 +52,19 @@ struct AddPlanScreen: View {
 
     private func onSave() {
         guard viewModel.planValidation() else { return }
+        var notes: String?
+        if !viewModel.planNotes.trimmingByWhitespacesAndNewLines.isEmpty {
+            notes = viewModel.planNotes
+        }
+        #warning("Put this in view model")
+        let args = CorePlan.Args(startDate: viewModel.planStartDate,
+                                 endDate: viewModel.planEndDate,
+                                 title: viewModel.planTitle,
+                                 notes: notes)
         do {
-            try planModel.setPlan(startDate: viewModel.planStartDate,
-                                  endDate: viewModel.planEndDate,
-                                  title: viewModel.planTitle,
-                                  notes: viewModel.planNotes)
+            try planModel.setPlan(with: args)
         } catch {
-            print(error)
+            console.error(Date(), error.localizedDescription, error)
             return
         }
         navigator.navigate(to: .home)

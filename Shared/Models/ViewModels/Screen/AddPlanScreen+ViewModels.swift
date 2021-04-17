@@ -36,17 +36,10 @@ extension AddPlanScreen {
         }
 
         func planValidation() -> Bool {
-            if planTitle.trimmingByWhitespacesAndNewLines.isEmpty {
-                errorAlertMessage = (PCLocale.getLocalizableString(of: .TITLE_IS_EMPTY_ALERT_TITLE),
-                                     PCLocale.getLocalizableString(of: .TITLE_IS_EMPTY_ALERT_MESSAGE))
-                return false
-            }
-            if planStartDate.compare(planEndDate) == .orderedDescending {
-                errorAlertMessage = (PCLocale.getLocalizableString(of: .END_DATE_BEFORE_START_ALERT_TITLE),
-                                     PCLocale.getLocalizableString(of: .END_DATE_BEFORE_START_ALERT_MESSAGE))
-                return false
-            }
-            return true
+            let args = CorePlan.Args(startDate: planStartDate, endDate: planEndDate, title: planTitle, notes: planNotes)
+            guard let errorMessage = Validator.planValidation(args) else { return true }
+            errorAlertMessage = (errorMessage.title, errorMessage.message)
+            return false
         }
 
     }

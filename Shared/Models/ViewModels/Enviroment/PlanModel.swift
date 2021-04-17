@@ -76,15 +76,27 @@ final class PlanModel: ObservableObject {
         }
     }
 
-    func setPlan(startDate: Date, endDate: Date, title: String, notes: String) throws {
-        guard let context = persistenceController.context else { throw Errors.contextMissing }
-        let checkedNotes: String?
-        if notes.trimmingByWhitespacesAndNewLines.isEmpty {
-            checkedNotes = nil
-        } else {
-            checkedNotes = notes
+    func editPlan(_ plan: CorePlan, with args: CorePlan.Args) throws {
+        let editedPlan = try plan.editPlan(with: args).get()
+        var newCurrentPlans: [Date: [CorePlan]]?
+        for (currentDate, currentDatePlans) in currentPlans {
+            if (editedPlan.startDate.isSameDay(as: currentDate)
+                || editedPlan.endDate.isSameDay(as: currentDate)
+                || currentDate.isBetween(date: editedPlan.startDate.startOfDay, andDate: editedPlan.endDate.endOfDay)),
+               let planIndex = currentDatePlans.firstIndex(where: { $0.id == editedPlan.id }) {
+                newCurrentPlans = currentPlans
+                newCurrentPlans?[currentDate]?[planIndex] = editedPlan
+                break
+            }
         }
-        let args = CorePlan.Args(startDate: startDate, endDate: endDate, title: title, notes: checkedNotes)
+        guard let unwrappedNewCurrentPlans = newCurrentPlans else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
+            self?.currentPlans = unwrappedNewCurrentPlans
+        }
+    }
+
+    func setPlan(with args: CorePlan.Args) throws {
+        guard let context = persistenceController.context else { throw Errors.contextMissing }
         let plan = try CorePlan.setPlan(args: args, managedObjectContext: context).get()
         var newCurrentPlans: [Date: [CorePlan]] = [:]
         currentDays.forEach { currentDay in
