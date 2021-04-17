@@ -90,8 +90,11 @@ final class PlanModel: ObservableObject {
             }
         }
         guard let unwrappedNewCurrentPlans = newCurrentPlans else { return }
-        DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
-            self?.currentPlans = unwrappedNewCurrentPlans
+        let currentDaysCopy = self.currentDays
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.currentPlans = unwrappedNewCurrentPlans
+            self.currentDays = currentDaysCopy
         }
     }
 
