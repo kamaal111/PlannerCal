@@ -33,22 +33,29 @@ struct PlanSelectionScreen: View {
                     PlanSelectionInfoRow(label: .END_DATE_LABEL,
                                          value: Self.dateFormatter.string(from: planEndDate))
                         .padding(.bottom, 8)
+                    if let planDoneDate = planModel.planToShow?.doneTime {
+                        #warning("Localize this")
+                        PlanSelectionInfoRow(label: "Done", value: Self.dateFormatter.string(from: planDoneDate))
+                            .padding(.bottom, 8)
+                    }
                     if let notes = planModel.planToShow?.notes {
                         PlanSelectionInfoRow(label: .NOTES, value: notes)
                             .padding(.bottom, 8)
                     }
                     Spacer()
-                    Button(action: {
-                        guard let plan = planModel.planToShow else { return }
-                        do {
-                            try planModel.setPlanToDone(plan)
-                        } catch {
-                            console.error(Date(), error.localizedDescription, error)
-                            return
+                    if planModel.planToShow?.doneTime == nil {
+                        Button(action: {
+                            guard let plan = planModel.planToShow else { return }
+                            do {
+                                try planModel.setPlanToDone(plan)
+                            } catch {
+                                console.error(Date(), error.localizedDescription, error)
+                                return
+                            }
+                        }) {
+                            #warning("Localize this")
+                            Text("Done")
                         }
-                    }) {
-                        #warning("Localize this")
-                        Text("Done")
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
