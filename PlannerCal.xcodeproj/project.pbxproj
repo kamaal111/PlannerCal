@@ -146,6 +146,7 @@
 		2C99A3BD2612788900A2D029 /* EdgeBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeBorder.swift; sourceTree = "<group>"; };
 		2C9BCD0C262B7DF0001DCF49 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C9BCD12262B7DF5001DCF49 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2C9BCD17262B8017001DCF49 /* pre-compile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "pre-compile.sh"; sourceTree = "<group>"; };
 		2CA200D7261A236100DC218C /* SheetStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetStack.swift; sourceTree = "<group>"; };
 		2CA200E9261A31A300DC218C /* AddPlanScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlanScreen.swift; sourceTree = "<group>"; };
 		2CC13FE7261A47D0003E3EDF /* InputLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputLabel.swift; sourceTree = "<group>"; };
@@ -420,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				2CF484AA261E3F9D003FDFFB /* clear-mac-data.sh */,
+				2C9BCD17262B8017001DCF49 /* pre-compile.sh */,
 			);
 			path = Scripts;
 			sourceTree = "<group>";
@@ -628,7 +630,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "\nsh Scripts/pre-compile.sh\n";
 		};
 		2C893C0D262B585300963CA2 /* Pre Compile */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -646,7 +648,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "\nsh Scripts/pre-compile.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
