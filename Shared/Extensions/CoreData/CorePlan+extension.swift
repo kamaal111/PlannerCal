@@ -92,7 +92,12 @@ extension CorePlan {
         let notes: String?
         let original: CorePlan?
 
-        init(id: UUID, startDate: Date, endDate: Date, title: String, notes: String?, original: CorePlan? = nil) {
+        init(id: UUID,
+             startDate: Date,
+             endDate: Date,
+             title: String,
+             notes: String?,
+             original: CorePlan? = nil) {
             self.id = id
             self.startDate = startDate
             self.endDate = endDate

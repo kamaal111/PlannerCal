@@ -12,13 +12,21 @@ struct PlanColumnItem: View {
 
     let plan: CorePlan.RenderPlan
     let isPrimary: Bool
+    let date: Date
     let onPress: (_ plan: CorePlan.RenderPlan) -> Void
 
     var body: some View {
         Button(action: { onPress(plan) }) {
-            Text(plan.title)
-                .foregroundColor(titleColor)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            HStack {
+                Text(plan.title)
+                    .foregroundColor(titleColor)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                if plan.original?.doneTime?.isSameDay(as: date) ?? false {
+                    Spacer()
+                    Image(systemName: "checkmark.circle.fill")
+                        .foregroundColor(.accentColor)
+                }
+            }
         }
         .disabled(!isPrimary)
         .buttonStyle(PlainButtonStyle())
@@ -42,8 +50,14 @@ struct PlanColumnItem: View {
 
 struct PlanColumnItem_Previews: PreviewProvider {
     static var previews: some View {
-        PlanColumnItem(plan: .init(id: UUID(), startDate: Date(), endDate: Date(), title: "Titler", notes: "notes"),
-                       isPrimary: true,
-                       onPress: { _ in })
+        let date = Date()
+        return PlanColumnItem(plan: .init(id: UUID(),
+                                          startDate: date,
+                                          endDate: date,
+                                          title: "Titler",
+                                          notes: "notes"),
+                              isPrimary: true,
+                              date: Date(),
+                              onPress: { _ in })
     }
 }
