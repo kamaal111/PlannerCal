@@ -8,7 +8,7 @@
 import SwiftUI
 import PCLocale
 
-struct DateInputRow :View {
+struct DateInputRow: View {
     @Binding var date: Date
 
     let label: String

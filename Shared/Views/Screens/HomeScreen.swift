@@ -46,7 +46,12 @@ struct HomeScreen: View {
                                     navigator.setSelection(to: .plan)
                                   })
         }
-        .frame(minWidth: Constants.planColumnMinimumWidth * (currentDaysCount - (columnViewWidth > Constants.planColumnMinimumWidth ? 1 : 2)))
+        .frame(minWidth: screenMinimumWidth)
+    }
+
+    private var screenMinimumWidth: CGFloat {
+        let columnViewIsWiderThanPlanColumn = columnViewWidth > Constants.planColumnMinimumWidth
+        return Constants.planColumnMinimumWidth * (currentDaysCount - (columnViewIsWiderThanPlanColumn ? 1 : 2))
     }
 
     private var currentDaysCount: CGFloat {

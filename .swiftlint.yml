@@ -7,6 +7,8 @@ excluded:
   - Packages/*/Package.swift
   - Packages/*/Tests
   - Tests
+  - Shared/Models/CoreData/*swift
 identifier_name:
   min_length:
     warning: 2
+  allowed_symbols: "_"

@@ -30,7 +30,8 @@ struct AddPlanScreen: View {
                 }
             })
             .alert(isPresented: $viewModel.showErrorAlert, content: {
-                Alert(title: Text(viewModel.errorAlertMessage.title), message: Text(viewModel.errorAlertMessage.message))
+                Alert(title: Text(viewModel.errorAlertMessage.title),
+                      message: Text(viewModel.errorAlertMessage.message))
             })
             .onAppear(perform: onScreenAppear)
     }

@@ -39,6 +39,7 @@ struct PlanSelectionScreen: View {
                     }
                     Spacer()
                     Button(action: { }) {
+                        #warning("Localize this")
                         Text("Done")
                     }
                 }

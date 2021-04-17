@@ -432,6 +432,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C7B6AAB2607DBE800F0217E /* Build configuration list for PBXNativeTarget "PlannerCal (iOS)" */;
 			buildPhases = (
+				2C893C0D262B585300963CA2 /* Pre Compile */,
 				2C7B6A792607DBE800F0217E /* Sources */,
 				2C7B6A7A2607DBE800F0217E /* Frameworks */,
 				2C7B6A7B2607DBE800F0217E /* Resources */,
@@ -456,6 +457,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C7B6AAE2607DBE800F0217E /* Build configuration list for PBXNativeTarget "PlannerCal (macOS)" */;
 			buildPhases = (
+				2C893C0C262B583800963CA2 /* Pre Compile */,
 				2C7B6A812607DBE800F0217E /* Sources */,
 				2C7B6A822607DBE800F0217E /* Frameworks */,
 				2C7B6A832607DBE800F0217E /* Resources */,
@@ -596,6 +598,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C893C0C262B583800963CA2 /* Pre Compile */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Pre Compile";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		2C893C0D262B585300963CA2 /* Pre Compile */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Pre Compile";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2C7B6A792607DBE800F0217E /* Sources */ = {

@@ -32,7 +32,9 @@ extension CorePlan {
     }
 
     @discardableResult
-    static func setPlan(args: CorePlan.Args, managedObjectContext: NSManagedObjectContext, save: Bool = true) -> Result<CorePlan, Error> {
+    static func setPlan(args: CorePlan.Args,
+                        managedObjectContext: NSManagedObjectContext,
+                        save: Bool = true) -> Result<CorePlan, Error> {
         let plan = CorePlan(context: managedObjectContext)
 
         let now = Date()
