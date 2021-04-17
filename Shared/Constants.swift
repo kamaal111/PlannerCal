@@ -10,6 +10,6 @@ import CoreGraphics
 struct Constants {
     private init() { }
 
-    static let planColumnMinimumWidth: CGFloat = 100
+    static let planColumnMinimumWidth: CGFloat = 140
     static let persistentContainerName = "PlannerCal"
 }
