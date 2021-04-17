@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PCLocale
 
 struct SelectionScreen: View {
     @EnvironmentObject
@@ -16,8 +17,7 @@ struct SelectionScreen: View {
             if navigator.selectionView == .some(.plan) {
                 PlanSelectionScreen()
             } else {
-                #warning("Localize this")
-                Text("No selection")
+                Text(localized: .NO_SELECTION)
                     .font(.headline)
             }
         }

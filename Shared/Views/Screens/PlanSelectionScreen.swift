@@ -34,8 +34,7 @@ struct PlanSelectionScreen: View {
                                          value: Self.dateFormatter.string(from: planEndDate))
                         .padding(.bottom, 8)
                     if let planDoneDate = planModel.planToShow?.doneTime {
-                        #warning("Localize this")
-                        PlanSelectionInfoRow(label: "Done", value: Self.dateFormatter.string(from: planDoneDate))
+                        PlanSelectionInfoRow(label: .DONE, value: Self.dateFormatter.string(from: planDoneDate))
                             .padding(.bottom, 8)
                     }
                     if let notes = planModel.planToShow?.notes {
@@ -53,8 +52,7 @@ struct PlanSelectionScreen: View {
                                 return
                             }
                         }) {
-                            #warning("Localize this")
-                            Text("Done")
+                            Text(localized: .DONE)
                         }
                     }
                 }
@@ -70,8 +68,7 @@ struct PlanSelectionScreen: View {
                 Button(action: {
                     withAnimation { viewModel.editMode = false }
                 }) {
-                    #warning("Localize this")
-                    Text("Cancel")
+                    Text(localized: .CANCEL)
                 }
             }
             Button(action: {
@@ -102,8 +99,7 @@ struct PlanSelectionScreen: View {
                     withAnimation { viewModel.editMode = true }
                 }
             }) {
-                #warning("Localize this")
-                Text(viewModel.editMode ? "Save" : "Edit")
+                Text(localized: viewModel.editMode ? .SAVE : .EDIT)
             }
         })
     }
