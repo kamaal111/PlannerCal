@@ -130,25 +130,22 @@ final class PlanModel: ObservableObject {
             console.error(Date(), error.localizedDescription, error)
             return
         }
-        var groupedFetchedPlans: [Date: [CorePlan]] = [:]
-        currentDays.forEach { (currentDay: Date) in
-            groupedFetchedPlans[currentDay] = fetchedPlans.filter {
-                $0.startDate.isSameDay(as: currentDay)
-                    || $0.endDate.isSameDay(as: currentDay)
-                    || currentDay.isBetween(date: $0.startDate.startOfDay, andDate: $0.endDate.endOfDay)
-            }
-        }
+        let groupedFetchedPlans: [Date: [CorePlan]] = groupPlansInDates(plans: fetchedPlans, dates: currentDays)
         DispatchQueue.main.async { [weak self] in
             self?.currentPlans = groupedFetchedPlans
         }
     }
 
-}
-
-extension Date {
-    var asNSDate: NSDate { self as NSDate }
-
-    func isBetween(date date1: Date, andDate date2: Date) -> Bool {
-        date1.compare(self) == self.compare(date2)
+    private func groupPlansInDates(plans: [CorePlan], dates: [Date]) -> [Date: [CorePlan]] {
+        var groupedFetchedPlans: [Date: [CorePlan]] = [:]
+        dates.forEach { (currentDay: Date) in
+            groupedFetchedPlans[currentDay] = plans.filter {
+                $0.startDate.isSameDay(as: currentDay)
+                    || $0.endDate.isSameDay(as: currentDay)
+                    || currentDay.isBetween(date: $0.startDate.startOfDay, andDate: $0.endDate.endOfDay)
+            }
+        }
+        return groupedFetchedPlans
     }
+
 }

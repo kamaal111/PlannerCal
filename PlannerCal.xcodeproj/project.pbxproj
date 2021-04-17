@@ -45,6 +45,8 @@
 		2C87107926231D2D0063B4A4 /* SelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87107726231D2D0063B4A4 /* SelectionScreen.swift */; };
 		2C87107F26231F230063B4A4 /* PlanSelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87107E26231F230063B4A4 /* PlanSelectionScreen.swift */; };
 		2C87108026231F230063B4A4 /* PlanSelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87107E26231F230063B4A4 /* PlanSelectionScreen.swift */; };
+		2C893BFD262B56D600963CA2 /* Date+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C893BFC262B56D600963CA2 /* Date+extensions.swift */; };
+		2C893BFE262B56D600963CA2 /* Date+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C893BFC262B56D600963CA2 /* Date+extensions.swift */; };
 		2C8C4F112613BE3000AFA2A3 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C4F102613BE3000AFA2A3 /* DeviceModel.swift */; };
 		2C8C4F122613BE3000AFA2A3 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C4F102613BE3000AFA2A3 /* DeviceModel.swift */; };
 		2C8C4F182613C2D100AFA2A3 /* Color+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C4F172613C2D100AFA2A3 /* Color+extensions.swift */; };
@@ -130,6 +132,7 @@
 		2C87106C262315220063B4A4 /* PlanColumnItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanColumnItem.swift; sourceTree = "<group>"; };
 		2C87107726231D2D0063B4A4 /* SelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionScreen.swift; sourceTree = "<group>"; };
 		2C87107E26231F230063B4A4 /* PlanSelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanSelectionScreen.swift; sourceTree = "<group>"; };
+		2C893BFC262B56D600963CA2 /* Date+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extensions.swift"; sourceTree = "<group>"; };
 		2C8C4F102613BE3000AFA2A3 /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		2C8C4F172613C2D100AFA2A3 /* Color+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extensions.swift"; sourceTree = "<group>"; };
 		2C99A39726126B6C00A2D029 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
@@ -326,6 +329,7 @@
 				2C347AB22619FA84001F307D /* CoreData */,
 				2C99A39F26126EA900A2D029 /* UIDevice+extensions.swift */,
 				2C8C4F172613C2D100AFA2A3 /* Color+extensions.swift */,
+				2C893BFC262B56D600963CA2 /* Date+extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -613,6 +617,7 @@
 				2C42286526238823001A1B21 /* ModifyPlan.swift in Sources */,
 				60357B3E2616F0DC00D091AE /* PlanColumn.swift in Sources */,
 				2C7B6AA52607DBE800F0217E /* Persistence.swift in Sources */,
+				2C893BFD262B56D600963CA2 /* Date+extensions.swift in Sources */,
 				2C8C4F182613C2D100AFA2A3 /* Color+extensions.swift in Sources */,
 				2CF04AB5262B1D2800B224BB /* Validator.swift in Sources */,
 				2CEA2CC1261782EC009D5AB3 /* PlanModel.swift in Sources */,
@@ -661,6 +666,7 @@
 				2C347AC32619FC9C001F307D /* CorePlan+CoreDataProperties.swift in Sources */,
 				2CF04AB6262B1D2800B224BB /* Validator.swift in Sources */,
 				2CA200EB261A31A300DC218C /* AddPlanScreen.swift in Sources */,
+				2C893BFE262B56D600963CA2 /* Date+extensions.swift in Sources */,
 				2C7B6AA42607DBE800F0217E /* ContentView.swift in Sources */,
 				2C87108026231F230063B4A4 /* PlanSelectionScreen.swift in Sources */,
 				2CA200D9261A236100DC218C /* SheetStack.swift in Sources */,
