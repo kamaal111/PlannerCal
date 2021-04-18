@@ -12,6 +12,7 @@ struct PlannerCalApp: App {
     @StateObject private var navigator = Navigator()
     @StateObject private var deviceModel = DeviceModel()
     @StateObject private var planModel = PlanModel(amountOfDaysToDisplay: 5)
+    @StateObject private var userData = UserData()
 
     let persistenceController = PersistenceController.shared
 
@@ -22,6 +23,7 @@ struct PlannerCalApp: App {
                 .environmentObject(navigator)
                 .environmentObject(deviceModel)
                 .environmentObject(planModel)
+                .environmentObject(userData)
         }
     }
 }

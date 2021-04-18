@@ -25,7 +25,7 @@ struct ModifyPlan: View {
             Text(localized: .NOTES)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 8)
-            ScrollableTextView(text: $notes)
+            TextEditor(text: $notes)
         }
         .frame(maxHeight: .infinity, alignment: .top)
     }

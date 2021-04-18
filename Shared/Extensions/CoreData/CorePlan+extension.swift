@@ -15,6 +15,11 @@ extension CorePlan {
     func showInDate(_ date: Date) -> Bool {
         let startDateIsSameDayAsDate = self.startDate.isSameDay(as: date)
         if let doneTime = self.doneTime {
+            let doneTimeIsEarlierThanStartDate = doneTime.compare(self.startDate) == .orderedAscending
+            if doneTimeIsEarlierThanStartDate {
+                let dateIsEarlierThanDoneTime = date.compare(doneTime) == .orderedAscending
+                return dateIsEarlierThanDoneTime
+            }
             return startDateIsSameDayAsDate
                 || doneTime.isSameDay(as: date)
                 || date.isBetween(date: self.startDate, andDate: doneTime)
