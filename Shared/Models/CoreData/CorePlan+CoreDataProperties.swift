@@ -24,6 +24,7 @@ extension CorePlan {
     @NSManaged public var title: String
     @NSManaged public var updatedTime: Date
     @NSManaged public var doneDate: Date?
+    @NSManaged public var category: String?
 
 }
 
