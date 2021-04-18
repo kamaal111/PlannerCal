@@ -77,7 +77,7 @@ final class PlanModel: ObservableObject {
     }
 
     func setPlanToDone(_ plan: CorePlan) throws {
-        guard plan.doneTime == nil else { return }
+        guard plan.doneDate == nil else { return }
         let editedPlan = try plan.setPlanToDone().get()
         addEditedPlanToCurrentPlans(plan: editedPlan)
     }

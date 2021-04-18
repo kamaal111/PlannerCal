@@ -33,7 +33,7 @@ struct PlanSelectionScreen: View {
                     PlanSelectionInfoRow(label: .END_DATE_LABEL,
                                          value: Self.dateFormatter.string(from: planEndDate))
                         .padding(.bottom, 8)
-                    if let planDoneDate = planModel.planToShow?.doneTime {
+                    if let planDoneDate = planModel.planToShow?.doneDate {
                         PlanSelectionInfoRow(label: .DONE, value: Self.dateFormatter.string(from: planDoneDate))
                             .padding(.bottom, 8)
                     }
@@ -42,7 +42,7 @@ struct PlanSelectionScreen: View {
                             .padding(.bottom, 8)
                     }
                     Spacer()
-                    if planModel.planToShow?.doneTime == nil {
+                    if planModel.planToShow?.doneDate == nil {
                         Button(action: {
                             guard let plan = planModel.planToShow else { return }
                             do {

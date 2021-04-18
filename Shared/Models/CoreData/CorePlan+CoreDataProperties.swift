@@ -23,7 +23,7 @@ extension CorePlan {
     @NSManaged public var startDate: Date
     @NSManaged public var title: String
     @NSManaged public var updatedTime: Date
-    @NSManaged public var doneTime: Date?
+    @NSManaged public var doneDate: Date?
 
 }
 

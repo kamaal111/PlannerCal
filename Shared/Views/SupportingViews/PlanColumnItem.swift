@@ -21,7 +21,7 @@ struct PlanColumnItem: View {
                 Text(plan.title)
                     .foregroundColor(titleColor)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                if plan.original?.doneTime?.isSameDay(as: date) ?? false {
+                if plan.original?.doneDate?.isSameDay(as: date) ?? false {
                     Spacer()
                     Image(systemName: "checkmark.circle.fill")
                         .foregroundColor(.accentColor)

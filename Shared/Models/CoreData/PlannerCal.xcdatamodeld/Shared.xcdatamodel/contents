@@ -2,7 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CorePlan" representedClassName="CorePlan" syncable="YES">
         <attribute name="createdTime" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="doneTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="doneDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="notes" optional="YES" attributeType="String"/>

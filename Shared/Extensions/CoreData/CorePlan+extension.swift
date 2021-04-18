@@ -14,7 +14,7 @@ extension CorePlan {
 
     func showInDate(_ date: Date) -> Bool {
         let startDateIsSameDayAsDate = self.startDate.isSameDay(as: date)
-        if let doneTime = self.doneTime {
+        if let doneTime = self.doneDate {
             let doneTimeIsEarlierThanStartDate = doneTime.compare(self.startDate) == .orderedAscending
             if doneTimeIsEarlierThanStartDate {
                 let dateIsEarlierThanDoneTime = date.compare(doneTime) == .orderedAscending
@@ -31,7 +31,9 @@ extension CorePlan {
 
     @discardableResult
     func setPlanToDone(save: Bool = true) -> Result<CorePlan, Error> {
-        self.doneTime = Date()
+        let now = Date()
+        self.doneDate = now
+        self.updatedTime = now
 
         if save {
             do {
