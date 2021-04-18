@@ -115,26 +115,38 @@ private struct HomeScreenView: View {
                 }
                 .padding(.trailing, showSecondaryColumns ? -width : 0)
             }
-            VStack {
-                /// - TODO: Localize
-                Text("Unfinished")
-                    .font(.headline)
+            HStack {
                 VStack {
-                    Text("Plan")
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 2)
-                    Text("Plan")
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 2)
-                    Text("Plan")
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 2)
-                    Text("Plan")
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 2)
+                    /// - TODO: Localize
+                    Text("Unfinished")
+                        .font(.headline)
+                    ScrollView {
+                        ForEach((0..<20), id: \.self) { _ in
+                            Text("Plan")
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 2)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                    .padding(.all, 16)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                .padding(.all, 16)
+                .border(width: 1, edges: [.trailing], color: .appSecondary)
+                VStack {
+                    /// - TODO: Localize
+                    Text("General")
+                        .font(.headline)
+                    ScrollView {
+                        ForEach((0..<20), id: \.self) { _ in
+                            Text("Plan")
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 2)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                    .padding(.all, 16)
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
