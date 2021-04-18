@@ -49,13 +49,13 @@ struct HomeScreen: View {
         .frame(minWidth: screenMinimumWidth)
     }
 
+    private var currentDaysCount: CGFloat {
+        CGFloat(planModel.currentDays.count)
+    }
+
     private var screenMinimumWidth: CGFloat {
         let columnViewIsWiderThanPlanColumn = columnViewWidth > Constants.planColumnMinimumWidth
         return Constants.planColumnMinimumWidth * (currentDaysCount - (columnViewIsWiderThanPlanColumn ? 1 : 2))
-    }
-
-    private var currentDaysCount: CGFloat {
-        CGFloat(planModel.currentDays.count)
     }
 
     private var columnViewWidth: CGFloat {
@@ -115,6 +115,28 @@ private struct HomeScreenView: View {
                 }
                 .padding(.trailing, showSecondaryColumns ? -width : 0)
             }
+            VStack {
+                /// - TODO: Localize
+                Text("Unfinished")
+                    .font(.headline)
+                VStack {
+                    Text("Plan")
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 2)
+                    Text("Plan")
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 2)
+                    Text("Plan")
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 2)
+                    Text("Plan")
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 2)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                .padding(.all, 16)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
         .frame(maxWidth: .infinity, alignment: .center)
     }

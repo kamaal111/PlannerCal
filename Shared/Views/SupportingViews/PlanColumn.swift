@@ -48,7 +48,7 @@ struct PlanColumn: View {
             }
             .disabled(!isPrimary)
             .padding(.horizontal, 8)
-            VStack {
+            ScrollView {
                 ForEach(plans) { plan in
                     PlanColumnItem(plan: plan, isPrimary: isPrimary, date: date, onPress: onPlanPress)
                         .padding(.horizontal, 8)
