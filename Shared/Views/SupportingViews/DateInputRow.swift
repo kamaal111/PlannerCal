@@ -20,7 +20,7 @@ struct DateInputRow: View {
 
     init(date: Binding<Date>, label: PCLocale.Keys) {
         self._date = date
-        self.label = PCLocale.getLocalizableString(of: label)
+        self.label = label.localized
     }
 
     var body: some View {

@@ -26,11 +26,18 @@ public struct PCLocale {
         case CANCEL
         case EDIT
         case NO_SELECTION
+        case UNFINISHED
+        case GENERAL
+
+        public var localized: String {
+            PCLocale.getLocalizableString(of: self)
+        }
     }
 
-    static public func getLocalizableString(of key: Keys, with variables: CVarArg...) -> String {
+    static func getLocalizableString(of key: Keys, with variables: CVarArg...) -> String {
         let bundle = Bundle.module
         let keyRawValue = key.rawValue
+        guard variables.isEmpty else { fatalError("Amount of variables are not supported") }
         return NSLocalizedString(keyRawValue, bundle: bundle, comment: "")
     }
 }

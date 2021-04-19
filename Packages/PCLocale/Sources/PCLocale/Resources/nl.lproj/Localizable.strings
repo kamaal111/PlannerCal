@@ -1,6 +1,6 @@
 /*
   Localizable.strings
-  PCLocale
+  PCLocale - NL
 
   Created by Kamaal M Farah on 17/04/2021.
   
@@ -23,3 +23,5 @@
 "CANCEL" = "Annuleren";
 "EDIT" = "Bewerken";
 "NO_SELECTION" = "Geen selectie";
+"UNFINISHED" = "Onafgewerkt";
+"GENERAL" = "Algemeen";

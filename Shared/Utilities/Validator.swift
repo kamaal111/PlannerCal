@@ -13,12 +13,12 @@ struct Validator {
 
     static func planValidation(_ args: CorePlan.Args) -> (title: String, message: String)? {
         if args.title.trimmingByWhitespacesAndNewLines.isEmpty {
-            return (PCLocale.getLocalizableString(of: .TITLE_IS_EMPTY_ALERT_TITLE),
-                    PCLocale.getLocalizableString(of: .TITLE_IS_EMPTY_ALERT_MESSAGE))
+            return (PCLocale.Keys.TITLE_IS_EMPTY_ALERT_TITLE.localized,
+                    PCLocale.Keys.TITLE_IS_EMPTY_ALERT_MESSAGE.localized)
         }
         if args.startDate.compare(args.endDate) == .orderedDescending {
-            return (PCLocale.getLocalizableString(of: .END_DATE_BEFORE_START_ALERT_TITLE),
-                    PCLocale.getLocalizableString(of: .END_DATE_BEFORE_START_ALERT_MESSAGE))
+            return (PCLocale.Keys.END_DATE_BEFORE_START_ALERT_TITLE.localized,
+                    PCLocale.Keys.END_DATE_BEFORE_START_ALERT_MESSAGE.localized)
         }
         return nil
     }

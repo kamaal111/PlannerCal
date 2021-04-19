@@ -21,7 +21,7 @@ struct HomeScreen: View {
     var body: some View {
         #if os(macOS)
         view()
-            .navigationTitle(PCLocale.getLocalizableString(of: .APP_TITLE))
+            .navigationTitle(PCLocale.Keys.APP_TITLE.localized)
         #else
         view()
             .navigationBarTitle(Text(localized: .APP_TITLE), displayMode: .large)
@@ -116,37 +116,9 @@ private struct HomeScreenView: View {
                 .padding(.trailing, showSecondaryColumns ? -width : 0)
             }
             HStack {
-                VStack {
-                    /// - TODO: Localize
-                    Text("Unfinished")
-                        .font(.headline)
-                    ScrollView {
-                        ForEach((0..<20), id: \.self) { _ in
-                            Text("Plan")
-                                .padding(.horizontal, 8)
-                                .padding(.vertical, 2)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                    .padding(.all, 16)
-                }
-                .border(width: 1, edges: [.trailing], color: .appSecondary)
-                VStack {
-                    /// - TODO: Localize
-                    Text("General")
-                        .font(.headline)
-                    ScrollView {
-                        ForEach((0..<20), id: \.self) { _ in
-                            Text("Plan")
-                                .padding(.horizontal, 8)
-                                .padding(.vertical, 2)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                    .padding(.all, 16)
-                }
+                GeneralPlanColumn(title: .UNFINISHED)
+                    .border(width: 1, edges: [.trailing], color: .appSecondary)
+                GeneralPlanColumn(title: .GENERAL)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }

@@ -18,7 +18,7 @@ struct ModifyPlan: View {
         VStack {
             HStack {
                 InputLabel(text: .TITLE_INPUT_FIELD_LABEL)
-                TextField(PCLocale.getLocalizableString(of: .TITLE_INPUT_FIELD_PLACEHOLDER), text: $title)
+                TextField(PCLocale.Keys.TITLE_INPUT_FIELD_PLACEHOLDER.localized, text: $title)
             }
             DateInputRow(date: $startDate, label: .START_DATE_LABEL)
             DateInputRow(date: $endDate, label: .END_DATE_LABEL)

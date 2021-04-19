@@ -18,7 +18,7 @@ struct PlanSelectionInfoRow: View {
     }
 
     init(label: PCLocale.Keys, value: String) {
-        self.label = PCLocale.getLocalizableString(of: label)
+        self.label = label.localized
         self.value = value
     }
 

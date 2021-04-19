@@ -75,6 +75,8 @@
 		2CC13FE9261A47D0003E3EDF /* InputLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC13FE7261A47D0003E3EDF /* InputLabel.swift */; };
 		2CC13FEF261A50C8003E3EDF /* ScrollableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC13FEE261A50C8003E3EDF /* ScrollableTextView.swift */; };
 		2CC13FF0261A50C8003E3EDF /* ScrollableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC13FEE261A50C8003E3EDF /* ScrollableTextView.swift */; };
+		2CCBA5C3262C613C008CA78B /* GeneralPlanColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCBA5C2262C613C008CA78B /* GeneralPlanColumn.swift */; };
+		2CCBA5C4262C613C008CA78B /* GeneralPlanColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCBA5C2262C613C008CA78B /* GeneralPlanColumn.swift */; };
 		2CD9059B261268B70032BC4B /* AppSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD9059A261268B70032BC4B /* AppSidebar.swift */; };
 		2CD9059C261268B70032BC4B /* AppSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD9059A261268B70032BC4B /* AppSidebar.swift */; };
 		2CD905A62612699B0032BC4B /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD905A52612699B0032BC4B /* HomeScreen.swift */; };
@@ -154,6 +156,7 @@
 		2CC13FE7261A47D0003E3EDF /* InputLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputLabel.swift; sourceTree = "<group>"; };
 		2CC13FEE261A50C8003E3EDF /* ScrollableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTextView.swift; sourceTree = "<group>"; };
 		2CC13FF6261A5918003E3EDF /* PCLocale */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PCLocale; sourceTree = "<group>"; };
+		2CCBA5C2262C613C008CA78B /* GeneralPlanColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPlanColumn.swift; sourceTree = "<group>"; };
 		2CD9059A261268B70032BC4B /* AppSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSidebar.swift; sourceTree = "<group>"; };
 		2CD905A52612699B0032BC4B /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		2CEA2CC0261782EC009D5AB3 /* PlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
@@ -379,6 +382,7 @@
 				2CA200D7261A236100DC218C /* SheetStack.swift */,
 				2C42285D26237C94001A1B21 /* PlanSelectionInfoRow.swift */,
 				2C42286426238823001A1B21 /* ModifyPlan.swift */,
+				2CCBA5C2262C613C008CA78B /* GeneralPlanColumn.swift */,
 			);
 			path = SupportingViews;
 			sourceTree = "<group>";
@@ -686,6 +690,7 @@
 				2CA200D8261A236100DC218C /* SheetStack.swift in Sources */,
 				2CEFFC23262C204F003676F8 /* UserData.swift in Sources */,
 				2C99A3AB2612734900A2D029 /* AppTabView.swift in Sources */,
+				2CCBA5C3262C613C008CA78B /* GeneralPlanColumn.swift in Sources */,
 				2C99A3BE2612788900A2D029 /* EdgeBorder.swift in Sources */,
 				2C347AB42619FAAC001F307D /* CorePlan+extension.swift in Sources */,
 				2CD905A62612699B0032BC4B /* HomeScreen.swift in Sources */,
@@ -704,6 +709,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C87106E262315220063B4A4 /* PlanColumnItem.swift in Sources */,
+				2CCBA5C4262C613C008CA78B /* GeneralPlanColumn.swift in Sources */,
 				2C42286626238823001A1B21 /* ModifyPlan.swift in Sources */,
 				2C99A39926126B6C00A2D029 /* Navigator.swift in Sources */,
 				2CEA2CC2261782EC009D5AB3 /* PlanModel.swift in Sources */,
