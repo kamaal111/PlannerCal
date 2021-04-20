@@ -9,9 +9,6 @@ import SwiftUI
 import PCLocale
 
 struct PlanColumn: View {
-    @Environment(\.colorScheme)
-    private var colorScheme: ColorScheme
-
     let date: Date
     let plans: [CorePlan.RenderPlan]
     let width: CGFloat
@@ -40,14 +37,9 @@ struct PlanColumn: View {
                 .foregroundColor(dayTextColor)
             Text(date, formatter: Self.dayNumberDateFormatter)
                 .foregroundColor(isPrimary ? .primary : .secondary)
-            Button(action: { addItem(date) }) {
-                HStack {
-                    Text(localized: .ADD_ITEM)
-                    Image(systemName: "plus")
-                }
-            }
-            .disabled(!isPrimary)
-            .padding(.horizontal, 8)
+            AddItemButton(action: { addItem(date) })
+                .disabled(!isPrimary)
+                .padding(.horizontal, 8)
             ScrollView {
                 ForEach(plans) { plan in
                     PlanColumnItem(plan: plan, isPrimary: isPrimary, date: date, onPress: onPlanPress)

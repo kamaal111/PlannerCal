@@ -11,30 +11,27 @@ import PCLocale
 struct GeneralPlanColumn: View {
     let title: String
     let plans: [CorePlan.RenderPlan]
+    let type: GeneralPlanColumnType
 
-    init(title: String, plans: [CorePlan.RenderPlan]) {
-        self.title = title
+    init(plans: [CorePlan.RenderPlan], type: GeneralPlanColumnType) {
+        self.title = type.title
         self.plans = plans
-    }
-
-    init(title: PCLocale.Keys, plans: [CorePlan.RenderPlan]) {
-        self.title = title.localized
-        self.plans = plans
+        self.type = type
     }
 
     var body: some View {
         VStack {
             Text(title)
                 .font(.headline)
+            if type == .some(.general) {
+                AddItemButton(action: {  })
+                    .padding(.horizontal, 8)
+            }
             ScrollView {
                 ForEach(plans) { plan in
-                    HStack {
-                        Text(plan.title)
-                        Spacer()
-                        Text(plan.endDate, style: .date)
-                    }
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 2)
+                    GeneralPlanColumnItem(plan: plan)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 2)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -43,8 +40,20 @@ struct GeneralPlanColumn: View {
     }
 }
 
+enum GeneralPlanColumnType {
+    case unfinished
+    case general
+
+    var title: String {
+        switch self {
+        case .general: return PCLocale.Keys.GENERAL.localized
+        case .unfinished: return PCLocale.Keys.UNFINISHED.localized
+        }
+    }
+}
+
 struct GeneralPlanColumn_Previews: PreviewProvider {
     static var previews: some View {
-        GeneralPlanColumn(title: "General", plans: [])
+        GeneralPlanColumn(plans: [], type: .general)
     }
 }
