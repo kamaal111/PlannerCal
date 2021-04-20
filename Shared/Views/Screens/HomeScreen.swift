@@ -33,6 +33,7 @@ struct HomeScreen: View {
             viewModel.setViewWidth(with: geometry.size.width)
             return HomeScreenView(dates: planModel.currentDays,
                                   plans: planModel.currentPlans,
+                                  unfinishedPlans: planModel.unfinishedPlans,
                                   width: columnViewWidth,
                                   showSecondaryColumns: showSecondaryColumns,
                                   previousDate: { planModel.incrementCurrentDays(by: -1) },
@@ -70,6 +71,7 @@ struct HomeScreen: View {
 private struct HomeScreenView: View {
     let dates: [Date]
     let plans: [Date: [CorePlan]]
+    let unfinishedPlans: [CorePlan]
     let width: CGFloat
     let showSecondaryColumns: Bool
     let previousDate: () -> Void
@@ -116,9 +118,9 @@ private struct HomeScreenView: View {
                 .padding(.trailing, showSecondaryColumns ? -width : 0)
             }
             HStack {
-                GeneralPlanColumn(title: .UNFINISHED)
+                GeneralPlanColumn(title: .UNFINISHED, plans: unfinishedPlans.map(\.renderPlan))
                     .border(width: 1, edges: [.trailing], color: .appSecondary)
-                GeneralPlanColumn(title: .GENERAL)
+                GeneralPlanColumn(title: .GENERAL, plans: [])
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }

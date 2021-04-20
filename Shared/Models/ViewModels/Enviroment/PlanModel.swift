@@ -14,11 +14,14 @@ import PersistanceManager
 final class PlanModel: ObservableObject {
 
     @Published private(set) var currentDays: [Date] {
-        didSet { fetchPlans() }
+        didSet {
+            fetchPlans()
+        }
     }
     @Published private var amountOfDaysToDisplay: Int
     @Published private(set) var currentPlans: [Date: [CorePlan]] = [:]
     @Published private(set) var planToShow: CorePlan?
+    @Published private(set) var unfinishedPlans: [CorePlan] = []
 
     private let persistenceController: PersistanceManager
     private let preview: Bool
@@ -38,6 +41,7 @@ final class PlanModel: ObservableObject {
             self.persistenceController = PersistenceController.shared
         }
         self.fetchPlans()
+        self.fetchUnfinishedPlans()
     }
 
     enum Errors: Error {
@@ -62,18 +66,19 @@ final class PlanModel: ObservableObject {
         }
     }
 
-    func showPlan(_ plan: CorePlan.RenderPlan) {
-        guard let originalPlan = plan.original  else { return }
+    func showPlan(_ plan: CorePlan?) {
+        guard let plan = plan else { return }
         DispatchQueue.main.async { [weak self] in
-            self?.planToShow = originalPlan
+            self?.planToShow = plan
         }
     }
 
     func showPlan(_ plan: CorePlan.RenderPlan?) {
-        guard let originalPlan = plan?.original  else { return }
-        DispatchQueue.main.async { [weak self] in
-            self?.planToShow = originalPlan
-        }
+        showPlan(plan?.original)
+    }
+
+    func showPlan(_ plan: CorePlan.RenderPlan) {
+        showPlan(plan.original)
     }
 
     func setPlanToDone(_ plan: CorePlan) throws {
@@ -103,7 +108,7 @@ final class PlanModel: ObservableObject {
         }
     }
 
-    func fetchPlans() {
+    private func fetchPlans() {
         guard let firstCurrentDate = currentDays.first?.asNSDate,
               let lastCurrentDate = currentDays.last?.asNSDate else { return }
         let fetchPlansRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CorePlan.description())
@@ -123,6 +128,24 @@ final class PlanModel: ObservableObject {
         }
     }
 
+    private func fetchUnfinishedPlans() {
+        let todayAsNSDate = Date().endOfDay.asNSDate
+        let fetchPlansRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CorePlan.description())
+        let query = "endDate < %@ AND doneDate = nil"
+        let predicate = NSPredicate(format: query, todayAsNSDate)
+        fetchPlansRequest.predicate = predicate
+        let fetchedPlans: [CorePlan]
+        do {
+            fetchedPlans = try persistenceController.context?.fetch(fetchPlansRequest) as? [CorePlan] ?? []
+        } catch {
+            console.error(Date(), error.localizedDescription, error)
+            return
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.unfinishedPlans = fetchedPlans
+        }
+    }
+
     private func addEditedPlanToCurrentPlans(plan editedPlan: CorePlan) {
         var newCurrentPlans: [Date: [CorePlan]]?
         for (currentDate, currentDatePlans) in currentPlans {
@@ -139,6 +162,7 @@ final class PlanModel: ObservableObject {
             guard let self = self else { return }
             self.currentPlans = unwrappedNewCurrentPlans
             self.currentDays = currentDaysCopy
+            self.fetchUnfinishedPlans()
         }
     }
 
