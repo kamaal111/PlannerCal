@@ -12,6 +12,7 @@ extension CorePlan {
         RenderPlan(original: self)
     }
 
+    #warning("Test this")
     func showInDate(_ date: Date) -> Bool {
         let startDateIsSameDayAsDate = self.startDate.isSameDay(as: date)
         if let doneTime = self.doneDate {
@@ -95,6 +96,7 @@ extension CorePlan {
         let id: UUID
         let startDate: Date
         let endDate: Date
+        let doneDate: Date?
         let title: String
         let notes: String?
         let original: CorePlan?
@@ -102,12 +104,14 @@ extension CorePlan {
         init(id: UUID,
              startDate: Date,
              endDate: Date,
+             doneDate: Date?,
              title: String,
              notes: String?,
              original: CorePlan? = nil) {
             self.id = id
             self.startDate = startDate
             self.endDate = endDate
+            self.doneDate = doneDate
             self.title = title
             self.notes = notes
             self.original = original
@@ -117,6 +121,7 @@ extension CorePlan {
             self.id = original.id
             self.startDate = original.startDate
             self.endDate = original.endDate
+            self.doneDate = original.doneDate
             self.title = original.title
             self.notes = original.notes
             self.original = original

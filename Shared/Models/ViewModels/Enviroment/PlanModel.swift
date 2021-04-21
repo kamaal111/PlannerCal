@@ -15,7 +15,8 @@ final class PlanModel: ObservableObject {
 
     @Published private(set) var currentDays: [Date] {
         didSet {
-            fetchPlans()
+            self.fetchPlans()
+            self.fetchUnfinishedPlans()
         }
     }
     @Published private var amountOfDaysToDisplay: Int
@@ -108,6 +109,7 @@ final class PlanModel: ObservableObject {
         }
     }
 
+    #error("Fetch everything and sort occordingly")
     private func fetchPlans() {
         guard let firstCurrentDate = currentDays.first?.asNSDate,
               let lastCurrentDate = currentDays.last?.asNSDate else { return }
@@ -129,20 +131,22 @@ final class PlanModel: ObservableObject {
     }
 
     private func fetchUnfinishedPlans() {
-        let todayAsNSDate = Date().endOfDay.asNSDate
-        let fetchPlansRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CorePlan.description())
-        let query = "endDate < %@ AND doneDate = nil"
-        let predicate = NSPredicate(format: query, todayAsNSDate)
-        fetchPlansRequest.predicate = predicate
-        let fetchedPlans: [CorePlan]
-        do {
-            fetchedPlans = try persistenceController.context?.fetch(fetchPlansRequest) as? [CorePlan] ?? []
-        } catch {
-            console.error(Date(), error.localizedDescription, error)
-            return
-        }
-        DispatchQueue.main.async { [weak self] in
-            self?.unfinishedPlans = fetchedPlans
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            guard let self = self else { return }
+            let todayAsNSDate = Date().endOfDay.asNSDate
+            let fetchPlansRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CorePlan.description())
+            let query = "endDate < %@ AND doneDate = nil"
+            let predicate = NSPredicate(format: query, todayAsNSDate)
+            fetchPlansRequest.predicate = predicate
+            let fetchedPlans: [CorePlan]
+            do {
+                fetchedPlans = try self.persistenceController.context?.fetch(fetchPlansRequest) as? [CorePlan] ?? []
+            } catch {
+                console.error(Date(), error.localizedDescription, error)
+                return
+            }
+            print("fetchedPlans", fetchedPlans)
+            self.unfinishedPlans = fetchedPlans
         }
     }
 
@@ -162,7 +166,6 @@ final class PlanModel: ObservableObject {
             guard let self = self else { return }
             self.currentPlans = unwrappedNewCurrentPlans
             self.currentDays = currentDaysCopy
-            self.fetchUnfinishedPlans()
         }
     }
 

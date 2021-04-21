@@ -118,9 +118,9 @@ private struct HomeScreenView: View {
                 .padding(.trailing, showSecondaryColumns ? -width : 0)
             }
             HStack {
-                GeneralPlanColumn(plans: unfinishedPlans.map(\.renderPlan), type: .unfinished)
+                GeneralPlanColumn(plans: unfinishedPlans.map(\.renderPlan), type: .unfinished, onPlanPress: onPlanPress)
                     .border(width: 1, edges: [.trailing], color: .appSecondary)
-                GeneralPlanColumn(plans: [], type: .general)
+                GeneralPlanColumn(plans: [], type: .general, onPlanPress: onPlanPress)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }

@@ -42,7 +42,7 @@ struct PlanColumn: View {
                 .padding(.horizontal, 8)
             ScrollView {
                 ForEach(plans) { plan in
-                    PlanColumnItem(plan: plan, isPrimary: isPrimary, date: date, onPress: onPlanPress)
+                    PlanColumnItem(plan: plan, isPrimary: isPrimary, date: date, onPress: { onPlanPress(plan) })
                         .padding(.horizontal, 8)
                         .padding(.vertical, 2)
                 }

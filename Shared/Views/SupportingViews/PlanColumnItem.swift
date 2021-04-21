@@ -13,10 +13,10 @@ struct PlanColumnItem: View {
     let plan: CorePlan.RenderPlan
     let isPrimary: Bool
     let date: Date
-    let onPress: (_ plan: CorePlan.RenderPlan) -> Void
+    let onPress: () -> Void
 
     var body: some View {
-        Button(action: { onPress(plan) }) {
+        Button(action: onPress) {
             HStack {
                 Text(plan.title)
                     .foregroundColor(titleColor)
@@ -30,7 +30,7 @@ struct PlanColumnItem: View {
         }
         .disabled(!isPrimary)
         .buttonStyle(PlainButtonStyle())
-        .onHover(perform: { hovering in
+        .onHover(perform: { (hovering: Bool) in
             if isPrimary {
                 isHovering = hovering
             }
@@ -54,10 +54,11 @@ struct PlanColumnItem_Previews: PreviewProvider {
         return PlanColumnItem(plan: .init(id: UUID(),
                                           startDate: date,
                                           endDate: date,
+                                          doneDate: nil,
                                           title: "Titler",
                                           notes: "notes"),
                               isPrimary: true,
                               date: Date(),
-                              onPress: { _ in })
+                              onPress: { })
     }
 }
