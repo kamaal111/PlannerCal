@@ -20,7 +20,11 @@ final class PlanModel: ObservableObject {
         }
     }
     @Published private var amountOfDaysToDisplay: Int
-    @Published private(set) var currentPlans: [Date: [CorePlan]] = [:]
+    @Published private(set) var currentPlans: [Date: [CorePlan]] = [:] {
+        didSet {
+            self.fetchUnfinishedPlans()
+        }
+    }
     @Published private(set) var planToShow: CorePlan?
     @Published private(set) var unfinishedPlans: [CorePlan] = []
 
@@ -109,14 +113,9 @@ final class PlanModel: ObservableObject {
         }
     }
 
-    #error("Fetch everything and sort occordingly")
+    #warning("optimise")
     private func fetchPlans() {
-        guard let firstCurrentDate = currentDays.first?.asNSDate,
-              let lastCurrentDate = currentDays.last?.asNSDate else { return }
         let fetchPlansRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CorePlan.description())
-        let query = "(startDate >= %@ AND startDate <= %@) OR (endDate >= %@ AND endDate <= %@)"
-        let predicate = NSPredicate(format: query, firstCurrentDate, lastCurrentDate, firstCurrentDate, lastCurrentDate)
-        fetchPlansRequest.predicate = predicate
         let fetchedPlans: [CorePlan]
         do {
             fetchedPlans = try persistenceController.context?.fetch(fetchPlansRequest) as? [CorePlan] ?? []
@@ -131,22 +130,20 @@ final class PlanModel: ObservableObject {
     }
 
     private func fetchUnfinishedPlans() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            guard let self = self else { return }
-            let todayAsNSDate = Date().endOfDay.asNSDate
-            let fetchPlansRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CorePlan.description())
-            let query = "endDate < %@ AND doneDate = nil"
-            let predicate = NSPredicate(format: query, todayAsNSDate)
-            fetchPlansRequest.predicate = predicate
-            let fetchedPlans: [CorePlan]
-            do {
-                fetchedPlans = try self.persistenceController.context?.fetch(fetchPlansRequest) as? [CorePlan] ?? []
-            } catch {
-                console.error(Date(), error.localizedDescription, error)
-                return
-            }
-            print("fetchedPlans", fetchedPlans)
-            self.unfinishedPlans = fetchedPlans
+        let todayAsNSDate = Date().endOfDay.asNSDate
+        let fetchPlansRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CorePlan.description())
+        let query = "endDate < %@ AND doneDate = nil"
+        let predicate = NSPredicate(format: query, todayAsNSDate)
+        fetchPlansRequest.predicate = predicate
+        let fetchedPlans: [CorePlan]
+        do {
+            fetchedPlans = try self.persistenceController.context?.fetch(fetchPlansRequest) as? [CorePlan] ?? []
+        } catch {
+            console.error(Date(), error.localizedDescription, error)
+            return
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.unfinishedPlans = fetchedPlans
         }
     }
 
