@@ -12,14 +12,17 @@ struct GeneralPlanColumn: View {
     let title: String
     let plans: [CorePlan.RenderPlan]
     let type: GeneralPlanColumnType
+    let addItem: () -> Void
     let onPlanPress: (_ plan: CorePlan.RenderPlan) -> Void
 
     init(plans: [CorePlan.RenderPlan],
          type: GeneralPlanColumnType,
+         addItem: @escaping () -> Void = { },
          onPlanPress: @escaping (_ plan: CorePlan.RenderPlan) -> Void) {
         self.title = type.title
         self.plans = plans
         self.type = type
+        self.addItem = addItem
         self.onPlanPress = onPlanPress
     }
 
@@ -28,7 +31,7 @@ struct GeneralPlanColumn: View {
             Text(title)
                 .font(.headline)
             if type == .some(.general) {
-                AddItemButton(action: {  })
+                AddItemButton(action: addItem)
                     .padding(.horizontal, 8)
             }
             ScrollView {
@@ -58,6 +61,6 @@ enum GeneralPlanColumnType {
 
 struct GeneralPlanColumn_Previews: PreviewProvider {
     static var previews: some View {
-        GeneralPlanColumn(plans: [], type: .general, onPlanPress: { _ in })
+        GeneralPlanColumn(plans: [], type: .general, addItem: { }, onPlanPress: { _ in })
     }
 }

@@ -113,7 +113,7 @@ final class PlanModel: ObservableObject {
         }
     }
 
-    #warning("optimise")
+    /// - TODO: Optimise
     private func fetchPlans() {
         let fetchPlansRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CorePlan.description())
         let fetchedPlans: [CorePlan]

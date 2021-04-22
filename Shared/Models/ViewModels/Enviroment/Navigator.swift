@@ -20,6 +20,7 @@ final class Navigator: ObservableObject {
     enum ScreenSelection: String {
         case home
         case addNewPlan
+        case addNewGeneralItem
     }
 
     enum SelectionView {

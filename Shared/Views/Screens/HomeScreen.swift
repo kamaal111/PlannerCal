@@ -42,6 +42,7 @@ struct HomeScreen: View {
                                   addPlanItem: { date in
                                     navigator.navigate(to: .addNewPlan, options: ["date": date])
                                   },
+                                  addGeneralItem: { navigator.navigate(to: .addNewGeneralItem) },
                                   onPlanPress: { plan in
                                     planModel.showPlan(plan)
                                     navigator.setSelection(to: .plan)
@@ -78,6 +79,7 @@ private struct HomeScreenView: View {
     let goToTodayDate: () -> Void
     let nextDate: () -> Void
     let addPlanItem: (_ date: Date) -> Void
+    let addGeneralItem: () -> Void
     let onPlanPress: (_ plan: CorePlan.RenderPlan) -> Void
 
     var body: some View {
@@ -118,9 +120,11 @@ private struct HomeScreenView: View {
                 .padding(.trailing, showSecondaryColumns ? -width : 0)
             }
             HStack {
-                GeneralPlanColumn(plans: unfinishedPlans.map(\.renderPlan), type: .unfinished, onPlanPress: onPlanPress)
+                GeneralPlanColumn(plans: unfinishedPlans.map(\.renderPlan),
+                                  type: .unfinished,
+                                  onPlanPress: onPlanPress)
                     .border(width: 1, edges: [.trailing], color: .appSecondary)
-                GeneralPlanColumn(plans: [], type: .general, onPlanPress: onPlanPress)
+                GeneralPlanColumn(plans: [], type: .general, addItem: addGeneralItem, onPlanPress: onPlanPress)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }

@@ -25,6 +25,8 @@
 		2C42AAC92617A99A00748787 /* ControlCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C42AAC72617A99A00748787 /* ControlCenter.swift */; };
 		2C7A2993262B730D00883759 /* PlanSelectionScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A2992262B730D00883759 /* PlanSelectionScreen+ViewModel.swift */; };
 		2C7A2994262B730D00883759 /* PlanSelectionScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A2992262B730D00883759 /* PlanSelectionScreen+ViewModel.swift */; };
+		2C7A50B8263217C40077F64B /* AddGeneralItemScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A50B7263217C40077F64B /* AddGeneralItemScreen.swift */; };
+		2C7A50B9263217C40077F64B /* AddGeneralItemScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A50B7263217C40077F64B /* AddGeneralItemScreen.swift */; };
 		2C7B6A922607DBE800F0217E /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B6A912607DBE800F0217E /* Tests_iOS.swift */; };
 		2C7B6A9D2607DBE800F0217E /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B6A9C2607DBE800F0217E /* Tests_macOS.swift */; };
 		2C7B6A9F2607DBE800F0217E /* PlannerCal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B6A732607DBE700F0217E /* PlannerCal.xcdatamodeld */; };
@@ -126,6 +128,7 @@
 		2C42286426238823001A1B21 /* ModifyPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPlan.swift; sourceTree = "<group>"; };
 		2C42AAC72617A99A00748787 /* ControlCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlCenter.swift; sourceTree = "<group>"; };
 		2C7A2992262B730D00883759 /* PlanSelectionScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanSelectionScreen+ViewModel.swift"; sourceTree = "<group>"; };
+		2C7A50B7263217C40077F64B /* AddGeneralItemScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGeneralItemScreen.swift; sourceTree = "<group>"; };
 		2C7B6A742607DBE700F0217E /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		2C7B6A752607DBE700F0217E /* PlannerCalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerCalApp.swift; sourceTree = "<group>"; };
 		2C7B6A762607DBE700F0217E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -402,6 +405,7 @@
 				2C87107726231D2D0063B4A4 /* SelectionScreen.swift */,
 				2CA200E9261A31A300DC218C /* AddPlanScreen.swift */,
 				2CD905A52612699B0032BC4B /* HomeScreen.swift */,
+				2C7A50B7263217C40077F64B /* AddGeneralItemScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -685,6 +689,7 @@
 				2C42285E26237C94001A1B21 /* PlanSelectionInfoRow.swift in Sources */,
 				60E870D6261F70CF00D3B1A4 /* DateInputRow.swift in Sources */,
 				2C7B6A9F2607DBE800F0217E /* PlannerCal.xcdatamodeld in Sources */,
+				2C7A50B8263217C40077F64B /* AddGeneralItemScreen.swift in Sources */,
 				2CC13FEF261A50C8003E3EDF /* ScrollableTextView.swift in Sources */,
 				2C42286526238823001A1B21 /* ModifyPlan.swift in Sources */,
 				60357B3E2616F0DC00D091AE /* PlanColumn.swift in Sources */,
@@ -732,6 +737,7 @@
 				2C3A16B42618EA62008FE8BA /* Constants.swift in Sources */,
 				2C7B6AA62607DBE800F0217E /* Persistence.swift in Sources */,
 				2C8C4F192613C2D100AFA2A3 /* Color+extensions.swift in Sources */,
+				2C7A50B9263217C40077F64B /* AddGeneralItemScreen.swift in Sources */,
 				60357B3F2616F0DC00D091AE /* PlanColumn.swift in Sources */,
 				2CD905A72612699B0032BC4B /* HomeScreen.swift in Sources */,
 				60E870D7261F70CF00D3B1A4 /* DateInputRow.swift in Sources */,

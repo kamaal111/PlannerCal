@@ -30,12 +30,20 @@ struct AppSidebar: View {
                 NavigationLink(destination: HomeScreen(),
                                tag: Navigator.ScreenSelection.home.rawValue,
                                selection: $navigator.screenSelection) {
+                    /// - TODO: Localize
                     Label("Home", systemImage: "house.fill")
                 }
                 NavigationLink(destination: AddPlanScreen(),
                                tag: Navigator.ScreenSelection.addNewPlan.rawValue,
                                selection: $navigator.screenSelection) {
-                    Label("Add a plan", systemImage: "calendar.badge.plus")
+                    /// - TODO: Localize
+                    Label("Add plan", systemImage: "calendar.badge.plus")
+                }
+                NavigationLink(destination: AddGeneralItemScreen(),
+                               tag: Navigator.ScreenSelection.addNewGeneralItem.rawValue,
+                               selection: $navigator.screenSelection) {
+                    /// - TODO: Localize
+                    Label("Add general item", systemImage: "list.bullet")
                 }
             }
         }
