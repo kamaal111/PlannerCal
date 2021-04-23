@@ -7,9 +7,11 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"time"
 )
 
 func main() {
+	startTimer := time.Now()
 	spmPath := os.Getenv("BUILD_DIR")
 	if len(spmPath) > 0 {
 		spmPath = spmPath + "/../../SourcePackages/checkouts"
@@ -39,11 +41,17 @@ func main() {
 					licenseData, err := ioutil.ReadFile(packagePath + "/" + packageFile.Name())
 					checkError(err)
 					fmt.Println(string(licenseData))
+					// TODO: Add all licenses with meta data in a array of struct
+					// TODO: Generate a json from data
+					// TODO: Use output path to know where to put the json file
 				}
 			}
 
 		}
 	}
+
+	timeElapsed := time.Since(startTimer)
+	fmt.Printf("Took %s ✨\n", timeElapsed)
 }
 
 func checkError(err error) {
