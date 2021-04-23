@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ConsoleSwift",
+        "repositoryURL": "https://github.com/kamaal111/ConsoleSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "ef959b6f017df3a239465b2f4faa8180499f8219",
+          "version": "2.0.0"
+        }
+      },
+      {
+        "package": "PersistanceManager",
+        "repositoryURL": "https://github.com/kamaal111/PersistanceManager.git",
+        "state": {
+          "branch": null,
+          "revision": "65aca49508bab6688b7642b7758baa9a598309ed",
+          "version": "2.0.0"
+        }
+      },
+      {
+        "package": "SalmonUI",
+        "repositoryURL": "https://github.com/kamaal111/SalmonUI.git",
+        "state": {
+          "branch": null,
+          "revision": "24a2446cd50b24d91cf063d86d3960c878126bef",
+          "version": "3.3.2"
+        }
+      },
+      {
+        "package": "ShrimpExtensions",
+        "repositoryURL": "https://github.com/kamaal111/ShrimpExtensions.git",
+        "state": {
+          "branch": null,
+          "revision": "38cacff0a83ae10c98db7c4a88340c21bb5a1949",
+          "version": "1.11.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
