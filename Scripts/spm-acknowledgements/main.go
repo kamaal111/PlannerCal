@@ -27,36 +27,29 @@ func main() {
 	}
 
 	spmDirectoryContent, err := ioutil.ReadDir(spmPath)
-	if err != nil {
-		log.Fatal(err)
-	}
+	checkError(err)
 
 	for _, packages := range spmDirectoryContent {
 		if packages.Name() != ".DS_Store" {
-			packageDirectoryContent, err := ioutil.ReadDir(spmPath + "/" + packages.Name())
-			if err != nil {
-				log.Fatal(err)
-			}
+			packagePath := spmPath + "/" + packages.Name()
+			packageDirectoryContent, err := ioutil.ReadDir(packagePath)
+			checkError(err)
 			for _, packageFile := range packageDirectoryContent {
 				if packageFile.Name() == "LICENSE" {
-					fmt.Println("Hoppa gotcha")
+					licenseData, err := ioutil.ReadFile(packagePath + "/" + packageFile.Name())
+					checkError(err)
+					fmt.Println(string(licenseData))
 				}
 			}
 
 		}
 	}
+}
 
-	// response, err := http.Get("https://raw.githubusercontent.com/kamaal111/PersistanceManager/master/LICENSE")
-	// if err != nil {
-	// 	log.Fatalln(err)
-	// }
-	// defer response.Body.Close()
-	// responseBody, err := io.ReadAll(response.Body)
-	// if err != nil {
-	// 	log.Fatalln(err)
-	// }
-	// bodyString := string(responseBody)
-	// fmt.Println(bodyString)
+func checkError(err error) {
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 // InitializingFlag - Initializes flag
