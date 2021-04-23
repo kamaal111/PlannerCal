@@ -127,6 +127,9 @@
 		2C42285D26237C94001A1B21 /* PlanSelectionInfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanSelectionInfoRow.swift; sourceTree = "<group>"; };
 		2C42286426238823001A1B21 /* ModifyPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPlan.swift; sourceTree = "<group>"; };
 		2C42AAC72617A99A00748787 /* ControlCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlCenter.swift; sourceTree = "<group>"; };
+		2C77197C263342B500CD6AD4 /* go.mod */ = {isa = PBXFileReference; lastKnownFileType = text; path = go.mod; sourceTree = "<group>"; };
+		2C77197F263342B500CD6AD4 /* main.go */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.go; sourceTree = "<group>"; };
+		2C771980263342D400CD6AD4 /* run.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = run.sh; sourceTree = "<group>"; };
 		2C7A2992262B730D00883759 /* PlanSelectionScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanSelectionScreen+ViewModel.swift"; sourceTree = "<group>"; };
 		2C7A50B7263217C40077F64B /* AddGeneralItemScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGeneralItemScreen.swift; sourceTree = "<group>"; };
 		2C7B6A742607DBE700F0217E /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
@@ -235,6 +238,16 @@
 				2C7B6A732607DBE700F0217E /* PlannerCal.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		2C77197B263342B500CD6AD4 /* spm-acknowledgements */ = {
+			isa = PBXGroup;
+			children = (
+				2C77197C263342B500CD6AD4 /* go.mod */,
+				2C77197F263342B500CD6AD4 /* main.go */,
+				2C771980263342D400CD6AD4 /* run.sh */,
+			);
+			path = "spm-acknowledgements";
 			sourceTree = "<group>";
 		};
 		2C7B6A6D2607DBE700F0217E = {
@@ -440,6 +453,7 @@
 		2CF484A9261E3F78003FDFFB /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
+				2C77197B263342B500CD6AD4 /* spm-acknowledgements */,
 				2CF484AA261E3F9D003FDFFB /* clear-mac-data.sh */,
 				2C9BCD17262B8017001DCF49 /* pre-compile.sh */,
 			);
