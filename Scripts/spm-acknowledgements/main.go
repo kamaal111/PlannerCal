@@ -22,7 +22,9 @@ func main() {
 	}
 
 	outputPath := InitializingFlag("Output path", "", "output", "o")
-	fmt.Println(outputPath)
+	if len(outputPath) > 0 {
+		fmt.Println(outputPath)
+	}
 
 	spmDirectoryContent, err := ioutil.ReadDir(spmPath)
 	if err != nil {
@@ -30,8 +32,17 @@ func main() {
 	}
 
 	for _, packages := range spmDirectoryContent {
-		if packages.Name() != ".DS_STORE" {
-			fmt.Println(packages.Name())
+		if packages.Name() != ".DS_Store" {
+			packageDirectoryContent, err := ioutil.ReadDir(spmPath + "/" + packages.Name())
+			if err != nil {
+				log.Fatal(err)
+			}
+			for _, packageFile := range packageDirectoryContent {
+				if packageFile.Name() == "LICENSE" {
+					fmt.Println("Hoppa gotcha")
+				}
+			}
+
 		}
 	}
 
