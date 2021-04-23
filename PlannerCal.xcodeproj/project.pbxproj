@@ -664,7 +664,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\nsh Scripts/pre-compile.sh\n";
+			shellScript = "export PATH=$PATH:/usr/local/go/bin\n\nsh Scripts/pre-compile.sh\n";
 		};
 		2C893C0D262B585300963CA2 /* Pre Compile */ = {
 			isa = PBXShellScriptBuildPhase;
