@@ -22,7 +22,7 @@ func main() {
 	spmDirectoryContent, err := ioutil.ReadDir(spmPath)
 	checkError(err)
 
-	var licenses []License
+	var acknowledgements []Acknowledgement
 
 	for _, spmPackage := range spmDirectoryContent {
 		if spmPackage.IsDir() {
@@ -30,7 +30,7 @@ func main() {
 			packageDirectoryContent, err := ioutil.ReadDir(packagePath)
 			checkError(err)
 
-			license := License{
+			acknowledgement := Acknowledgement{
 				PackageName: spmPackage.Name(),
 			}
 
@@ -39,28 +39,29 @@ func main() {
 					licenseData, err := ioutil.ReadFile(appendFileToPath(packagePath, packageFile.Name()))
 					checkError(err)
 
-					license.Content = string(licenseData)
+					acknowledgement.Content = string(licenseData)
 					break
 				}
 			}
 
-			licenses = append(licenses, license)
+			acknowledgements = append(acknowledgements, acknowledgement)
 		}
 	}
 
-	err = createJSONFile(licenses, appendFileToPath(outputPath, "licenses.json"))
+	err = createJSONFile(acknowledgements, appendFileToPath(outputPath, "acknowledgements.json"))
 	checkError(err)
 
 	timeElapsed := time.Since(startTimer)
-	fmt.Printf("Created licenses file in %s ✨\n", timeElapsed)
+	fmt.Printf("Created acknowledgements file in %s ✨\n", timeElapsed)
 }
 
-// License - structure of the license object
-type License struct {
+// Acknowledgement - structure of an acknowledgement object
+type Acknowledgement struct {
 	PackageName string `json:"package_name,omitempty"`
 	Content     string `json:"content,omitempty"`
 	Version     string `json:"version,omitempty"`
 	URL         string `json:"url,omitempty"`
+	Author      string `json:"author,omitempty"`
 }
 
 func checkError(err error) {
@@ -83,7 +84,7 @@ func appendFileToPath(path string, file string) string {
 	return fmt.Sprintf("%s/%s", path, file)
 }
 
-func createJSONFile(data []License, path string) error {
+func createJSONFile(data []Acknowledgement, path string) error {
 	jsonBytes, err := json.MarshalIndent(data, "", "  ")
 	if err != nil {
 		return err

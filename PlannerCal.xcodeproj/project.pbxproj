@@ -23,8 +23,8 @@
 		2C42286626238823001A1B21 /* ModifyPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C42286426238823001A1B21 /* ModifyPlan.swift */; };
 		2C42AAC82617A99A00748787 /* ControlCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C42AAC72617A99A00748787 /* ControlCenter.swift */; };
 		2C42AAC92617A99A00748787 /* ControlCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C42AAC72617A99A00748787 /* ControlCenter.swift */; };
-		2C6FB64226345E4400EC20BF /* licenses.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C6FB64126345E4400EC20BF /* licenses.json */; };
-		2C6FB64326345E4400EC20BF /* licenses.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C6FB64126345E4400EC20BF /* licenses.json */; };
+		2C6FB64D26345FFF00EC20BF /* acknowledgements.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C6FB64C26345FFF00EC20BF /* acknowledgements.json */; };
+		2C6FB64E26345FFF00EC20BF /* acknowledgements.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C6FB64C26345FFF00EC20BF /* acknowledgements.json */; };
 		2C7A2993262B730D00883759 /* PlanSelectionScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A2992262B730D00883759 /* PlanSelectionScreen+ViewModel.swift */; };
 		2C7A2994262B730D00883759 /* PlanSelectionScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A2992262B730D00883759 /* PlanSelectionScreen+ViewModel.swift */; };
 		2C7A50B8263217C40077F64B /* AddGeneralItemScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A50B7263217C40077F64B /* AddGeneralItemScreen.swift */; };
@@ -129,7 +129,7 @@
 		2C42285D26237C94001A1B21 /* PlanSelectionInfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanSelectionInfoRow.swift; sourceTree = "<group>"; };
 		2C42286426238823001A1B21 /* ModifyPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPlan.swift; sourceTree = "<group>"; };
 		2C42AAC72617A99A00748787 /* ControlCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlCenter.swift; sourceTree = "<group>"; };
-		2C6FB64126345E4400EC20BF /* licenses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = licenses.json; sourceTree = "<group>"; };
+		2C6FB64C26345FFF00EC20BF /* acknowledgements.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = acknowledgements.json; sourceTree = "<group>"; };
 		2C77197C263342B500CD6AD4 /* go.mod */ = {isa = PBXFileReference; lastKnownFileType = text; path = go.mod; sourceTree = "<group>"; };
 		2C77197F263342B500CD6AD4 /* main.go */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.go; sourceTree = "<group>"; };
 		2C771980263342D400CD6AD4 /* run.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = run.sh; sourceTree = "<group>"; };
@@ -246,7 +246,7 @@
 		2C6FB63C26345E1000EC20BF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2C6FB64126345E4400EC20BF /* licenses.json */,
+				2C6FB64C26345FFF00EC20BF /* acknowledgements.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -629,7 +629,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C6FB64226345E4400EC20BF /* licenses.json in Resources */,
+				2C6FB64D26345FFF00EC20BF /* acknowledgements.json in Resources */,
 				2C7B6AA72607DBE800F0217E /* Assets.xcassets in Resources */,
 				2C9BCD0A262B7DF0001DCF49 /* Localizable.strings in Resources */,
 			);
@@ -639,7 +639,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C6FB64326345E4400EC20BF /* licenses.json in Resources */,
+				2C6FB64E26345FFF00EC20BF /* acknowledgements.json in Resources */,
 				2C7B6AA82607DBE800F0217E /* Assets.xcassets in Resources */,
 				2C9BCD0B262B7DF0001DCF49 /* Localizable.strings in Resources */,
 			);
