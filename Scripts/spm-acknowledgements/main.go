@@ -1,12 +1,14 @@
 package main
 
 import (
+	"encoding/json"
 	"errors"
 	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -15,7 +17,7 @@ func main() {
 
 	spmPath := getSPMPath()
 
-	// outputPath := initializelag("Output path", "", "output", "o")
+	outputPath := initializelag("Output path", "", "output", "o")
 
 	spmDirectoryContent, err := ioutil.ReadDir(spmPath)
 	checkError(err)
@@ -24,7 +26,7 @@ func main() {
 
 	for _, spmPackage := range spmDirectoryContent {
 		if spmPackage.IsDir() {
-			packagePath := spmPath + "/" + spmPackage.Name()
+			packagePath := appendFileToPath(spmPath, spmPackage.Name())
 			packageDirectoryContent, err := ioutil.ReadDir(packagePath)
 			checkError(err)
 
@@ -34,19 +36,20 @@ func main() {
 
 			for _, packageFile := range packageDirectoryContent {
 				if packageFile.Name() == "LICENSE" {
-					licenseData, err := ioutil.ReadFile(packagePath + "/" + packageFile.Name())
+					licenseData, err := ioutil.ReadFile(appendFileToPath(packagePath, packageFile.Name()))
 					checkError(err)
 
 					license.Content = string(licenseData)
+					break
 				}
 			}
 
 			licenses = append(licenses, license)
-
 		}
 	}
 
-	fmt.Println(licenses)
+	err = createJSONFile(licenses, appendFileToPath(outputPath, "licenses.json"))
+	checkError(err)
 
 	timeElapsed := time.Since(startTimer)
 	fmt.Printf("Took %s ✨\n", timeElapsed)
@@ -54,16 +57,50 @@ func main() {
 
 // License - structure of the license object
 type License struct {
-	Content     string `json:"content"`
-	PackageName string `json:"package_name"`
-	Version     string `json:"version"`
-	URL         string `json:"url"`
+	PackageName string `json:"package_name,omitempty"`
+	Content     string `json:"content,omitempty"`
+	Version     string `json:"version,omitempty"`
+	URL         string `json:"url,omitempty"`
 }
 
 func checkError(err error) {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func appendFileToPath(path string, file string) string {
+	if len(strings.TrimSpace(path)) < 1 {
+		return file
+	}
+
+	pathRune := []rune(path)
+	lastCharacter := string(pathRune[len(pathRune)-1:])
+	if lastCharacter == "/" {
+		return path + file
+	}
+
+	return fmt.Sprintf("%s/%s", path, file)
+}
+
+func createJSONFile(data []License, path string) error {
+	jsonBytes, err := json.MarshalIndent(data, "", "  ")
+	if err != nil {
+		return err
+	}
+
+	createdFile, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	defer createdFile.Close()
+
+	_, err = createdFile.Write(jsonBytes)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func getSPMPath() string {
