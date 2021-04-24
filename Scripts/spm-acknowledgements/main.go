@@ -12,46 +12,52 @@ import (
 
 func main() {
 	startTimer := time.Now()
-	spmPath := os.Getenv("BUILD_DIR")
-	if len(spmPath) > 0 {
-		spmPath = spmPath + "/../../SourcePackages/checkouts"
-	} else {
-		spmPathFlag := InitializingFlag("SPM path", "", "spm", "s")
-		if len(spmPathFlag) < 1 {
-			log.Fatalln(errors.New("please provide the SPM path with -s or -spm"))
-		}
-		spmPath = spmPathFlag
-	}
 
-	outputPath := InitializingFlag("Output path", "", "output", "o")
-	if len(outputPath) > 0 {
-		fmt.Println(outputPath)
-	}
+	spmPath := getSPMPath()
+
+	// outputPath := initializelag("Output path", "", "output", "o")
 
 	spmDirectoryContent, err := ioutil.ReadDir(spmPath)
 	checkError(err)
 
-	for _, packages := range spmDirectoryContent {
-		if packages.Name() != ".DS_Store" {
-			packagePath := spmPath + "/" + packages.Name()
+	var licenses []License
+
+	for _, spmPackage := range spmDirectoryContent {
+		if spmPackage.IsDir() {
+			packagePath := spmPath + "/" + spmPackage.Name()
 			packageDirectoryContent, err := ioutil.ReadDir(packagePath)
 			checkError(err)
+
+			license := License{
+				PackageName: spmPackage.Name(),
+			}
+
 			for _, packageFile := range packageDirectoryContent {
 				if packageFile.Name() == "LICENSE" {
 					licenseData, err := ioutil.ReadFile(packagePath + "/" + packageFile.Name())
 					checkError(err)
-					fmt.Println(string(licenseData))
-					// TODO: Add all licenses with meta data in a array of struct
-					// TODO: Generate a json from data
-					// TODO: Use output path to know where to put the json file
+
+					license.Content = string(licenseData)
 				}
 			}
+
+			licenses = append(licenses, license)
 
 		}
 	}
 
+	fmt.Println(licenses)
+
 	timeElapsed := time.Since(startTimer)
 	fmt.Printf("Took %s ✨\n", timeElapsed)
+}
+
+// License - structure of the license object
+type License struct {
+	Content     string `json:"content"`
+	PackageName string `json:"package_name"`
+	Version     string `json:"version"`
+	URL         string `json:"url"`
 }
 
 func checkError(err error) {
@@ -60,8 +66,20 @@ func checkError(err error) {
 	}
 }
 
-// InitializingFlag - Initializes flag
-func InitializingFlag(usage string, flagDefault string, longVariable string, shortVariable string) string {
+func getSPMPath() string {
+	spmPath := os.Getenv("BUILD_DIR")
+	if len(spmPath) > 0 {
+		return spmPath + "/../../SourcePackages/checkouts"
+	}
+	spmPathFlag := initializelag("SPM path", "", "spm", "s")
+	if len(spmPathFlag) < 1 {
+		log.Fatalln(errors.New("please provide the SPM path with -s or -spm"))
+	}
+	return spmPathFlag
+
+}
+
+func initializelag(usage string, flagDefault string, longVariable string, shortVariable string) string {
 	var value string
 	flag.StringVar(&value, longVariable, flagDefault, usage)
 	flag.StringVar(&value, shortVariable, flagDefault, usage)
