@@ -52,7 +52,7 @@ func main() {
 	checkError(err)
 
 	timeElapsed := time.Since(startTimer)
-	fmt.Printf("Took %s ✨\n", timeElapsed)
+	fmt.Printf("Created licenses file in %s ✨\n", timeElapsed)
 }
 
 // License - structure of the license object

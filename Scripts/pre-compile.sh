@@ -6,6 +6,8 @@
 #  Created by Kamaal M Farah on 17/04/2021.
 #  
 
+export PATH=$PATH:/usr/local/go/bin
+
 set -o pipefail && sh Scripts/spm-acknowledgements/run.sh || exit 1
 
 if which swiftlint >/dev/null; then
