@@ -8,7 +8,7 @@
 
 export PATH=$PATH:/usr/local/go/bin
 
-set -o pipefail && sh Scripts/spm-acknowledgements/run.sh || exit 1
+set -o pipefail && go run Scripts/spm-acknowledgements/*.go -output Shared/Resources || exit 1
 
 if which swiftlint >/dev/null; then
   swiftlint

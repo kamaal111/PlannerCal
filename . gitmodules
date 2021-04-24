@@ -1,0 +1,3 @@
+[submodule "spm-acknowledgements"]
+	path = Scripts/spm-acknowledgements
+	url = git@github.com:kamaal111/spm-acknowledgements.git
