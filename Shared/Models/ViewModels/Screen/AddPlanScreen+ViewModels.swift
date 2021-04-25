@@ -8,7 +8,6 @@
 import Combine
 import Dispatch
 import Foundation
-import PCLocale
 
 extension AddPlanScreen {
 
@@ -35,7 +34,17 @@ extension AddPlanScreen {
             }
         }
 
-        func planValidation() -> Bool {
+        func prepareArgsForPlan() -> CorePlan.Args? {
+            guard planValidation() else { return nil }
+            var notes: String?
+            if !planNotes.trimmingByWhitespacesAndNewLines.isEmpty {
+                notes = planNotes
+            }
+            let args = CorePlan.Args(startDate: planStartDate, endDate: planEndDate, title: planTitle, notes: notes)
+            return args
+        }
+
+        private func planValidation() -> Bool {
             let args = CorePlan.Args(startDate: planStartDate, endDate: planEndDate, title: planTitle, notes: planNotes)
             guard let errorMessage = Validator.planValidation(args) else { return true }
             errorAlertMessage = (errorMessage.title, errorMessage.message)

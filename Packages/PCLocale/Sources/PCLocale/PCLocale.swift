@@ -8,6 +8,8 @@
 import SwiftUI
 
 public struct PCLocale {
+    private init() { }
+
     public enum Keys: String {
         case APP_TITLE
         case NOW

@@ -83,6 +83,8 @@
 		2CABBEB92635986400DA950B /* LargeTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CABBEB72635986400DA950B /* LargeTextInputView.swift */; };
 		2CABBEBF263598E300DA950B /* ModifyPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CABBEBE263598E300DA950B /* ModifyPlan.swift */; };
 		2CABBEC0263598E300DA950B /* ModifyPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CABBEBE263598E300DA950B /* ModifyPlan.swift */; };
+		2CABBECE26359F5100DA950B /* AddGeneralItemScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CABBECD26359F5100DA950B /* AddGeneralItemScreen+ViewModel.swift */; };
+		2CABBECF26359F5100DA950B /* AddGeneralItemScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CABBECD26359F5100DA950B /* AddGeneralItemScreen+ViewModel.swift */; };
 		2CC13FDC261A44ED003E3EDF /* SalmonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2CC13FDB261A44ED003E3EDF /* SalmonUI */; };
 		2CC13FE2261A44F6003E3EDF /* SalmonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2CC13FE1261A44F6003E3EDF /* SalmonUI */; };
 		2CC13FE8261A47D0003E3EDF /* InputLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC13FE7261A47D0003E3EDF /* InputLabel.swift */; };
@@ -176,6 +178,7 @@
 		2CABBEB0263597E600DA950B /* TextInputRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputRow.swift; sourceTree = "<group>"; };
 		2CABBEB72635986400DA950B /* LargeTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeTextInputView.swift; sourceTree = "<group>"; };
 		2CABBEBE263598E300DA950B /* ModifyPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPlan.swift; sourceTree = "<group>"; };
+		2CABBECD26359F5100DA950B /* AddGeneralItemScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddGeneralItemScreen+ViewModel.swift"; sourceTree = "<group>"; };
 		2CC13FE7261A47D0003E3EDF /* InputLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputLabel.swift; sourceTree = "<group>"; };
 		2CC13FEE261A50C8003E3EDF /* ScrollableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTextView.swift; sourceTree = "<group>"; };
 		2CC13FF6261A5918003E3EDF /* PCLocale */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PCLocale; sourceTree = "<group>"; };
@@ -488,6 +491,7 @@
 				60357B452616F49600D091AE /* HomeScreen+ViewModel.swift */,
 				2C08AA58261CFEF700BE71BA /* AddPlanScreen+ViewModels.swift */,
 				2C7A2992262B730D00883759 /* PlanSelectionScreen+ViewModel.swift */,
+				2CABBECD26359F5100DA950B /* AddGeneralItemScreen+ViewModel.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -745,6 +749,7 @@
 				2CA200D8261A236100DC218C /* SheetStack.swift in Sources */,
 				2C8AF8F0262F79CA0051F0AF /* GeneralPlanColumnItem.swift in Sources */,
 				2CEFFC23262C204F003676F8 /* UserData.swift in Sources */,
+				2CABBECE26359F5100DA950B /* AddGeneralItemScreen+ViewModel.swift in Sources */,
 				2C99A3AB2612734900A2D029 /* AppTabView.swift in Sources */,
 				2CCBA5C3262C613C008CA78B /* GeneralPlanColumn.swift in Sources */,
 				2C99A3BE2612788900A2D029 /* EdgeBorder.swift in Sources */,
@@ -769,6 +774,7 @@
 				2C42286626238823001A1B21 /* ModifyPlanWithDates.swift in Sources */,
 				2C99A39926126B6C00A2D029 /* Navigator.swift in Sources */,
 				2C8AF8F1262F79CA0051F0AF /* GeneralPlanColumnItem.swift in Sources */,
+				2CABBECF26359F5100DA950B /* AddGeneralItemScreen+ViewModel.swift in Sources */,
 				2CEA2CC2261782EC009D5AB3 /* PlanModel.swift in Sources */,
 				2CABBEC0263598E300DA950B /* ModifyPlan.swift in Sources */,
 				2C42AAC92617A99A00748787 /* ControlCenter.swift in Sources */,

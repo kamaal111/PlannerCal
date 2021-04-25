@@ -13,11 +13,11 @@ struct AddGeneralItemScreen: View {
     @EnvironmentObject
     private var planModel: PlanModel
 
-    @State private var title = ""
-    @State private var notes = ""
+    @ObservedObject
+    private var viewModel = ViewModel()
 
     var body: some View {
-        ModifyPlan(title: $title, notes: $notes)
+        ModifyPlan(title: $viewModel.title, notes: $viewModel.notes)
             .padding(24)
             .toolbar(content: {
                 Button(action: onSave) {

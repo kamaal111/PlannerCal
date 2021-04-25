@@ -52,16 +52,7 @@ struct AddPlanScreen: View {
     }
 
     private func onSave() {
-        guard viewModel.planValidation() else { return }
-        var notes: String?
-        if !viewModel.planNotes.trimmingByWhitespacesAndNewLines.isEmpty {
-            notes = viewModel.planNotes
-        }
-        #warning("Put this in view model")
-        let args = CorePlan.Args(startDate: viewModel.planStartDate,
-                                 endDate: viewModel.planEndDate,
-                                 title: viewModel.planTitle,
-                                 notes: notes)
+        guard let args = viewModel.prepareArgsForPlan() else { return }
         do {
             try planModel.setPlan(with: args)
         } catch {
