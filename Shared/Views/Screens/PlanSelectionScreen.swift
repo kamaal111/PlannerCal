@@ -19,10 +19,10 @@ struct PlanSelectionScreen: View {
     var body: some View {
         ZStack {
             if viewModel.editMode {
-                ModifyPlan(title: $viewModel.editedTitle,
-                           startDate: $viewModel.editedStartDate,
-                           endDate: $viewModel.editedEndDate,
-                           notes: $viewModel.editedNotes)
+                ModifyPlanWithDates(title: $viewModel.editedTitle,
+                                    startDate: $viewModel.editedStartDate,
+                                    endDate: $viewModel.editedEndDate,
+                                    notes: $viewModel.editedNotes)
             } else {
                 VStack {
                     PlanSelectionInfoRow(label: .TITLE_INPUT_FIELD_LABEL, value: unwrappedPlanTitle)

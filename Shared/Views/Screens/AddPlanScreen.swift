@@ -19,10 +19,10 @@ struct AddPlanScreen: View {
     private var viewModel = ViewModel()
 
     var body: some View {
-        ModifyPlan(title: $viewModel.planTitle,
-                   startDate: $viewModel.planStartDate,
-                   endDate: $viewModel.planEndDate,
-                   notes: $viewModel.planNotes)
+        ModifyPlanWithDates(title: $viewModel.planTitle,
+                            startDate: $viewModel.planStartDate,
+                            endDate: $viewModel.planEndDate,
+                            notes: $viewModel.planNotes)
             .padding(.all, 24)
             .toolbar(content: {
                 Button(action: onSave) {

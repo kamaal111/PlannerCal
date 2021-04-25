@@ -19,8 +19,8 @@
 		2C3A16B42618EA62008FE8BA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A16B22618EA62008FE8BA /* Constants.swift */; };
 		2C42285E26237C94001A1B21 /* PlanSelectionInfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C42285D26237C94001A1B21 /* PlanSelectionInfoRow.swift */; };
 		2C42285F26237C94001A1B21 /* PlanSelectionInfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C42285D26237C94001A1B21 /* PlanSelectionInfoRow.swift */; };
-		2C42286526238823001A1B21 /* ModifyPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C42286426238823001A1B21 /* ModifyPlan.swift */; };
-		2C42286626238823001A1B21 /* ModifyPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C42286426238823001A1B21 /* ModifyPlan.swift */; };
+		2C42286526238823001A1B21 /* ModifyPlanWithDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C42286426238823001A1B21 /* ModifyPlanWithDates.swift */; };
+		2C42286626238823001A1B21 /* ModifyPlanWithDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C42286426238823001A1B21 /* ModifyPlanWithDates.swift */; };
 		2C42AAC82617A99A00748787 /* ControlCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C42AAC72617A99A00748787 /* ControlCenter.swift */; };
 		2C42AAC92617A99A00748787 /* ControlCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C42AAC72617A99A00748787 /* ControlCenter.swift */; };
 		2C6FB64D26345FFF00EC20BF /* acknowledgements.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C6FB64C26345FFF00EC20BF /* acknowledgements.json */; };
@@ -77,6 +77,12 @@
 		2CA200D9261A236100DC218C /* SheetStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA200D7261A236100DC218C /* SheetStack.swift */; };
 		2CA200EA261A31A300DC218C /* AddPlanScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA200E9261A31A300DC218C /* AddPlanScreen.swift */; };
 		2CA200EB261A31A300DC218C /* AddPlanScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA200E9261A31A300DC218C /* AddPlanScreen.swift */; };
+		2CABBEB1263597E600DA950B /* TextInputRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CABBEB0263597E600DA950B /* TextInputRow.swift */; };
+		2CABBEB2263597E600DA950B /* TextInputRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CABBEB0263597E600DA950B /* TextInputRow.swift */; };
+		2CABBEB82635986400DA950B /* LargeTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CABBEB72635986400DA950B /* LargeTextInputView.swift */; };
+		2CABBEB92635986400DA950B /* LargeTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CABBEB72635986400DA950B /* LargeTextInputView.swift */; };
+		2CABBEBF263598E300DA950B /* ModifyPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CABBEBE263598E300DA950B /* ModifyPlan.swift */; };
+		2CABBEC0263598E300DA950B /* ModifyPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CABBEBE263598E300DA950B /* ModifyPlan.swift */; };
 		2CC13FDC261A44ED003E3EDF /* SalmonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2CC13FDB261A44ED003E3EDF /* SalmonUI */; };
 		2CC13FE2261A44F6003E3EDF /* SalmonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2CC13FE1261A44F6003E3EDF /* SalmonUI */; };
 		2CC13FE8261A47D0003E3EDF /* InputLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC13FE7261A47D0003E3EDF /* InputLabel.swift */; };
@@ -127,12 +133,11 @@
 		2C347ABF2619FC9C001F307D /* CorePlan+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CorePlan+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2C3A16B22618EA62008FE8BA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2C42285D26237C94001A1B21 /* PlanSelectionInfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanSelectionInfoRow.swift; sourceTree = "<group>"; };
-		2C42286426238823001A1B21 /* ModifyPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPlan.swift; sourceTree = "<group>"; };
+		2C42286426238823001A1B21 /* ModifyPlanWithDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPlanWithDates.swift; sourceTree = "<group>"; };
 		2C42AAC72617A99A00748787 /* ControlCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlCenter.swift; sourceTree = "<group>"; };
 		2C6FB64C26345FFF00EC20BF /* acknowledgements.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = acknowledgements.json; sourceTree = "<group>"; };
 		2C77197C263342B500CD6AD4 /* go.mod */ = {isa = PBXFileReference; lastKnownFileType = text; path = go.mod; sourceTree = "<group>"; };
 		2C77197F263342B500CD6AD4 /* main.go */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.go; sourceTree = "<group>"; };
-		2C771980263342D400CD6AD4 /* run.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = run.sh; sourceTree = "<group>"; };
 		2C7A2992262B730D00883759 /* PlanSelectionScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanSelectionScreen+ViewModel.swift"; sourceTree = "<group>"; };
 		2C7A50B7263217C40077F64B /* AddGeneralItemScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGeneralItemScreen.swift; sourceTree = "<group>"; };
 		2C7B6A742607DBE700F0217E /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
@@ -168,6 +173,9 @@
 		2C9BCD17262B8017001DCF49 /* pre-compile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "pre-compile.sh"; sourceTree = "<group>"; };
 		2CA200D7261A236100DC218C /* SheetStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetStack.swift; sourceTree = "<group>"; };
 		2CA200E9261A31A300DC218C /* AddPlanScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlanScreen.swift; sourceTree = "<group>"; };
+		2CABBEB0263597E600DA950B /* TextInputRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputRow.swift; sourceTree = "<group>"; };
+		2CABBEB72635986400DA950B /* LargeTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeTextInputView.swift; sourceTree = "<group>"; };
+		2CABBEBE263598E300DA950B /* ModifyPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPlan.swift; sourceTree = "<group>"; };
 		2CC13FE7261A47D0003E3EDF /* InputLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputLabel.swift; sourceTree = "<group>"; };
 		2CC13FEE261A50C8003E3EDF /* ScrollableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTextView.swift; sourceTree = "<group>"; };
 		2CC13FF6261A5918003E3EDF /* PCLocale */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PCLocale; sourceTree = "<group>"; };
@@ -256,7 +264,6 @@
 			children = (
 				2C77197C263342B500CD6AD4 /* go.mod */,
 				2C77197F263342B500CD6AD4 /* main.go */,
-				2C771980263342D400CD6AD4 /* run.sh */,
 			);
 			path = "spm-acknowledgements";
 			sourceTree = "<group>";
@@ -404,21 +411,24 @@
 		2CD905AD261269B90032BC4B /* SupportingViews */ = {
 			isa = PBXGroup;
 			children = (
+				2C8AF8E8262F781F0051F0AF /* AddItemButton.swift */,
 				2CD9059A261268B70032BC4B /* AppSidebar.swift */,
 				2C99A3AA2612734900A2D029 /* AppTabView.swift */,
 				2C42AAC72617A99A00748787 /* ControlCenter.swift */,
 				60E870D5261F70CF00D3B1A4 /* DateInputRow.swift */,
 				2C99A3BD2612788900A2D029 /* EdgeBorder.swift */,
+				2CCBA5C2262C613C008CA78B /* GeneralPlanColumn.swift */,
+				2C8AF8EF262F79CA0051F0AF /* GeneralPlanColumnItem.swift */,
 				2CC13FE7261A47D0003E3EDF /* InputLabel.swift */,
+				2CABBEB72635986400DA950B /* LargeTextInputView.swift */,
+				2CABBEBE263598E300DA950B /* ModifyPlan.swift */,
+				2C42286426238823001A1B21 /* ModifyPlanWithDates.swift */,
 				60357B3D2616F0DC00D091AE /* PlanColumn.swift */,
 				2C87106C262315220063B4A4 /* PlanColumnItem.swift */,
+				2C42285D26237C94001A1B21 /* PlanSelectionInfoRow.swift */,
 				2CC13FEE261A50C8003E3EDF /* ScrollableTextView.swift */,
 				2CA200D7261A236100DC218C /* SheetStack.swift */,
-				2C42285D26237C94001A1B21 /* PlanSelectionInfoRow.swift */,
-				2C42286426238823001A1B21 /* ModifyPlan.swift */,
-				2CCBA5C2262C613C008CA78B /* GeneralPlanColumn.swift */,
-				2C8AF8E8262F781F0051F0AF /* AddItemButton.swift */,
-				2C8AF8EF262F79CA0051F0AF /* GeneralPlanColumnItem.swift */,
+				2CABBEB0263597E600DA950B /* TextInputRow.swift */,
 			);
 			path = SupportingViews;
 			sourceTree = "<group>";
@@ -426,11 +436,11 @@
 		2CD905AE261269CC0032BC4B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				2C87107E26231F230063B4A4 /* PlanSelectionScreen.swift */,
-				2C87107726231D2D0063B4A4 /* SelectionScreen.swift */,
+				2C7A50B7263217C40077F64B /* AddGeneralItemScreen.swift */,
 				2CA200E9261A31A300DC218C /* AddPlanScreen.swift */,
 				2CD905A52612699B0032BC4B /* HomeScreen.swift */,
-				2C7A50B7263217C40077F64B /* AddGeneralItemScreen.swift */,
+				2C87107E26231F230063B4A4 /* PlanSelectionScreen.swift */,
+				2C87107726231D2D0063B4A4 /* SelectionScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -714,15 +724,18 @@
 				2C87106D262315220063B4A4 /* PlanColumnItem.swift in Sources */,
 				2C8AF8E9262F781F0051F0AF /* AddItemButton.swift in Sources */,
 				2C347AC02619FC9C001F307D /* CorePlan+CoreDataClass.swift in Sources */,
+				2CABBEB82635986400DA950B /* LargeTextInputView.swift in Sources */,
 				2C42285E26237C94001A1B21 /* PlanSelectionInfoRow.swift in Sources */,
 				60E870D6261F70CF00D3B1A4 /* DateInputRow.swift in Sources */,
 				2C7B6A9F2607DBE800F0217E /* PlannerCal.xcdatamodeld in Sources */,
 				2C7A50B8263217C40077F64B /* AddGeneralItemScreen.swift in Sources */,
 				2CC13FEF261A50C8003E3EDF /* ScrollableTextView.swift in Sources */,
-				2C42286526238823001A1B21 /* ModifyPlan.swift in Sources */,
+				2C42286526238823001A1B21 /* ModifyPlanWithDates.swift in Sources */,
 				60357B3E2616F0DC00D091AE /* PlanColumn.swift in Sources */,
 				2C7B6AA52607DBE800F0217E /* Persistence.swift in Sources */,
+				2CABBEBF263598E300DA950B /* ModifyPlan.swift in Sources */,
 				2C893BFD262B56D600963CA2 /* Date+extensions.swift in Sources */,
+				2CABBEB1263597E600DA950B /* TextInputRow.swift in Sources */,
 				2C8C4F182613C2D100AFA2A3 /* Color+extensions.swift in Sources */,
 				2CF04AB5262B1D2800B224BB /* Validator.swift in Sources */,
 				2CEA2CC1261782EC009D5AB3 /* PlanModel.swift in Sources */,
@@ -753,16 +766,18 @@
 			files = (
 				2C87106E262315220063B4A4 /* PlanColumnItem.swift in Sources */,
 				2CCBA5C4262C613C008CA78B /* GeneralPlanColumn.swift in Sources */,
-				2C42286626238823001A1B21 /* ModifyPlan.swift in Sources */,
+				2C42286626238823001A1B21 /* ModifyPlanWithDates.swift in Sources */,
 				2C99A39926126B6C00A2D029 /* Navigator.swift in Sources */,
 				2C8AF8F1262F79CA0051F0AF /* GeneralPlanColumnItem.swift in Sources */,
 				2CEA2CC2261782EC009D5AB3 /* PlanModel.swift in Sources */,
+				2CABBEC0263598E300DA950B /* ModifyPlan.swift in Sources */,
 				2C42AAC92617A99A00748787 /* ControlCenter.swift in Sources */,
 				60357B472616F49600D091AE /* HomeScreen+ViewModel.swift in Sources */,
 				2CC13FF0261A50C8003E3EDF /* ScrollableTextView.swift in Sources */,
 				2C87107926231D2D0063B4A4 /* SelectionScreen.swift in Sources */,
 				2C7B6AA02607DBE800F0217E /* PlannerCal.xcdatamodeld in Sources */,
 				2C3A16B42618EA62008FE8BA /* Constants.swift in Sources */,
+				2CABBEB2263597E600DA950B /* TextInputRow.swift in Sources */,
 				2C7B6AA62607DBE800F0217E /* Persistence.swift in Sources */,
 				2C8C4F192613C2D100AFA2A3 /* Color+extensions.swift in Sources */,
 				2C7A50B9263217C40077F64B /* AddGeneralItemScreen.swift in Sources */,
@@ -778,6 +793,7 @@
 				2C347AC32619FC9C001F307D /* CorePlan+CoreDataProperties.swift in Sources */,
 				2C7A2994262B730D00883759 /* PlanSelectionScreen+ViewModel.swift in Sources */,
 				2CF04AB6262B1D2800B224BB /* Validator.swift in Sources */,
+				2CABBEB92635986400DA950B /* LargeTextInputView.swift in Sources */,
 				2CA200EB261A31A300DC218C /* AddPlanScreen.swift in Sources */,
 				2C893BFE262B56D600963CA2 /* Date+extensions.swift in Sources */,
 				2C7B6AA42607DBE800F0217E /* ContentView.swift in Sources */,

@@ -8,13 +8,36 @@
 import SwiftUI
 
 struct AddGeneralItemScreen: View {
+    @EnvironmentObject
+    private var navigator: Navigator
+    @EnvironmentObject
+    private var planModel: PlanModel
+
+    @State private var title = ""
+    @State private var notes = ""
+
     var body: some View {
-        Text("Hello, World!")
+        ModifyPlan(title: $title, notes: $notes)
+            .padding(24)
+            .toolbar(content: {
+                Button(action: onSave) {
+                    Text(localized: .SAVE)
+                }
+            })
+    }
+
+    private func onSave() {
+        print("save")
     }
 }
 
 struct AddGeneralItemScreen_Previews: PreviewProvider {
     static var previews: some View {
-        AddGeneralItemScreen()
+        NavigationView {
+            AppSidebar()
+            AddGeneralItemScreen()
+        }
+        .environmentObject(Navigator())
+        .environmentObject(PlanModel(amountOfDaysToDisplay: 5, preview: true))
     }
 }
